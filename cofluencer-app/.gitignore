@@ -31,3 +31,6 @@ npm-debug.log
 
 # Local Environment
 .env
+
+# ESLint configuration
+.eslintrc.json
