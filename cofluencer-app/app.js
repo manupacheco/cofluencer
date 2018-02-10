@@ -13,6 +13,7 @@ require('dotenv').config();
 mongoose.connect(process.env.MONGODB_URI, { useMongoClient: true });
 mongoose.Promise = global.Promise;
 
+const auth = require('./routes/auth');
 const index = require('./routes/index');
 const users = require('./routes/users');
 
@@ -25,7 +26,7 @@ app.use(session({
   cookie: { maxAge: 24 * 60 * 60 * 1000 },
   store: new MongoStore({
     mongooseConnection: mongoose.connection,
-    ttl: 24 * 60 * 60 // 1 day
+    ttl: 24 * 60 * 60, // 1 day
   }),
 }));
 
@@ -49,6 +50,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/', auth);
 app.use('/', index);
 app.use('/users', users);
 
