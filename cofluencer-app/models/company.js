@@ -1,0 +1,27 @@
+const mongoose = require('mongoose');
+/* eslint-disable */
+const Schema = mongoose.Schema;
+/* eslint-enable */
+
+const companySchema = new Schema({
+  username: String,
+  email: String,
+  address: {
+    street: String,
+    city: String,
+    state: String,
+    zip: Number,
+  },
+  bio: String,
+  profileImage: String,
+  socialLinks: [{}],
+  role: ['influencer', 'company', 'admin'],
+  tags: [],
+  influencersFavs: [Schema.Types.ObjectId],
+}, {
+  timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' },
+});
+
+const Company = mongoose.model('Company', companySchema);
+
+module.exports = Company;
