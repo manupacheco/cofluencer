@@ -6,6 +6,7 @@ const Schema = mongoose.Schema;
 const influencerSchema = new Schema({
   username: String,
   email: String,
+  password: String,
   phone: Number,
   address: {
     street: String,

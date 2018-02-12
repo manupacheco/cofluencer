@@ -1,15 +1,11 @@
 <div class="container">
   <div class="row justify-content-md-center">
     <div class="col-md-3">
-      <h2>Signup</h2>
+      <h2>Login</h2>
 
-      <form action="/signup" method="POST" id="form-container">
+      <form action="/login" method="POST" id="form-container">
         <label for="username">Username</label>
         <input type="text" name="username" placeholder="Company name">
-        <br>
-        <br>
-        <label for="email">Email</label>
-        <input type="email" name="email" placeholder="Your email">
         <br>
         <br>
         <label for="password">Password</label>
@@ -22,7 +18,10 @@
           </div>
         <% } %>
         <br>
-        <button>Create account</button>
+        <p class="account-message">
+          If you are not a cofluencer, <a href="/signup">Create an account.</a>
+        </p>
+        <button>Login</button>
       </form>
     </div>
   </div>
