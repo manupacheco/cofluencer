@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 const bcryptSalt = 10;
 
 const Company = require('../models/company');
-// const Influencer = require('../models/influencer');
+const Influencer = require('../models/influencer');
 
 router.get('/signup', (req, res, next) => {
   res.render('auth/signup');
@@ -75,6 +75,16 @@ router.post('/login', (req, res, next) => {
         }
       });
   }
+});
+
+router.get('/logout', (req, res, next) => {
+  req.session.destroy((err) => {
+    if (err) {
+      next(err);
+    } else {
+      res.redirect('/');
+    }
+  });
 });
 
 module.exports = router;
