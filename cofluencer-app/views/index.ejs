@@ -4,7 +4,7 @@
 <h2>Search user</h2>
 <form method="POST" action="/">
   IG User: <input type="text" id="name" name="name"></input>
-  <button type="submit">Search IG user</button>
+  <button type="submit" class="btn btn-indigo"><i class="fa fa-bolt" aria-hidden="true"></i>Search IG user</button>
 </form>
 
 <h1>IG user: <%= titles %></h1>
@@ -12,7 +12,7 @@
 <% pics.forEach((image)=>{ %>
   <div style="float: left">
   <img src='<%=image.media_url%>' style="width: 300px; height: 300px"><br>
-  💚 : <%= image.like_count%>
+  💚 <%= image.like_count%>
   <br>
   </div>
 <% }); %>
