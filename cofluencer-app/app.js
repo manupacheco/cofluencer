@@ -8,6 +8,9 @@ const expressLayouts = require('express-ejs-layouts');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
+const flash = require('connect-flash');
+const passport = require('passport');
+const configurePassport = require('./helpers/passport');
 
 require('dotenv').config();
 mongoose.connect(process.env.MONGODB_URI, { useMongoClient: true });
@@ -20,15 +23,15 @@ const profile = require('./routes/profile');
 const app = express();
 
 app.use(session({
-  secret: 'change this word for a variable',
+  secret: 'our-passport-local-strategy-app',
   resave: true,
   saveUninitialized: true,
-  cookie: { maxAge: 24 * 60 * 60 * 1000 },
-  store: new MongoStore({
-    mongooseConnection: mongoose.connection,
-    ttl: 24 * 60 * 60, // 1 day
-  }),
 }));
+
+configurePassport();
+// app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
 
 // view engine setup
 app.use(expressLayouts);

@@ -21,6 +21,24 @@ const influencerSchema = new Schema({
   role: ['influencer', 'company', 'admin'],
   tags: [],
   campaignsFavs: [Schema.Types.ObjectId],
+  instagram: {
+    username: String,
+    followers_count: Number,
+    biography: String,
+    media_count: Number,
+    media: {
+      data: [{}],
+      paging: {
+        cursors: {
+          before: String,
+          after: String,
+        },
+        next: String,
+      },
+    },
+    id: String,
+  },
+  id: String,
 }, {
   timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' },
 });

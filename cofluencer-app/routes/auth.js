@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const bcryptSalt = 10;
+const passport = require('passport');
+const configurePassport = require('../helpers/passport');
 
 const Company = require('../models/company');
 const Influencer = require('../models/influencer');
@@ -52,39 +54,16 @@ router.get('/login', (req, res) => {
   res.render('auth/login');
 });
 
-router.post('/login', (req, res, next) => {
-  const { username, password } = req.body;
+router.post('/login', passport.authenticate('local', {
+  successRedirect: '/profile',
+  failureRedirect: '/login',
+  // failureFlash: true,
+  passReqToCallback: true,
+}));
 
-  if (username === '' || password === '') {
-    const error = 'User or password can not be empty';
-    res.render('auth/login', { error });
-  } else {
-    Company.findOne({ username })
-      .then((company) => {
-        if (!company) {
-          const error = 'Incorrect user or password';
-          res.render('auth/login', { error });
-        } else if (bcrypt.compareSync(password, company.password)) {
-          /* eslint-disable */
-          req.session.currentUser = company._id;
-          /* eslint-enable */
-          res.redirect('/profile');
-        } else {
-          const error = 'Incorrect user and password';
-          res.render('auth/login', { error });
-        }
-      });
-  }
-});
-
-router.get('/logout', (req, res, next) => {
-  req.session.destroy((err) => {
-    if (err) {
-      next(err);
-    } else {
-      res.redirect('/');
-    }
-  });
+router.get('/logout', (req, res) => {
+  req.logout();
+  res.redirect('/login');
 });
 
 module.exports = router;

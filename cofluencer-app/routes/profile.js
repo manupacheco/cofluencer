@@ -1,11 +1,14 @@
 const express = require('express');
 const router = express.Router();
-
+const passport = require('passport');
+const configurePassport = require('../helpers/passport');
+/* eslint-disable */
+const isLoggedIn = require('../helpers/middlewares').isLoggedIn;
+/* eslint-enable */
 const Company = require('../models/company');
-const authRedirect = require('../middlewares/auth');
 
 /* GET users listing. */
-router.get('/', authRedirect('/login'), (req, res, next) => {
+router.get('/', isLoggedIn('/login'), (req, res, next) => {
   const userId = req.session.currentUser;
 
   Company.findById(userId)
