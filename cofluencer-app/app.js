@@ -13,7 +13,9 @@ const passport = require('passport');
 const configurePassport = require('./helpers/passport');
 
 require('dotenv').config();
-mongoose.connect(process.env.MONGODB_URI, { useMongoClient: true });
+mongoose.connect(process.env.MONGODB_URI, {
+  useMongoClient: true,
+});
 mongoose.Promise = global.Promise;
 
 const auth = require('./routes/auth');
@@ -26,6 +28,13 @@ app.use(session({
   secret: 'our-passport-local-strategy-app',
   resave: true,
   saveUninitialized: true,
+  cookie: {
+    maxAge: 24 * 60 * 60 * 1000,
+  },
+  store: new MongoStore({
+    mongooseConnection: mongoose.connection,
+    ttl: 24 * 60 * 60, // 1 day
+  }),
 }));
 
 configurePassport();
@@ -49,7 +58,9 @@ app.set('layout', 'layouts/main');
 // app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+  extended: false,
+}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
