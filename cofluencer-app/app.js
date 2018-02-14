@@ -37,8 +37,8 @@ app.use(session({
   }),
 }));
 
+app.use(flash());
 configurePassport();
-// app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
