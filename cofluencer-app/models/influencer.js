@@ -19,7 +19,6 @@ const influencerSchema = new Schema({
   influenceArea: String,
   profileImage: String,
   socialLinks: [{}],
-  role: { type: String, default: 'influencer' },
   tags: [],
   campaignsFavs: [Schema.Types.ObjectId],
   instagram: {

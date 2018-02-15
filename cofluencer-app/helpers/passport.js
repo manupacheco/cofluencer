@@ -9,22 +9,20 @@ const Influencer = require('../models/influencer');
 function configurePassport() {
   passport.serializeUser((user, cb) => {
     /* eslint-disable */
-    const { _id , role } = user
-    cb(null, { _id, role });
+    cb(null, { id: user._id, role: user.collection.collectionName });
     /* eslint-enable */
   });
 
-  passport.deserializeUser((infoUser, cb) => {
-    const { _id, role } = infoUser;
-    if (role === 'influencer') {
-      Influencer.findOne({ _id }, (errOne, influencer) => {
+  passport.deserializeUser((user, cb) => {
+    if (user.role === 'influencers') {
+      Influencer.findOne({ _id: user.id }, (errOne, influencer) => {
         if (errOne) {
           return cb(errOne);
         }
         return cb(null, influencer);
       });
     } else {
-      Company.findOne({ _id }, (errTwo, company) => {
+      Company.findOne({ _id: user.id }, (errTwo, company) => {
         if (errTwo) {
           return cb(errTwo);
         }

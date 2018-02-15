@@ -11,6 +11,9 @@ const Company = require('../models/company');
 router.get('/', isLoggedIn('/login'), (req, res, next) => {
   const userId = req.session.currentUser;
 
+  console.log('currentUser ', req.session.currentUser);
+  console.log('role ', req.session.role);
+
   Company.findById(userId)
     .then((company) => {
       res.render('profile', { company });
