@@ -8,6 +8,12 @@ const configurePassport = require('../helpers/passport');
 const Company = require('../models/company');
 const Influencer = require('../models/influencer');
 
+router.get('/auth/facebook', passport.authenticate('facebook'));
+router.get('/auth/facebook/callback', passport.authenticate('facebook', {
+  successRedirect: '/profile',
+  failureRedirect: '/',
+}));
+
 router.get('/signup', (req, res, next) => {
   res.render('auth/signup');
 });

@@ -6,6 +6,7 @@ const Schema = mongoose.Schema;
 const influencerSchema = new Schema({
   username: String,
   email: String,
+  facebookID: String,
   password: String,
   phone: Number,
   address: {
@@ -18,7 +19,7 @@ const influencerSchema = new Schema({
   influenceArea: String,
   profileImage: String,
   socialLinks: [{}],
-  role: ['influencer', 'company', 'admin'],
+  role: { type: String, default: 'influencer' },
   tags: [],
   campaignsFavs: [Schema.Types.ObjectId],
   instagram: {

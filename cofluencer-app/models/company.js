@@ -16,7 +16,7 @@ const companySchema = new Schema({
   bio: String,
   profileImage: String,
   socialLinks: [{}],
-  role: ['influencer', 'company', 'admin'],
+  role: { type: String, default: 'company' },
   tags: [],
   influencersFavs: [Schema.Types.ObjectId],
 }, {

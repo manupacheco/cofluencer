@@ -1,21 +1,36 @@
 const bcrypt = require('bcrypt');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
+const FbStrategy = require('passport-facebook').Strategy;
 
 const Company = require('../models/company');
+const Influencer = require('../models/influencer');
 
 function configurePassport() {
   passport.serializeUser((user, cb) => {
     /* eslint-disable */
-    cb(null, user._id);
+    const { _id , role } = user
+    cb(null, { _id, role });
     /* eslint-enable */
   });
 
-  passport.deserializeUser((id, cb) => {
-    Company.findOne({ _id: id }, (err, user) => {
-      if (err) { return cb(err); }
-      return cb(null, user);
-    });
+  passport.deserializeUser((infoUser, cb) => {
+    const { _id, role } = infoUser;
+    if (role === 'influencer') {
+      Influencer.findOne({ _id }, (errOne, influencer) => {
+        if (errOne) {
+          return cb(errOne);
+        }
+        return cb(null, influencer);
+      });
+    } else {
+      Company.findOne({ _id }, (errTwo, company) => {
+        if (errTwo) {
+          return cb(errTwo);
+        }
+        return cb(null, company);
+      });
+    }
   });
 
   passport.use(new LocalStrategy({
@@ -34,6 +49,33 @@ function configurePassport() {
 
       return next(null, user);
     });
+  }));
+  /* eslint-disable */
+  passport.use(new FbStrategy({
+    clientID: '1805333172833119',
+    clientSecret: 'a411a8db87cd30e9517b65ef07036d30',
+    callbackURL: '/auth/facebook/callback',
+  }, (accessToken, refreshToken, profile, done) => {
+    Influencer.findOne({ facebookID: profile.id }, (err, user) => {
+      if (err) {
+        return done(err);
+      }
+      if (user) {
+        return done(null, user);
+      }
+  
+      const newUser = new Influencer({
+        facebookID: profile.id,
+      });
+  
+      newUser.save((err) => {
+        if (err) {
+          return done(err);
+        }
+        done(null, newUser);
+      });
+    });
+  
   }));
 }
 
