@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 /* eslint-disable */
 const Schema = mongoose.Schema;
 /* eslint-enable */
+const IgMedia = require('./ig-media');
 
 const influencerSchema = new Schema({
   username: String,
@@ -23,11 +24,11 @@ const influencerSchema = new Schema({
   campaignsFavs: [Schema.Types.ObjectId],
   instagram: {
     username: String,
-    followers_count: Number,
     biography: String,
+    followers_count: Number,
     media_count: Number,
     media: {
-      data: [{}],
+      data: [IgMedia.schema],
       paging: {
         cursors: {
           before: String,
