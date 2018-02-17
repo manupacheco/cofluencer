@@ -11,26 +11,17 @@ const Influencer = require('../models/influencer');
 
 /* GET users listing. */
 router.get('/', isLoggedIn('/login'), (req, res, next) => {
-  const userId = req.session.currentUser;
-
-  console.log('currentUser ', req.session.currentUser);
-  console.log('role ', req.session.role);
-
-  Company.findById(userId)
-    .then((company) => {
-      res.render('profile', { company });
-    })
-    .catch((err) => {
-      next(err);
-    });
+  res.render('profile', req.user);
 });
 
 router.post('/', (req, res, next) => {
+  /* eslint-disable */
   const userId = req.user._id;
+  /* eslint-enable */
   const igUserName = req.body.name;
   callInstagram(igUserName, (err, iguser) => {
     if (err) {
-      console.log('err: ', err);
+      // console.log('err: ', err);
       res.render('profile', {}); // flash notification
     } else {
       Influencer.findByIdAndUpdate(userId, { instagram: iguser }, (errUpdate) => {
