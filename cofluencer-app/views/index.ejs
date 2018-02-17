@@ -12,13 +12,3 @@
   IG User: <input type="text" id="name" name="name"></input>
   <button type="submit" class="btn btn-indigo"><i class="fa fa-bolt" aria-hidden="true"></i>Search IG user</button>
 </form>
-
-<h1>IG user: <%= titles %></h1>
-<h2>followers: <%=followers%></h2>
-<% pics.forEach((image)=>{ %>
-  <div style="float: left">
-  <img src='<%=image.media_url%>' style="width: 300px; height: 300px"><br>
-  💚 <%= image.like_count%>
-  <br>
-  </div>
-<% }); %>

@@ -1,8 +1,29 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+.view {
+  background: url("https://mdbootstrap.com/img/Photos/Others/img%20(42).jpg") no-repeat center center;
+  background-size: cover;
 }
 
-a {
-  color: #00B7FF;
+.navbar {
+  z-index: 1;
+}
+
+.navbar {
+  background-color: coral;
+}
+
+.top-nav-collapse {
+  background-color: #4285F4;
+}
+
+@media (min-width: 768px) {
+  .view {
+    overflow: visible;
+    margin-top: -56px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .navbar {
+    background-color: #4285F4;
+  }
 }
