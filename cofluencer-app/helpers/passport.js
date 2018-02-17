@@ -15,14 +15,14 @@ function configurePassport() {
 
   passport.deserializeUser((user, cb) => {
     if (user.role === 'influencers') {
-      Influencer.findOne({ _id: user.id }, (errOne, influencer) => {
+      Influencer.findOne({ _id: user.id }, { password: 0 }, (errOne, influencer) => {
         if (errOne) {
           return cb(errOne);
         }
         return cb(null, influencer);
       });
     } else {
-      Company.findOne({ _id: user.id }, (errTwo, company) => {
+      Company.findOne({ _id: user.id }, { password: 0 }, (errTwo, company) => {
         if (errTwo) {
           return cb(errTwo);
         }

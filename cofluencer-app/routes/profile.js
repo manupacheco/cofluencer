@@ -9,18 +9,19 @@ const Company = require('../models/company');
 
 /* GET users listing. */
 router.get('/', isLoggedIn('/login'), (req, res, next) => {
-  const userId = req.session.currentUser;
+  // const userId = req.session.passport.user.id;
+  const user = req.user;
+  console.log('user in render: ', user);
+  res.render('profile', user);
 
-  console.log('currentUser ', req.session.currentUser);
-  console.log('role ', req.session.role);
-
-  Company.findById(userId)
-    .then((company) => {
-      res.render('profile', { company });
-    })
-    .catch((err) => {
-      next(err);
-    });
+  // Company.findById(userId)
+  //   .then((company) => {
+  //     console.log(company);
+  //     res.render('profile', company);
+  //   })
+  //   .catch((err) => {
+  //     next(err);
+  //   });
 });
 
 module.exports = router;
