@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 /* eslint-disable */
 const Schema = mongoose.Schema;
 /* eslint-enable */
+const IgMedia = require('./ig-media');
 
 const influencerSchema = new Schema({
   username: String,
@@ -27,7 +28,7 @@ const influencerSchema = new Schema({
     biography: String,
     media_count: Number,
     media: {
-      data: [{}],
+      data: [IgMedia.schema],
       paging: {
         cursors: {
           before: String,
