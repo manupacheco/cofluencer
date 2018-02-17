@@ -12,12 +12,12 @@
 
 <% if( typeof(iguser) != 'undefined') { %>
   <h1>IG user:
-    <%= iguser.business_discovery.username %>
+    <%= iguser.username %>
   </h1>
   <h2>followers:
-    <%= iguser.business_discovery.followers_count%>
+    <%= iguser.followers_count%>
   </h2>
-  <% iguser.business_discovery.media.data.forEach((image)=>{ %>
+  <% iguser.media.data.forEach((image)=>{ %>
     <div style="float: left">
       <img src='<%=image.media_url%>' style="width: 300px; height: 300px">
       <br> 💚

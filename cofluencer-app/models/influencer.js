@@ -24,8 +24,8 @@ const influencerSchema = new Schema({
   campaignsFavs: [Schema.Types.ObjectId],
   instagram: {
     username: String,
-    followers_count: Number,
     biography: String,
+    followers_count: Number,
     media_count: Number,
     media: {
       data: [IgMedia.schema],

@@ -30,8 +30,8 @@ exports.callInstagram = (igUserName, cb) => {
         console.log(!iguser ? 'error occurred' : iguser.error);
         cb(iguser.error);
       } else {
-        console.log('res ig', iguser);
-        cb(null, { iguser });
+        console.log('res ig', iguser.business_discovery);
+        cb(null, iguser.business_discovery);
       }
     },
   );

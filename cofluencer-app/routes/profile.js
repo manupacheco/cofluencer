@@ -7,6 +7,7 @@ const isLoggedIn = require('../helpers/middlewares').isLoggedIn;
 const callInstagram = require('../helpers/middlewares').callInstagram;
 /* eslint-enable */
 const Company = require('../models/company');
+const Influencer = require('../models/influencer');
 
 /* GET users listing. */
 router.get('/', isLoggedIn('/login'), (req, res, next) => {
@@ -25,14 +26,18 @@ router.get('/', isLoggedIn('/login'), (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
+  const userId = req.user._id;
   const igUserName = req.body.name;
   callInstagram(igUserName, (err, iguser) => {
     if (err) {
-      console.log('err');
-      res.render('profile', {});
+      console.log('err: ', err);
+      res.render('profile', {}); // flash notification
     } else {
-      console.log(iguser);
-      res.render('profile', iguser);
+      Influencer.findByIdAndUpdate(userId, { instagram: iguser }, (errUpdate) => {
+        if (errUpdate) { return next(errUpdate); }
+        return next;
+      });
+      res.render('profile', { iguser });
     }
   });
 });
