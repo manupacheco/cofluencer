@@ -14,7 +14,7 @@ router.get('/', isLoggedIn('/login'), (req, res, next) => {
   res.render('profile', req.user);
 });
 
-router.post('/', (req, res, next) => {
+router.post('/', isLoggedIn('/login'), (req, res, next) => {
   /* eslint-disable */
   const userId = req.user._id;
   /* eslint-enable */

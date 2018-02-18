@@ -25,6 +25,7 @@ const influencerSchema = new Schema({
   instagram: {
     username: String,
     biography: String,
+    website: String,
     followers_count: Number,
     media_count: Number,
     media: {

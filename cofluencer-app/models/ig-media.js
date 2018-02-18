@@ -12,6 +12,6 @@ const IgMediaSchema = new Schema({
   id: Number,
 });
 
-const IgMedia = mongoose.model('Review', IgMediaSchema);
+const IgMedia = mongoose.model('IgMedia', IgMediaSchema);
 
 module.exports = IgMedia;

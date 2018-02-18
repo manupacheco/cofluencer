@@ -14,6 +14,8 @@ router.get('/auth/facebook/callback', passport.authenticate('facebook', {
   failureRedirect: '/',
 }));
 
+// login instagram
+
 router.get('/signup', (req, res, next) => {
   res.render('auth/signup');
 });

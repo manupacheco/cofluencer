@@ -10,16 +10,4 @@ router.get('/', (req, res, next) => {
   res.render('index');
 });
 
-router.post('/', (req, res, next) => {
-  const igUserName = req.body.name;
-  callInstagram(igUserName, (err, iguser) => {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log('para render: ', iguser);
-      res.render('index', iguser);
-    }
-  });
-});
-
 module.exports = router;
