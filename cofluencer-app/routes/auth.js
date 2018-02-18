@@ -4,15 +4,20 @@ const bcrypt = require('bcrypt');
 const bcryptSalt = 10;
 const passport = require('passport');
 const configurePassport = require('../helpers/passport');
+/* eslint-disable */
+const isLoggedIn = require('../helpers/middlewares').isLoggedIn;
+/* eslint-enable */
 
 const Company = require('../models/company');
 const Influencer = require('../models/influencer');
 
 router.get('/auth/facebook', passport.authenticate('facebook'));
 router.get('/auth/facebook/callback', passport.authenticate('facebook', {
-  successRedirect: '/profile',
+  successRedirect: '/validate',
   failureRedirect: '/',
 }));
+
+// login instagram
 
 router.get('/signup', (req, res, next) => {
   res.render('auth/signup');
@@ -61,11 +66,16 @@ router.get('/login', (req, res) => {
 });
 
 router.post('/login', passport.authenticate('local', {
-  successRedirect: '/profile',
+  successRedirect: '/validate',
   failureRedirect: '/login',
   failureFlash: true,
   passReqToCallback: true,
 }));
+
+// add username path url
+router.get('/validate', isLoggedIn('/login'), (req, res, next) => {
+  res.redirect(`/${req.user.username}`);
+});
 
 router.get('/logout', (req, res) => {
   req.logout();

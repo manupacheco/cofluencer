@@ -1,3 +1,5 @@
+const FB = require('fb');
+
 exports.notifications = (req, res, next) => {
   res.locals.errorMessages = req.flash('error');
   res.locals.infoMessages = req.flash('info');
@@ -13,4 +15,23 @@ exports.isLoggedIn = redirect => (req, res, next) => {
   } else {
     res.redirect(redirect);
   }
+};
+
+exports.callInstagram = (igUserName, cb) => {
+  FB.api(
+    '/17841407080190618',
+    {
+      fields: `business_discovery.username( ${igUserName} ){username,biography,website,followers_count,media_count,media{caption, comments_count,like_count, media_url, media_type}}`,
+      // incluir token en variable actual caduca 13 de abril de 2018.
+      access_token: 'EAAZAp8OJ3y18BAAcfi7TMWZBVXkw8uHZAitgIQUWCvUI7hEbaNpeGTXLXyuZB9huheP84iiz1w8vY3ZC0tpxcoJOdWRilc9NPzNAo3zf9hpZC59fghyRRzG6c6KbzjFeYKVRD0GywHFhFQwYMMnZAO7PW5roFrcuTtLr0f0GihCh5QhghFdfPte',
+    },
+    (igUser) => {
+      if (!igUser || igUser.error) {
+        console.log(!igUser ? 'error occurred' : igUser.error);
+        cb(igUser.error);
+      } else {
+        cb(null, igUser.business_discovery);
+      }
+    },
+  );
 };
