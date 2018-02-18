@@ -30,3 +30,33 @@
 }
 /* Style for the header template by mdbootstrap */
 
+.modal {
+  background-color: blanchedalmond;
+}
+
+.modal-content {
+  border: none;
+  background: none;
+  box-shadow: none;
+}
+
+.modal-header {
+  border-bottom: none;
+}
+
+#companyModal {
+  box-shadow: none;
+}
+
+.form-control:focus {
+  background: none;
+}
+
+label::after {
+  top: 60px;
+  left: 320px;
+}
+
+.inflencerModal {
+  
+}
