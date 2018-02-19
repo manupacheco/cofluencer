@@ -1,31 +1,31 @@
 <!--Main Navigation-->
 <header>
 
-  <nav class="navbar navbar-expand-lg navbar-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container">
       <a class="navbar-brand" href="/">
-        <strong>Cofluencer</strong>
+        <img src="/img/cofluencer-logo.png" id="logo" alt="">
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
         aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#">How it Works</a>
+            <a class="nav-link" id="nav-link" href="#howitworks">HOW IT WORKS</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">About Us</a>
+            <a class="nav-link" id="nav-link" href="#about">ABOUT US</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
+            <a class="nav-link" id="nav-link" href="#contact">CONTACT</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="" data-toggle="modal" data-target="#modalLoginForm">Login</a>
+            <a class="nav-link" id="nav-link" href="" data-toggle="modal" data-target="#modalLoginForm">LOGIN</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/signup">SignUp</a>
+            <a class="nav-link" id="nav-link" href="" data-toggle="modal" data-target="#modalSignupForm">SIGNUP</a>
           </li>
         </ul>
       </div>
@@ -45,7 +45,7 @@
     </div>
   </div>
 
-  <%- include modalform.ejs %>
+  <%- include modal-form.ejs %>
 
 </header>
 <!--Main Navigation-->

@@ -6,10 +6,15 @@
 
 .navbar {
   z-index: 1;
+  background-color: transparent;
 }
 
-.navbar {
-  background-color: transparent;
+#logo {
+  width: 30%;
+}
+
+#nav-link {
+  padding: 0 1rem 0 1rem; 
 }
 
 .top-nav-collapse {
@@ -28,10 +33,11 @@
     background-color: #4285F4;
   }
 }
-/* Style for the header template by mdbootstrap */
+/* __--__--__--__--__--__--__--__--__--__--__--__--__ */
 
+/* Style for the login/signup modal */
 .modal {
-  background-color: blanchedalmond;
+  background-color: aliceblue;
 }
 
 .modal-content {
@@ -56,7 +62,4 @@ label::after {
   top: 60px;
   left: 320px;
 }
-
-.inflencerModal {
-  
-}
+/* __--__--__--__--__--__--__--__--__--__--__--__--__ */

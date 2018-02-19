@@ -79,7 +79,7 @@ router.get('/validate', isLoggedIn('/login'), (req, res, next) => {
 
 router.get('/logout', (req, res) => {
   req.logout();
-  res.redirect('/login');
+  res.redirect('/');
 });
 
 module.exports = router;
