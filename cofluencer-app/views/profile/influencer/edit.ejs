@@ -1,0 +1,22 @@
+<h1>edit profile <%= infoUser.username %></h1>
+
+<form action="/<%= infoUser.username %>" method="POST">
+  <label for="name">Name</label>
+  <input type="text" id="name" name="name" value="<%= infoUser.name %>">
+  
+  <label for="lastname">Last Name</label>
+  <input type="text" id="lastname" name="lastname" value="<%= infoUser.lastname %>">
+
+  <label for="email">Email</label>
+  <input type="text" name="email" id="email" value="<%= infoUser.email %>">
+
+  Address
+  <label for="city">City</label>
+  <input type="text" name="city" id="city" value="<%= infoUser.address.city %>">
+
+  <label for="bio">Bio</label>
+  <textarea type="text" name="bio" id="bio"><%= infoUser.bio %></textarea>
+
+  <button type="submit">Update Profile</button>
+
+</form>

@@ -6,6 +6,8 @@ const IgMedia = require('./ig-media');
 
 const influencerSchema = new Schema({
   username: String,
+  name: String,
+  lastname: String,
   email: String,
   facebookID: String,
   password: String,
