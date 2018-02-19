@@ -62,4 +62,11 @@ label::after {
   top: 60px;
   left: 320px;
 }
+
+.close {
+  position: fixed;
+  right: 50px;
+  top: 20px;
+  font-size: 3em;
+}
 /* __--__--__--__--__--__--__--__--__--__--__--__--__ */
