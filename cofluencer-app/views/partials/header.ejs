@@ -1,32 +1,34 @@
 <!--Main Navigation-->
-<header>
+<header id="header">
 
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="/">
-        <!-- <img src="/img/cofluencer-logo.png" id="logo" alt=""> -->
-        COFLUENCER
+    <div class="container d-flex">
+      <a class="navbar-brand" id="logo" href="/">
+        Cofluencer
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
         aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ml-auto d-flex" id="menu">
           <li class="nav-item">
-            <a class="nav-link" id="nav-link" href="#howitworks">HOW IT WORKS</a>
+            <a class="nav-link" id="nav-link" href="#howitworks">How it works</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" id="nav-link" href="#about">ABOUT US</a>
+            <a class="nav-link" id="nav-link" href="#about">About us</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" id="nav-link" href="#contact">CONTACT</a>
+            <a class="nav-link" id="nav-link" href="#contact">Contact</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" id="nav-link" href="" data-toggle="modal" data-target="#modalLoginForm">LOGIN</a>
+            <a class="nav-link" id="nav-link" href="" data-toggle="modal" data-target="#modalLoginForm">Login</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" id="nav-link" href="" data-toggle="modal" data-target="#modalSignupForm">SIGNUP</a>
+            <a class="nav-link" id="nav-link" href="" data-toggle="modal" data-target="#modalSignupForm">
+              <button type="button" id="signup" class="btn btn-outline-primary btn-rounded waves-effect">Signup</button>
+            </a>
+            <!-- <a class="nav-link" id="nav-link" href="" data-toggle="modal" data-target="#modalSignupForm">Signup</a> -->
           </li>
         </ul>
       </div>

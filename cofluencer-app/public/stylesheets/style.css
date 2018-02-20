@@ -2,19 +2,48 @@
 .view {
   background: url("https://mdbootstrap.com/img/Photos/Others/img%20(42).jpg") no-repeat center center;
   background-size: cover;
+  background-position: bottom;
 }
 
 .navbar {
   z-index: 1;
   background-color: transparent;
+  box-shadow: none;
+}
+
+#header {
+  height: 80%;
+}
+
+#logo {
+  font-family: 'Lobster', cursive;
+  font-size: 1.5em;
+  align-self: auto;
+}
+/* 
+Añadir js para añadir esta clase al nav, mirar: 
+https: //medium.com/@mariusc23/hide-header-on-scroll-down-show-on-scroll-up-67bbaae9a78c 
+*/
+.nav-up {
+  top: -60px;
+}
+
+#menu {
+  align-items: center;
 }
 
 #logo {
   width: 30%;
 }
 
-#nav-link {
-  padding: 0 1rem 0 1rem; 
+.nav-item {
+  padding: 0 0.6rem 0 0.6rem; 
+}
+
+#signup {
+  border-radius: 30px;
+  padding: 0.5em 2em;
+  text-transform: capitalize;
 }
 
 .top-nav-collapse {
