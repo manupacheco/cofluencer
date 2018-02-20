@@ -16,7 +16,7 @@ const campaignSchema = new Schema({
     state: String,
     zip: Number,
   },
-  state: ['draft', 'published', 'unpublished', 'outOfDate'],
+  state: String,
 }, {
   timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' },
 });

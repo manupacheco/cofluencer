@@ -9,22 +9,13 @@
 
   <label for="email">Email</label>
   <input type="text" name="email" id="email" value="<%= infoUser.email %>">
-  
-  <label for="phone">Phone</label>
-  <input type="number" name="phone" id="phone" value="<%= infoUser.phone %>">
 
-  <p>Address</p>
+  Address
   <label for="city">City</label>
   <input type="text" name="city" id="city" value="<%= infoUser.address.city %>">
 
   <label for="bio">Bio</label>
   <textarea type="text" name="bio" id="bio"><%= infoUser.bio %></textarea>
-
-  <div class="">
-    <h2>Social accounts:</h2>
-      <label for="ig_user">Instagram user</label>
-      <input type="text" name="ig_user" id="ig_user" value="<%= infoUser.instagram.username %>">
-  </div>
 
   <button type="submit">Update Profile</button>
 

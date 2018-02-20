@@ -42,6 +42,11 @@ const influencerSchema = new Schema({
     },
     id: String,
   },
+  stats: {
+    instagram: {
+      avgLikePhoto: Number,
+    },
+  },
   id: String,
 }, {
   timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' },

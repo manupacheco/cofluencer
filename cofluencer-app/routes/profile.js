@@ -35,11 +35,16 @@ router.get('/:username', isLoggedIn('/login'), (req, res, next) => {
       }
     });
   } else if (userRol === 'companies') {
-    res.render('profile-company', req.user);
+    Company.findById(userId, (err, company) => {
+      if (err) { return next(err); }
+      infoUser = company;
+      res.render('profile-company', { infoUser });
+      return next;
+    });
   }
 });
 
-router.get('/:username/edit', (req, res, next) => {
+router.get('/:username/edit', isLoggedIn('/login'), (req, res, next) => {
   /* eslint-disable */
   const userId = req.user._id;
   const userRol = req.user.collection.collectionName;
@@ -48,6 +53,11 @@ router.get('/:username/edit', (req, res, next) => {
     Influencer.findById(userId, (err, infoUser) => {
       if (err) { next(err); }
       res.render('profile/influencer/edit', { infoUser });
+    });
+  } else if (userRol === 'companies') {
+    Company.findById(userId, (err, infoUser) => {
+      if (err) { next(err); }
+      res.render('profile-company', { infoUser });
     });
   }
 });
@@ -60,16 +70,20 @@ router.post('/:username', isLoggedIn('/login'), (req, res, next) => {
   if (userRol === 'influencers') {
     const updateInfluencer = {
       name: req.body.name,
-      price: req.body.lastname,
+      lastname: req.body.lastname,
       email: req.body.email,
+      phone: req.body.phone,
       address: {
         city: req.body.city,
       },
       bio: req.body.bio,
+      instagram: {
+        username: req.body.ig_user,
+      },
     };
     Influencer.findByIdAndUpdate(userId, updateInfluencer, (err, influencer) => {
       if (err) { next(err); }
-      res.redirect('/:username');
+      res.redirect(`/${req.user.username}`);
     });
   } else if (userRol === 'companies') {
     const igUserName = req.body.name;

@@ -2,6 +2,7 @@
 
 <a href="/logout">logout</a>
 <a href="/<%= infoUser.username %>/edit">edit profile</a>
+<a href="/<%= infoUser.username %>/campaings">campaings</a>
 
 <div>
   <h3>info user ---> <%= infoUser.username %></h3>
@@ -10,6 +11,8 @@
   <p>city: <%= infoUser.address.city %></p>
   <p>bio: <%= infoUser.bio %></p>
   <p>tags: <%= infoUser.tags %></p>
+  <br>
+  <p>Social accounts</p>
 </div>
 
 <% if( typeof(iguser) != 'undefined') { %>
@@ -19,12 +22,13 @@
   <h2>followers:
     <%= iguser.followers_count%>
   </h2>
-  <% iguser.media.data.forEach((image)=>{ %>
+  <% for(i=0;i<6;i++){ 
+    let img = iguser.media.data[i];%>
     <div style="float: left">
-      <img src='<%=image.media_url%>' style="width: 300px; height: 300px">
+      <img src='<%=img.media_url%>' style="width: 300px; height: 300px">
       <br> 💚
-      <%= image.like_count%>
-        <br>
+      <%= img.like_count%>
+      <br>
     </div>
-    <% }); %>
+    <% }; %>
 <% } %>
