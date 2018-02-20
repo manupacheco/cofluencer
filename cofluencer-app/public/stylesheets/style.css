@@ -2,14 +2,48 @@
 .view {
   background: url("https://mdbootstrap.com/img/Photos/Others/img%20(42).jpg") no-repeat center center;
   background-size: cover;
+  background-position: bottom;
 }
 
 .navbar {
   z-index: 1;
+  background-color: transparent;
+  box-shadow: none;
 }
 
-.navbar {
-  background-color: transparent;
+#header {
+  height: 80%;
+}
+
+#logo {
+  font-family: 'Lobster', cursive;
+  font-size: 1.5em;
+  align-self: auto;
+}
+/* 
+Añadir js para añadir esta clase al nav, mirar: 
+https: //medium.com/@mariusc23/hide-header-on-scroll-down-show-on-scroll-up-67bbaae9a78c 
+*/
+.nav-up {
+  top: -60px;
+}
+
+#menu {
+  align-items: center;
+}
+
+#logo {
+  width: 30%;
+}
+
+.nav-item {
+  padding: 0 0.6rem 0 0.6rem; 
+}
+
+#signup {
+  border-radius: 30px;
+  padding: 0.5em 2em;
+  text-transform: capitalize;
 }
 
 .top-nav-collapse {
@@ -28,5 +62,40 @@
     background-color: #4285F4;
   }
 }
-/* Style for the header template by mdbootstrap */
+/* __--__--__--__--__--__--__--__--__--__--__--__--__ */
 
+/* Style for the login/signup modal */
+.modal {
+  background-color: aliceblue;
+}
+
+.modal-content {
+  border: none;
+  background: none;
+  box-shadow: none;
+}
+
+.modal-header {
+  border-bottom: none;
+}
+
+#companyModal {
+  box-shadow: none;
+}
+
+.form-control:focus {
+  background: none;
+}
+
+label::after {
+  top: 60px;
+  left: 320px;
+}
+
+.close {
+  position: fixed;
+  right: 50px;
+  top: 20px;
+  font-size: 3em;
+}
+/* __--__--__--__--__--__--__--__--__--__--__--__--__ */
