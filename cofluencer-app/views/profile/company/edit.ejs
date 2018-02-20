@@ -1,5 +1,8 @@
 <h1>edit profile <%= infoUser.username %></h1>
 
+<a href="/logout">logout</a>
+<a href="/<%= infoUser.username %>">profile</a>
+
 <form action="/<%= infoUser.username %>" method="POST">
   <label for="name">Name</label>
   <input type="text" id="name" name="name" value="<%= infoUser.name %>">
