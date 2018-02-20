@@ -1,0 +1,21 @@
+<h1>Campaings</h1>
+
+<a href="/logout">logout</a>
+<a href="/<%= infoUser.username %>">profile</a>
+<a href="/<%= infoUser.username %>/campaigns/me">My campaigns</a>
+
+<ul>
+  <% campaigns.forEach((campaign) => { %>
+  <li>
+      TITLE - <%= campaign.title %> <br>
+      STATE - <%= campaign.state %> <br>
+      DESCRIPTION <br>
+      <%= campaign.description %>
+      <br>
+      <!-- Mostrar follow o unfollow solo para influencers -->
+      <form action="/<%= infoUser.username %>/campaigns/<%= campaign._id %>/follow" method="post">
+        <button type="submit">Check in!</button>
+      </form>
+  </li>
+  <% }) %>
+</ul>

@@ -5,7 +5,7 @@ const isLoggedIn = require('../helpers/middlewares').isLoggedIn;
 /* eslint-enable */
 const Company = require('../models/company');
 const Influencer = require('../models/influencer');
-const Campaing = require('../models/campaign');
+const Campaign = require('../models/campaign');
 
 router.get('/', isLoggedIn('/login'), (req, res, next) => {
   const infoUser = req.user;
@@ -14,16 +14,16 @@ router.get('/', isLoggedIn('/login'), (req, res, next) => {
   const userRol = req.user.collection.collectionName;
   /* eslint-enable */
   if (userRol === 'companies') {
-    Campaing.find({ company_id: userId })
-      .sort({ updatedAt: -1 })
-      .exec((err, campaings) => {
-        res.render('campaings/list', { campaings, infoUser });
+    Campaign.find({ company_id: userId })
+      .sort({ updated_at: -1 })
+      .exec((err, campaigns) => {
+        res.render('campaigns/list', { campaigns, infoUser });
       });
   } else if (userRol === 'influencers') {
-    Campaing.find({})
-      .sort({ updatedAt: -1 })
-      .exec((err, campaings) => {
-        res.render('campaings/list', { campaings, infoUser });
+    Campaign.find({})
+      .sort({ updated_at: -1 })
+      .exec((err, campaigns) => {
+        res.render('campaigns/list', { campaigns, infoUser });
       });
   }
 });
@@ -32,9 +32,9 @@ router.get('/new', isLoggedIn('/login'), (req, res, next) => {
   const userRol = req.user.collection.collectionName;
   const infoUser = req.user;
   if (userRol === 'companies') {
-    res.render('campaings/new', { infoUser });
+    res.render('campaigns/new', { infoUser });
   } else {
-    res.redirect(`/${req.user.username}/campaings`);
+    res.redirect(`/${req.user.username}/campaigns`);
   }
 });
 
@@ -47,11 +47,11 @@ router.post('/', isLoggedIn('/login'), (req, res, next) => {
     state: req.body.state,
     description: req.body.description,
   };
-  Campaing.create(campaign, (err, docs) => {
+  Campaign.create(campaign, (err, docs) => {
     if (err) {
       next(err);
     } else {
-      res.redirect(`/${req.user.username}/campaings`);
+      res.redirect(`/${req.user.username}/campaigns`);
     }
   });
 });
@@ -66,9 +66,10 @@ router.get('/me', isLoggedIn('/login'), (req, res, next) => {
   const campaignId = req.params._id;
   /* eslint-enable */
   if (userRol === 'influencers') {
-    Campaing.find({ influencer_id: userId })
-      .exec((err, campaings) => {
-        res.render('campaings/me', { infoUser, campaings });
+    Campaign.find({ influencer_id: userId })
+      .sort({ updated_at: -1 })
+      .exec((err, campaigns) => {
+        res.render('campaigns/me', { infoUser, campaigns });
       });
   }
 });
@@ -80,11 +81,11 @@ router.post('/:_id/follow', isLoggedIn('/login'), (req, res, next) => {
   const campaignId = req.params._id;
   /* eslint-enable */
   if (userRol === 'influencers') {
-    Campaing.findByIdAndUpdate(campaignId, { $push: { influencer_id: userId } })
+    Campaign.findByIdAndUpdate(campaignId, { $push: { influencer_id: userId } })
       .exec((err) => {
-        res.redirect(`/${req.user.username}/campaings`);
+        res.redirect(`/${req.user.username}/campaigns`);
       });
   } else if (userRol === 'companies') {
-    res.redirect(`/${req.user.username}/campaings`);
+    res.redirect(`/${req.user.username}/campaigns`);
   }
 });
