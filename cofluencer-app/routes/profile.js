@@ -25,20 +25,20 @@ router.get('/:username', isLoggedIn('/login'), (req, res, next) => {
     const igUserName = req.user.instagram.username;
     callInstagram(igUserName, (err, iguser) => {
       if (err) {
-        res.render('profile-influencer', {}); // flash notification
+        res.render('profile-influencer', { layout: 'layouts/profile' }); // flash notification
       } else {
         Influencer.findByIdAndUpdate(userId, { instagram: iguser }, (errUpdate) => {
           if (errUpdate) { return next(errUpdate); }
           return next;
         });
-        res.render('profile-influencer', { iguser, infoUser });
+        res.render('profile-influencer', { iguser, infoUser, layout: 'layouts/profile' });
       }
     });
   } else if (userRol === 'companies') {
     Company.findById(userId, (err, company) => {
       if (err) { return next(err); }
       infoUser = company;
-      res.render('profile-company', { infoUser });
+      res.render('profile-company', { infoUser, layout: 'layouts/profile' });
       return next;
     });
   }
