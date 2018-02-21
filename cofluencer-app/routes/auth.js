@@ -73,7 +73,7 @@ router.post('/login', passport.authenticate('local', {
 }));
 
 // add username path url
-router.get('/validate', isLoggedIn('/login'), (req, res, next) => {
+router.get('/validate', isLoggedIn('/'), (req, res, next) => {
   res.redirect(`/${req.user.username}`);
 });
 
