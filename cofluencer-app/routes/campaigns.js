@@ -83,7 +83,7 @@ router.post('/:_id/follow', isLoggedIn('/login'), (req, res, next) => {
   if (userRol === 'influencers') {
     Campaign.findByIdAndUpdate(campaignId, { $push: { influencer_id: userId } })
       .exec((err) => {
-        res.redirect(`/${req.user.username}/campaigns`);
+        res.status(200).json();
       });
   } else if (userRol === 'companies') {
     res.redirect(`/${req.user.username}/campaigns`);
