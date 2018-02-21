@@ -5,8 +5,8 @@ const isLoggedIn = require('../helpers/middlewares').isLoggedIn;
 /* eslint-enable */
 
 /* GET home page. */
-router.get('/', isLoggedIn('/'), (req, res, next) => {
-  res.redirect('/validate');
+router.get('/', (req, res, next) => {
+  res.render('index');
 });
 
 module.exports = router;

@@ -10,7 +10,7 @@ const Company = require('../models/company');
 const Influencer = require('../models/influencer');
 
 /* GET users profile. */
-router.get('/:username', isLoggedIn('/login'), (req, res, next) => {
+router.get('/:username', isLoggedIn('/'), (req, res, next) => {
   /* eslint-disable */
   const userId = req.user._id;
   const userRol = req.user.collection.collectionName;
@@ -52,12 +52,12 @@ router.get('/:username/edit', isLoggedIn('/login'), (req, res, next) => {
   if (userRol === 'influencers') {
     Influencer.findById(userId, (err, infoUser) => {
       if (err) { next(err); }
-      res.render('profile/influencer/edit', { infoUser });
+      res.render('profile/influencer/edit', { infoUser, layout: 'layouts/profile' });
     });
   } else if (userRol === 'companies') {
     Company.findById(userId, (err, infoUser) => {
       if (err) { next(err); }
-      res.render('profile-company', { infoUser });
+      res.render('profile-company', { infoUser, layout: 'layouts/profile' });
     });
   }
 });
@@ -89,9 +89,9 @@ router.post('/:username', isLoggedIn('/login'), (req, res, next) => {
     const igUserName = req.body.name;
     callInstagram(igUserName, (err, iguser) => {
       if (err) {
-        res.render('profile-company', {}); // flash notification
+        res.render('profile-company', { layout: 'layouts/profile' }); // flash notification
       } else {
-        res.render('profile-company', { iguser });
+        res.render('profile-company', { iguser, layout: 'layouts/profile' });
       }
     });
   }

@@ -99,3 +99,105 @@ label::after {
   font-size: 3em;
 }
 /* __--__--__--__--__--__--__--__--__--__--__--__--__ */
+
+
+.user-area {
+  width: 45px;
+  height: 45px;
+  position: relative;
+  cursor: pointer;
+}
+
+.user-area .user-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+  border: 2px solid #fff;
+  box-shadow: 0px 0px 15px -5px #000;
+}
+
+.user-area .user-avatar .img-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+}
+
+.dropdown-profile {
+  display: none;
+  position: absolute;
+  border-radius: 7px;
+  background: #fff;
+  box-shadow: 0px 0px 15px rgba(214, 214, 214, 0.78);
+  list-style: none;
+  padding: 0 20px;
+  width: 150px;
+  margin: 0;
+  top: 70px;
+  right: -9%;
+}
+
+.dropdown-profile:before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  margin-left: -0.5em;
+  right: 0px;
+  box-sizing: border-box;
+  border: 7px solid black;
+  border-color: transparent transparent #ffffff #ffffff;
+  transform-origin: 0 0;
+  transform: rotate(135deg);
+  box-shadow: -3px 3px 8px -3px rgba(214, 214, 214, 0.78);
+}
+
+.dropdown-menu {
+  position: absolute;
+}
+
+.dropdown-profile li {
+  padding: 0px;
+  line-height: 47px;
+  border-bottom: 1px solid rgba(215, 215, 215, 0.17);
+}
+
+.dropdown-profile li:last-child {
+  border-bottom: 0px
+}
+
+.dropdown-item:focus, .dropdown-item:hover {
+  background-color: transparent;
+}
+
+.dropdown-profile .dropdown-item .dropdown-link {
+  font-size: 0.8rem;
+  padding: 0px 10px;
+  text-decoration: none;
+  color: #1787e0;
+  transition: all 0.2s ease-out;
+}
+
+.dropdown-profile .dropdown-item .dropdown-link:hover {
+  color: #000 !important;
+}
+
+.dropdown-profile .dropdown-item:before {
+  content: "";
+  width: 0px;
+  height: 40px;
+  position: absolute;
+  background: #2196f3;
+  margin-top: 4px;
+  border-radius: 0 1px 1px 0;
+  left: 0px;
+  transition: all 0.2s ease;
+}
+
+.dropdown-profile li:hover:before {
+  width: 5px;
+  border-radius: 30px;
+}
+
+.dropdown-profile li a:hover {
+  margin-left: 5px;
+}
