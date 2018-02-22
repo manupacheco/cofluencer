@@ -26,7 +26,7 @@
           status = 'unfollow';
           buttonText = 'Check out!';
         }%>
-
+      <a href="/<%= infoUser.username %>/campaigns/<%= campaign.title %>">Show campaign</a>
       <button id="<%= status %>" value="<%= campaign._id %>" user="<%= infoUser.username %>"><%= buttonText %></button>
   </li>
   <% }) %>

@@ -56,14 +56,19 @@ router.post('/', isLoggedIn('/login'), (req, res, next) => {
   });
 });
 
-module.exports = router;
+router.get('/:title', isLoggedIn('/login'), (req, res, next) => {
+  /* eslint-disable */
+  const infoUser = req.user;
+  const userId = req.user._id;
+  const userRol = req.user.collection.collectionName;
+  /* eslint-enable */
+});
 
 router.get('/me', isLoggedIn('/login'), (req, res, next) => {
   /* eslint-disable */
   const infoUser = req.user;
   const userId = req.user._id;
   const userRol = req.user.collection.collectionName;
-  const campaignId = req.params._id;
   /* eslint-enable */
   if (userRol === 'influencers') {
     Campaign.find({ influencer_id: userId })
@@ -105,3 +110,5 @@ router.post('/:_id/unfollow', isLoggedIn('/login'), (req, res, next) => {
     res.redirect(`/${req.user.username}/campaigns`);
   }
 });
+
+module.exports = router;
