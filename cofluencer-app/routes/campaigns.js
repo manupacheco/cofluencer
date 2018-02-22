@@ -86,7 +86,22 @@ router.post('/:_id/follow', isLoggedIn('/login'), (req, res, next) => {
         res.status(200).json(result);
       });
   } else if (userRol === 'companies') {
-    console.log('pilla como company');
+    res.redirect(`/${req.user.username}/campaigns`);
+  }
+});
+
+router.post('/:_id/unfollow', isLoggedIn('/login'), (req, res, next) => {
+  /* eslint-disable */
+  const userId = req.user._id;
+  const userRol = req.user.collection.collectionName;
+  const campaignId = req.params._id;
+  /* eslint-enable */
+  if (userRol === 'influencers') {
+    Campaign.findByIdAndUpdate(campaignId, { $pullAll: { influencer_id: [userId] } })
+      .exec((err, result) => {
+        res.status(200).json(result);
+      });
+  } else if (userRol === 'companies') {
     res.redirect(`/${req.user.username}/campaigns`);
   }
 });

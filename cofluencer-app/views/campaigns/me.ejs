@@ -13,9 +13,23 @@
       <%= campaign.description %>
       <br>
       <!-- Mostrar follow o unfollow solo para influencers -->
-      <form action="/<%= infoUser.username %>/campaigns/<%= campaign._id %>/follow" method="post">
-        <button type="submit">Check in!</button>
-      </form>
+      <% let influencers = campaign.influencer_id 
+               let status
+               let buttonText %>
+        <% if (influencers == null) {
+              buttonText = 'Check in!';
+              status = 'follow';
+            } else if (influencers.indexOf(infoUser._id) === -1 ) {
+                status = 'follow';
+                buttonText = 'Check in!';
+              } else {
+                status = 'unfollow';
+                buttonText = 'Check out!';
+              }%>
+      
+          <button id="<%= status %>" value="<%= campaign._id %>" user="<%= infoUser.username %>">
+            <%= buttonText %>
+          </button>
   </li>
   <% }) %>
 </ul>
