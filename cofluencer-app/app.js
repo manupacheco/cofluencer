@@ -13,6 +13,7 @@ const passport = require('passport');
 const configurePassport = require('./helpers/passport');
 
 require('dotenv').config();
+
 mongoose.connect(process.env.MONGODB_URI, {
   useMongoClient: true,
 });
@@ -24,6 +25,26 @@ const profile = require('./routes/profile');
 const campaigns = require('./routes/campaigns');
 
 const app = express();
+
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
+app.set('layout extractScripts', true);
+app.set('layout extractStyles', true);
+app.set('layout extractMetas', true);
+app.set('layout', 'layouts/main');
+// view engine setup
+app.use(expressLayouts);
+
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: false,
+}));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+// uncomment after placing your favicon in /public
+// app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 app.use(session({
   secret: 'our-passport-local-strategy-app',
@@ -39,31 +60,11 @@ app.use(session({
 }));
 
 app.use(flash());
+
 configurePassport();
+
 app.use(passport.initialize());
 app.use(passport.session());
-
-// view engine setup
-app.use(expressLayouts);
-
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
-
-app.set('layout extractScripts', true);
-app.set('layout extractStyles', true);
-app.set('layout extractMetas', true);
-app.set('layout', 'layouts/main');
-
-
-// uncomment after placing your favicon in /public
-// app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-  extended: false,
-}));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', auth);
 app.use('/', index);
