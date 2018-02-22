@@ -1,14 +1,14 @@
 /* eslint-disable */
 $(document).ready(() => {
 
-  document.getElementById('check-control').addEventListener('click', function (event) {
-    event.preventDefault();
-    
+  $('li').on('click', '#check', function () {
+    let idCampaign = $(this).attr('value');
+    let username = $(this).attr('user');
     $.ajax({
-      url: 'http://localhost:3000/:username/campaigns/:_id/follow',
+      url: `http://localhost:3000/${username}/campaigns/${idCampaign}/follow`,
       method: 'POST',
         success: function (res) {
-          console.log('hola');
+          console.log(res);
         },
         error: function (error) {
         console.log('error:', error); 
@@ -16,4 +16,4 @@ $(document).ready(() => {
     });
   });
 });
-/* eslint-enable */
+

@@ -6,7 +6,7 @@
 
 <ul>
   <% campaigns.forEach((campaign) => { %>
-  <li>
+  <li id= "<%= campaign._id %>">
     <!-- pasarlo todo a formualrio -->
       TITLE - <%= campaign.title %> <br>
       STATE - <%= campaign.state %> <br>
@@ -14,8 +14,7 @@
       <%= campaign.description %>
       <br>
       <!-- Mostrar follow o unfollow solo para influencers -->
-      <form action=""></form>
-        <button id='check-control' type="submit" value="">Check in!</button>
+      <button id="check" value="<%= campaign._id %>" user="<%= infoUser.username %>">Check in!</button>
   </li>
   <% }) %>
 </ul>

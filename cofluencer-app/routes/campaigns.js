@@ -82,10 +82,11 @@ router.post('/:_id/follow', isLoggedIn('/login'), (req, res, next) => {
   /* eslint-enable */
   if (userRol === 'influencers') {
     Campaign.findByIdAndUpdate(campaignId, { $push: { influencer_id: userId } })
-      .exec((err) => {
-        res.status(200).json();
+      .exec((err, result) => {
+        res.status(200).json(result);
       });
   } else if (userRol === 'companies') {
+    console.log('pilla como company');
     res.redirect(`/${req.user.username}/campaigns`);
   }
 });
