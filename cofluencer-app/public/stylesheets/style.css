@@ -5,6 +5,10 @@
   background-position: bottom;
 }
 
+li {
+  list-style: none;
+}
+
 .navbar {
   z-index: 1;
   background-color: #EE9D83;
@@ -12,7 +16,7 @@
 }
 
 #header {
-  height: 62px;
+  height: 75px;
 }
 
 #logo {

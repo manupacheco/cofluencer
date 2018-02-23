@@ -1,34 +1,60 @@
-<h1>edit profile <%= infoUser.username %></h1>
-
-<a href="/logout">logout</a>
-<a href="/<%= infoUser.username %>">profile</a>
-
+<div class="container">
+<!-- Extended default form grid -->
+<h1>Edit Profile <%= infoUser.username %></h1>
 <form action="/<%= infoUser.username %>" method="POST">
-  <label for="name">Name</label>
-  <input type="text" id="name" name="name" value="<%= infoUser.name %>">
-  
-  <label for="lastname">Last Name</label>
-  <input type="text" id="lastname" name="lastname" value="<%= infoUser.lastname %>">
-
-  <label for="email">Email</label>
-  <input type="text" name="email" id="email" value="<%= infoUser.email %>">
-  
-  <label for="phone">Phone</label>
-  <input type="number" name="phone" id="phone" value="<%= infoUser.phone %>">
-
-  <p>Address</p>
-  <label for="city">City</label>
-  <input type="text" name="city" id="city" value="<%= infoUser.address.city %>">
-
-  <label for="bio">Bio</label>
-  <textarea type="text" name="bio" id="bio"><%= infoUser.bio %></textarea>
-
-  <div class="">
-    <h2>Social accounts:</h2>
-      <label for="ig_user">Instagram user</label>
-      <input type="text" name="ig_user" id="ig_user" value="<%= infoUser.instagram.username %>">
+  <!-- Grid row -->
+  <div class="form-row">
+    <!-- Default input -->
+    <div class="form-group col-md-6">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" placeholder="Name" value="<%= infoUser.name %>">
+    </div>
+    <!-- Default input -->
+    <div class="form-group col-md-6">
+      <label for="lastname">Lastname</label>
+      <input type="text" class="form-control" id="lastname" placeholder="Lastname" value="<%= infoUser.lastname %>">
+    </div>
+  </div>
+  <!-- Grid row -->
+    <!-- Grid row -->
+  <div class="form-row">
+    <!-- Default input -->
+    <div class="form-group col-md-6">
+      <label for="phone">Phone</label>
+      <input type="number" class="form-control" id="phone" placeholder="Phone" value="<%= infoUser.phone %>">
+    </div>
+    <!-- Default input -->
+    <div class="form-group col-md-6">
+      <label for="email">Email</label>
+      <input type="email" class="form-control" id="email" placeholder="Email" value="<%= infoUser.email %>">
+    </div>
+  </div>
+  <!-- Grid row -->
+  <!-- Grid row -->
+  <div class="form-row">
+    <!-- Default input -->
+    <div class="form-group col-md-6">
+      <label for="city">City</label>
+      <input type="text" class="form-control" id="city" placeholder="City" value="<%= infoUser.address.city %>">
+    </div>
+    <!-- Default input -->
+    <div class="form-group col-md-6">
+      <label for="inputZip">Zip</label>
+      <input type="text" class="form-control" id="inputZip" placeholder="11206-1117">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="bio">Biography</label>
+    <input type="text" class="form-control" id="bio" placeholder="Bio" value="<%= infoUser.address.bio %>">
   </div>
 
-  <button type="submit">Update Profile</button>
-
+    <div class="form-group">
+      <h2>SOCIAL INFO</h2>
+      <label for="ig_user">Instagram user</label>
+      <input type="text" name="ig_user" id="ig_user" value="<%= infoUser.instagram.username %>">
+    </div>
+  <!-- Grid row -->
+  <button type="submit" class="btn btn-primary btn-md">Update Profile</button>
 </form>
+<!-- Extended default form grid -->
+</div>
