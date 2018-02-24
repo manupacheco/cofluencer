@@ -16,7 +16,7 @@ li {
 }
 
 #header {
-  height: 75px;
+  height: 150px;
 }
 
 #logo {
@@ -118,3 +118,7 @@ label::after {
 
 
 /* __--__--__--__--__--__--__--__--__--__--__--__--__ */
+
+.disabled {
+  display: none;
+}

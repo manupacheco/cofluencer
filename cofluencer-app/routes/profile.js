@@ -11,7 +11,7 @@ const Company = require('../models/company');
 const Influencer = require('../models/influencer');
 
 /* GET users profile. */
-router.get('/:username', isLoggedIn('/'), (req, res, next) => {
+router.get('/:username', isLoggedIn('/login'), (req, res, next) => {
   /* eslint-disable */
   const userId = req.user._id;
   const userRol = req.user.collection.collectionName;
@@ -95,6 +95,7 @@ router.post('/:username', isLoggedIn('/login'), (req, res, next) => {
     };
     Influencer.findByIdAndUpdate(userId, updateInfluencer, (err, influencer) => {
       if (err) { next(err); }
+      console.log('info: ', updateInfluencer, 'body: ', req.body);
       res.redirect(`/${req.user.username}`);
     });
   } else if (userRol === 'companies') {
