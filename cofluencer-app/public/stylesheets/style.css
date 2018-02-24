@@ -99,3 +99,18 @@ label::after {
   font-size: 3em;
 }
 /* __--__--__--__--__--__--__--__--__--__--__--__--__ */
+
+/* Style for the login/signup modal */
+
+.card h6 {
+  display: flex;
+  justify-content: space-around;
+}
+
+.fa {
+  justify-content: space-around;
+}
+
+
+
+/* __--__--__--__--__--__--__--__--__--__--__--__--__ */

@@ -1,4 +1,3 @@
-
 <div class="container">
   <h1>Influencer -- Profile</h1>
 
@@ -12,153 +11,39 @@
     <br>
     <p>Social accounts</p>
   </div>
-
+  
 </div>
 
-<!--Section: Blog v.2-->
-  <section class="text-center py-4 container masonry">
+<!--Section: Masonry-Cards-->
+  <section class="container">
+    <h1 class="h1 font-weight-bold text-left">Instagram</h1>
 
-    <!--Section heading-->
-    <h1 class="h1 font-weight-bold text-left mb-5 pt-4">Instagram</h1>
+    <div class="card-columns">
 
-    <!--Grid row-->
-    <div class="row">
-
-      <!--Grid column-->
-      <div class="col-lg-4 col-md-12 mb-4">
-        <!--Featured image 1-->
-        <div class="view overlay rounded z-depth-2 mb-2">
-          <img src="<%=iguser.media.data[0].media_url%>" class="img-fluid" alt="First sample image">
-          <a>
-            <div class="mask rgba-white-slight"></div>
-          </a>
-        </div>
-
-        <!--Excerpt-->
-        <h6 class="mb-3 mt-4">
-            <i class="fa fa-heart"></i>
-            <strong> <%=iguser.media.data[0].like_count%></strong>
-            <i class="fa fa-comment"></i>
-            <strong> <%=iguser.media.data[0].comments_count%></strong>
-          </h6>
-
-      </div>
-      <!--Grid column-->
-
-      <!--Grid column-->
-      <div class="col-lg-4 col-md-6 mb-4">
-        <!--Featured image 2-->
-        <div class="view overlay rounded z-depth-2 mb-2">
-          <img src="<%=iguser.media.data[1].media_url%>" class="img-fluid" alt="Second sample image">
-          <a>
-            <div class="mask rgba-white-slight"></div>
-          </a>
-        </div>
-
-        <!--Excerpt-->
+      <% for(var i = 0; i <= 5; i++) { %>
+      
+        <div class="card overlay rounded z-depth-2 mb-2">
+          <img src="<%=iguser.media.data[i].media_url%>" class="img-fluid card-img-top" alt="instagram image">
           <h6 class="mb-3 mt-4">
-            <i class="fa fa-heart"></i>
-            <strong> <%=iguser.media.data[1].like_count%></strong>
+            <i class="fa fa-heart">
+              <strong>
+                <%=iguser.media.data[i].like_count%>
+              </strong>
+            </i>
             <i class="fa fa-comment"></i>
-            <strong> <%=iguser.media.data[1].comments_count%></strong>
+            <strong>
+              <%=iguser.media.data[i].comments_count%>
+            </strong>
           </h6>
-
-      </div>
-      <!--Grid column-->
-
-      <!--Grid column-->
-      <div class="col-lg-4 col-md-6 mb-4">
-        <!--Featured image 3-->
-        <div class="view overlay rounded z-depth-2 mb-2 back">
-          <img src="<%=iguser.media.data[2].media_url%>" class="img-fluid" alt="Thrid sample image">
-          <a>
-            <div class="mask rgba-white-slight"></div>
-          </a>
         </div>
-
-        <!--Excerpt-->
-        <h6 class="mb-3 mt-4">
-            <i class="fa fa-heart"></i>
-            <strong> <%=iguser.media.data[2].like_count%></strong>
-            <i class="fa fa-comment"></i>
-            <strong> <%=iguser.media.data[2].comments_count%></strong>
-          </h6>
-
-      </div>
-      <!--Grid column-->
-
-    </div>
-    <!--Grid row-->
-    <div class="row">
-    
-      <!--Grid column-->
-      <div class="col-lg-4 col-md-12 mb-4">
-        <!--Featured image 4-->
-        <div class="view overlay rounded z-depth-2 mb-2">
-          <img src="<%=iguser.media.data[3].media_url%>" class="img-fluid" alt="First sample image">
-          <a>
-            <div class="mask rgba-white-slight"></div>
-          </a>
-
-        </div>
-    
-        <!--Excerpt-->
-        <h6 class="mb-3 mt-4">
-            <i class="fa fa-heart"></i>
-            <strong> <%=iguser.media.data[3].like_count%></strong>
-            <i class="fa fa-comment"></i>
-            <strong> <%=iguser.media.data[3].comments_count%></strong>
-        </h6>
-
-      </div>
-      <!--Grid column-->
-    
-      <!--Grid column-->
-      <div class="col-lg-4 col-md-6 mb-4">
-        <!--Featured image 5-->
-        <div class="view overlay rounded z-depth-2 mb-2">
-          <img src="<%=iguser.media.data[4].media_url%>" class="img-fluid" alt="Second sample image">
-          <a>
-            <div class="mask rgba-white-slight"></div>
-          </a>
-        </div>
-    
-        <!--Excerpt-->
-        <h6 class="mb-3 mt-4">
-            <i class="fa fa-heart"></i>
-            <strong> <%=iguser.media.data[4].like_count%></strong>
-            <i class="fa fa-comment"></i>
-            <strong> <%=iguser.media.data[4].comments_count%></strong>
-          </h6>
-        
-      </div>
-      <!--Grid column-->
-    
-      <!--Grid column-->
-      <div class="col-lg-4 col-md-6 mb-4">
-        <!--Featured image 6-->
-        <div class="view overlay rounded z-depth-2 mb-2 back">
-          <img src="<%=iguser.media.data[5].media_url%>" class="img-fluid" alt="Thrid sample image">
-          <a>
-            <div class="mask rgba-white-slight"></div>
-          </a>
-        </div>
-    
-        <!--Excerpt-->
-        <h6 class="mb-3 mt-4">
-            <i class="fa fa-heart"></i>
-            <strong> <%=iguser.media.data[5].like_count%></strong>
-            <i class="fa fa-comment"></i>
-            <strong> <%=iguser.media.data[5].comments_count%></strong>
-          </h6>
-        
-      </div>
-      <!--Grid column-->
+        <% } %>
     
     </div>
-
   </section>
-<!--Section: Blog v.2-->
 
+<!--Section: Masonry-Cards-->
+
+
+<!--Profile Image-->
 <%- contentFor('img-avatar') %>
 <img src="<%=iguser.media.data[0].media_url%>" alt="avatar-<%=infoUser.username%>" class="img-avatar">
