@@ -24,7 +24,7 @@ exports.sendEmail = (req, res) => {
     } else {
       console.log('Email sent');
       res.redirect('/');
-    //   res.status(200).json(req.body);
+      // res.status(200).json(req.body);
     }
   });
 };

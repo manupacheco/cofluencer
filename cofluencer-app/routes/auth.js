@@ -5,9 +5,7 @@ const bcryptSalt = 10;
 const passport = require('passport');
 const configurePassport = require('../helpers/passport');
 const { signupController } = require('../controllers/auth');
-/* eslint-disable */
-const isLoggedIn = require('../helpers/middlewares').isLoggedIn;
-/* eslint-enable */
+const { isLoggedIn } = require('../helpers/middlewares');
 const { callInstagram } = require('../helpers/middlewares');
 
 const Company = require('../models/company');
@@ -18,8 +16,6 @@ router.get('/auth/facebook/callback', passport.authenticate('facebook', {
   successRedirect: '/validate',
   failureRedirect: '/',
 }));
-
-// login instagram
 
 router.get('/signup', (req, res, next) => {
   res.render('auth/signup');
@@ -43,10 +39,8 @@ router.get('/validate', isLoggedIn('/login'), (req, res, next) => {
   const userRol = req.user.collection.collectionName;
   if (userRol === 'influencers') {
     if (req.user.instagram.username == null) {
-      console.log('sin ig user');
       res.render('auth/login_instagram');
     } else {
-      console.log('con ig user');
       res.redirect(`/${req.user.username}`);
     }
   } else if (userRol === 'companies') {
@@ -70,7 +64,6 @@ router.post('/add_instagram/:username', isLoggedIn('/login'), (req, res, next) =
   /* eslint-disable */
   const userId = req.user._id;
   /* eslint-enable */
-
   Influencer.findByIdAndUpdate(userId, { instagram: { username: igUser } }, (err, influencer) => {
     if (err) { next(err); }
     // res.redirect(`/${req.user.username}`);
