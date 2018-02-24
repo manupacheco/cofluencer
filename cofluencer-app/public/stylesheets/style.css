@@ -1,4 +1,8 @@
 /* Style for the header template by mdbootstrap */
+body{
+  background-color: #fafafa;
+}
+
 .view {
   background: url("https://mdbootstrap.com/img/Photos/Others/img%20(42).jpg") no-repeat center center;
   background-size: cover;
@@ -10,9 +14,21 @@ li {
 }
 
 .navbar {
-  z-index: 1;
-  background-color: #EE9D83;
-  box-shadow: none;
+  background-color: #fff;
+}
+
+.navbar-dark .navbar-brand {
+  color: #000;
+}
+
+#fino {
+  background: linear-gradient(270deg, #880e4f, #0b8793);
+  opacity: 0.6;
+  height: 3px;
+  width: 100%;
+  position: fixed;
+  top: 59px;
+  z-index: 1050;
 }
 
 #header {
@@ -24,16 +40,36 @@ li {
   font-size: 1.5em;
   align-self: auto;
 }
-/* 
-Añadir js para añadir esta clase al nav, mirar: 
-https: //medium.com/@mariusc23/hide-header-on-scroll-down-show-on-scroll-up-67bbaae9a78c 
-*/
+/*  Footer */
+.footer-copyright {
+  color: #999;
+  font-size: 0.9em;
+}
+
+.icons-sm .fa {
+  color: #999 !important;
+}
+
+.footer-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-socials {
+  padding: 20px 0;
+}
+
 .nav-up {
   top: -60px;
 }
 
 #menu {
   align-items: center;
+}
+
+#nav-link {
+  color: #000;
 }
 
 #logo {
@@ -106,14 +142,6 @@ label::after {
 
 /* Style for the login/signup modal */
 
-.card h6 {
-  display: flex;
-  justify-content: space-around;
-}
-
-.fa {
-  justify-content: space-around;
-}
 
 
 

@@ -1,7 +1,7 @@
 <!-- Author box -->
 <div class="container">
 
-  <div class="jumbotron p-5 text-center text-md-left author-box">
+  <div class="p-5 text-center text-md-left author-box">
     <!-- Name -->
     <div class="row">
       <!-- Avatar -->
@@ -37,15 +37,38 @@
 
 <section class="text-center py-4 container masonry">
   <!--Section heading-->
-  <h1 class="h1 font-weight-bold text-left mb-5 pt-4">Instagram</h1>
+  <div class="section-title">
+    <div class="social-network-column">
+      <img class="instagram-logo" src="img/instagram-logo.png" alt="instagram-logo">
+    </div>
+    <div class="social-network-column">
+      <ul class="social-data">
+        <li class="social-data-item"><span class="span">@</span><%=iguser.username%></li>
+        <li class="social-data-item"><span class="span"><%=iguser.media_count%></span> posts</li>
+        <li class="social-data-item"><span class="span"><%=iguser.followers_count%></span> followers</li>
+      </ul>
+    </div>
+  </div>
 
   <div class="card-columns">
 
     <% for(var i = 0; i <= 5; i++) { %>
     
-      <div class="card overlay rounded z-depth-2 mb-2">
+      <div class="card overlay rounded z-depth-2 mb-2 img-container">
         <img src="<%=iguser.media.data[i].media_url%>" class="img-fluid card-img-top" alt="instagram image">
-        <h6 class="mb-3 mt-4">
+        <a href="#">
+          <div class="after">
+            <div class="positioner">
+              <span class="icon">
+                <i class="fa fa-heart"><span class="icon-data"> <%=iguser.media.data[i].like_count%></span></i>
+              </span>
+              <span class="icon">
+                <i class="fa fa-comment"><span class="icon-data"> <%=iguser.media.data[i].comments_count%></span></i>
+              </span>
+            </div>
+          </div>
+        </a>
+        <!-- <h6 class="mb-3 mt-4">
           <i class="fa fa-heart">
             <strong class="number">
               <%=iguser.media.data[i].like_count%>
@@ -56,7 +79,7 @@
             <%=iguser.media.data[i].comments_count%>
           </strong>
           </i>
-        </h6>
+        </h6> -->
       </div>
       <% } %>
   
