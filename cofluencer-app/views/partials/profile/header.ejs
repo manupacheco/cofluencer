@@ -12,10 +12,10 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto d-flex" id="menu">
           <li class="nav-item">
-            <a class="nav-link" id="nav-link" href="/<%= infoUser.username %>/campaigns">Campaigns</a>
+            <a class="nav-link" id="nav-link" href="/<%= infoUser.username %>/campaigns">Search Campaigns</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" id="nav-link" href="/<%= infoUser.username %>/campaigns/me">My campaigns</a>
+            <a class="nav-link" id="nav-link" href="/<%= infoUser.username %>/campaigns/me">My Campaigns</a>
           </li>
           <li class="nav-item">
 
@@ -24,9 +24,8 @@
                 <%- defineContent('img-avatar') %>
               </div>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu2">
-                <a class="dropdown-item" href="/<%= infoUser.username %>">My profile</a>
-                <a class="dropdown-item" href="/<%= infoUser.username %>/edit">Edit your profile</a>
-                <a class="dropdown-item" href="/<%= infoUser.username %>/campaigns/me">My Campaigns</a>
+                <a class="dropdown-item" href="/<%= infoUser.username %>">My Profile</a>
+                <a class="dropdown-item" href="/<%= infoUser.username %>/edit">Edit Profile</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="/logout">Logout</a>
               </div>

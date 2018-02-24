@@ -6,6 +6,7 @@ const configurePassport = require('../helpers/passport');
 const isLoggedIn = require('../helpers/middlewares').isLoggedIn;
 const callInstagram = require('../helpers/middlewares').callInstagram;
 /* eslint-enable */
+const { updateProfilePic } = require('../helpers/middlewares');
 const Company = require('../models/company');
 const Influencer = require('../models/influencer');
 
@@ -31,7 +32,18 @@ router.get('/:username', isLoggedIn('/'), (req, res, next) => {
           if (errUpdate) { return next(errUpdate); }
           return next;
         });
-        res.render('profile-influencer', { iguser, infoUser, layout: 'layouts/profile' });
+        const igUserId = iguser.id;
+        updateProfilePic(igUserId, (errPic, picUrl) => {
+          if (err) {
+            res.render('profile-influencer', { layout: 'layouts/profile' }); // flash notification
+          } else {
+            Influencer.findByIdAndUpdate(userId, { profileImage: picUrl }, (errUpdate) => {
+              if (errUpdate) { return next(errUpdate); }
+              return next;
+            });
+          }
+          res.render('profile-influencer', { iguser, infoUser, layout: 'layouts/profile' });
+        });
       }
     });
   } else if (userRol === 'companies') {

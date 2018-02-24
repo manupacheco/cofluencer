@@ -56,14 +56,6 @@ router.post('/', isLoggedIn('/login'), (req, res, next) => {
   });
 });
 
-router.get('/:title', isLoggedIn('/login'), (req, res, next) => {
-  /* eslint-disable */
-  const infoUser = req.user;
-  const userId = req.user._id;
-  const userRol = req.user.collection.collectionName;
-  /* eslint-enable */
-});
-
 router.get('/me', isLoggedIn('/login'), (req, res, next) => {
   /* eslint-disable */
   const infoUser = req.user;
@@ -71,13 +63,35 @@ router.get('/me', isLoggedIn('/login'), (req, res, next) => {
   const userRol = req.user.collection.collectionName;
   /* eslint-enable */
   if (userRol === 'influencers') {
+    console.log('hasta aqui');
     Campaign.find({ influencer_id: userId })
       .sort({ updated_at: -1 })
       .exec((err, campaigns) => {
+        if (err) { console.log('err--> ', err); }
         res.render('campaigns/me', { infoUser, campaigns, layout: 'layouts/profile' });
       });
   }
 });
+
+router.get('/:title', isLoggedIn('/login'), (req, res, next) => {
+  /* eslint-disable */
+  const infoUser = req.user;
+  const userId = req.user._id;
+  const userRol = req.user.collection.collectionName;
+  /* eslint-enable */
+  if (userRol === 'companies') {
+    Campaign.find({ company_id: userId })
+      .exec((err, campaigns) => {
+        res.render('campaigns/show', { campaigns, infoUser, layout: 'layouts/profile' });
+      });
+  } else if (userRol === 'influencers') {
+    Campaign.find({})
+      .exec((err, campaigns) => {
+        res.render('campaigns/show', { campaigns, infoUser, layout: 'layouts/profile' });
+      });
+  }
+});
+
 
 router.post('/:_id/follow', isLoggedIn('/login'), (req, res, next) => {
   /* eslint-disable */
