@@ -1,5 +1,6 @@
+<!-- Author box -->
 <div class="container">
-  <!-- Author box -->
+
   <div class="jumbotron p-5 text-center text-md-left author-box">
     <!-- Name -->
     <div class="row">
@@ -12,6 +13,7 @@
         <h5 class="font-weight-bold dark-grey-text mb-3">
           <strong><%= infoUser.name %> <%= infoUser.lastname %></strong>
         </h5>
+
         <div class="personal-sm pb-3">
           <a class="pr-2 email-ic">
             <i class="fa fa-facebook mr-2"> </i>
@@ -20,60 +22,46 @@
             <i class="fa fa-instagram mr-2"></i>
           </a>
         </div>
+
         <p><%= infoUser.address.city %></p>
         <p><%= infoUser.bio %></p>
+        <a href="#"><button class="btn btn-unique">Contactar</button></a>
       </div>
     </div>
   </div>
-  <!-- Author box -->
   
 </div>
+<!-- Author box -->
 
 <!--Section: Masonry-Cards-->
-  <section class="container">
-    <h1 class="h1 font-weight-bold text-left">Instagram</h1>
-</div>
-<!--Section: Blog v.2-->
-  <section class="text-center py-4 container masonry">
 
-    <!--Section heading-->
-    <h1 class="h1 font-weight-bold text-left mb-5 pt-4">Instagram</h1>
+<section class="text-center py-4 container masonry">
+  <!--Section heading-->
+  <h1 class="h1 font-weight-bold text-left mb-5 pt-4">Instagram</h1>
 
-    <!--Grid row-->
-    <div class="row">
+  <div class="card-columns">
 
-      <!--Grid column-->
-      <div class="col-lg-4 col-md-12 mb-4">
-        <!--Featured image 1-->
-        <div class="view overlay rounded z-depth-2 mb-2">
-          <img src="<%=iguser.media.data[0].media_url%>" class="img-fluid" alt="First sample image">
-          <a>
-            <div class="mask rgba-white-slight"></div>
-          </a>
-        </div>
-
-    <div class="card-columns">
-
-      <% for(var i = 0; i <= 5; i++) { %>
-      
-        <div class="card overlay rounded z-depth-2 mb-2">
-          <img src="<%=iguser.media.data[i].media_url%>" class="img-fluid card-img-top" alt="instagram image">
-          <h6 class="mb-3 mt-4">
-            <i class="fa fa-heart">
-              <strong>
-                <%=iguser.media.data[i].like_count%>
-              </strong>
-            </i>
-            <i class="fa fa-comment"></i>
-            <strong>
-              <%=iguser.media.data[i].comments_count%>
-            </strong>
-          </h6>
-        </div>
-        <% } %>
+    <% for(var i = 0; i <= 5; i++) { %>
     
-    </div>
-  </section>
+      <div class="card overlay rounded z-depth-2 mb-2">
+        <img src="<%=iguser.media.data[i].media_url%>" class="img-fluid card-img-top" alt="instagram image">
+        <h6 class="mb-3 mt-4">
+          <i class="fa fa-heart">
+            <strong class="number">
+              <%=iguser.media.data[i].like_count%>
+            </strong>
+          </i>
+          <i class="fa fa-comment">
+          <strong class="number">
+            <%=iguser.media.data[i].comments_count%>
+          </strong>
+          </i>
+        </h6>
+      </div>
+      <% } %>
+  
+  </div>
+</section>
 
 <!--Section: Masonry-Cards-->
 

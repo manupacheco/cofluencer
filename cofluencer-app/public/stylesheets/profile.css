@@ -48,3 +48,8 @@
 .h1 {
   padding-bottom: 25px;
 }
+
+.number {
+  font-family: 'Lobster';
+  color: rgba(0, 0, 0, 0.8);
+}
