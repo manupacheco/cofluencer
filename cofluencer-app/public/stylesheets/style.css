@@ -1,5 +1,6 @@
 /* Style for the navbar */
-body{
+
+body {
   background-color: #fafafa;
 }
 
@@ -48,12 +49,19 @@ li {
   color: #000;
 }
 
-#logo {
-  width: 30%;
-}
-
 .nav-item {
   padding: 0 0.6rem 0 0.6rem;
+}
+
+.icon-campaign {
+  font-size: 1.6em;
+  color: #032426;
+}
+
+.icon-mycampaign {
+  font-size: 1.9em;
+  margin-right: 10px;
+  color: #032426;
 }
 
 #signup {
@@ -74,8 +82,8 @@ li {
     background-color: rgb(244, 241, 0);
   }
 }
-/* --------------------------- Header index ----------------------- */
 
+/* --------------------------- Header index ----------------------- */
 
 /* .custom-gradient .full-bg-img {
   background: -moz-linear-gradient(45deg, rgba(136, 14, 79, 0.7), rgba(11, 135, 147, 0.7) 100%);
@@ -85,8 +93,8 @@ li {
   background: linear-gradient(to 45deg, rgba(136, 14, 79, 0.7), rgba(11, 135, 147, 0.7) 100%);
 } */
 
-
 /* --------------------------- Footer ----------------------- */
+
 .footer-copyright {
   color: #999;
   font-size: 0.9em;
@@ -109,6 +117,7 @@ li {
 /* __--__--__--__--__--__--__--__--__--__--__--__--__ */
 
 /* Style for the login/signup modal */
+
 .modal {
   background-color: aliceblue;
 }
@@ -142,6 +151,7 @@ label::after {
   top: 20px;
   font-size: 3em;
 }
+
 /* __--__--__--__--__--__--__--__--__--__--__--__--__ */
 
 /* PROFILE INFLUENCER */
