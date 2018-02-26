@@ -12,6 +12,8 @@ const flash = require('connect-flash');
 const passport = require('passport');
 const configurePassport = require('./helpers/passport');
 
+const http = require('http');
+
 require('dotenv').config();
 
 mongoose.connect(process.env.MONGODB_URI, {
@@ -43,7 +45,6 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-// uncomment after placing your favicon in /public
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 app.use(session({
