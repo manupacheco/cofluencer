@@ -242,6 +242,13 @@ label::after {
   font-weight: 600;
 }
 
+.img-container {
+  position: relative;
+  display: inline-block;
+  -webkit-filter: brightness(100%);
+  transition: all 1s ease;
+}
+
 .img-container .after {
   position: absolute;
   top: 0;
