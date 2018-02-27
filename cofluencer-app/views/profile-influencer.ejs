@@ -33,7 +33,7 @@
 </div>
 <!-- Author box -->
 
-<!--Section: Masonry-Cards-->
+<!--Section: Masonry-Cards Made with Grid CSS-->
 
 <section class="text-center py-4 container">
   <!--Section heading-->
@@ -50,79 +50,37 @@
     </div>
   </div>
 
-  <!-- <div class="card-columns">
-
-    <% for(var i = 0; i <= 5; i++) { %>
-    
-      <div class="card overlay rounded z-depth-2 mb-2 img-container">
-        <img src="<%=iguser.media.data[i].media_url%>" class="img-fluid card-img-top" alt="instagram image">
-        <a href="#">
-          <div class="after">
-            <div class="positioner">
-              <span class="icon">
-                <i class="fa fa-heart"><span class="icon-data"> <%=iguser.media.data[i].like_count%></span></i>
-              </span>
-              <span class="icon">
-                <i class="fa fa-comment"><span class="icon-data"> <%=iguser.media.data[i].comments_count%></span></i>
-              </span>
-            </div>
-          </div>
-        </a>
-      </div>
-      <% } %>
-  
-  </div> -->
-
   <div class="grid">
-    
-    <div class="item">
-      <div class="content img-container overlay rounded z-depth-2">
-        <img class="img-fluid" src="<%=iguser.media.data[0].media_url%>" alt="instagram image">
-        <a href="#">
-          <div class="after">
-            <div class="positioner">
-              <span class="icon">
-                <i class="fa fa-heart"><span class="icon-data"> <%=iguser.media.data[0].like_count%></span></i>
-              </span>
-              <span class="icon">
-                <i class="fa fa-comment"><span class="icon-data"> <%=iguser.media.data[0].comments_count%></span></i>
-              </span>
+    <% for(var i = 0; i <= 5; i++) { %>
+
+      <div class="item">
+
+        <div class="content img-container overlay rounded z-depth-2">
+
+          <img class="img-fluid" src="<%=iguser.media.data[i].media_url%>" alt="instagram-image-<%=i%>">
+          <a href="#">
+            
+            <div class="after">
+
+              <div class="positioner">
+
+                <span class="icon">
+                  <i class="fa fa-heart"><span class="icon-data"> <%=iguser.media.data[0].like_count%></span></i>
+                </span>
+                <span class="icon">
+                  <i class="fa fa-comment"><span class="icon-data"> <%=iguser.media.data[0].comments_count%></span></i>
+                </span>
+
+              </div>
+
             </div>
-          </div>
-        </a>
-      </div>
-    </div>
 
-    <div class="item">
-      <div class="content img-container">
-        <img class="img-fluid" src="<%=iguser.media.data[1].media_url%>" alt="instagram image">
-      </div>
-    </div>
+          </a>
+        </div>
 
-    <div class="item">
-      <div class="content img-container">
-        <img class="img-fluid" src="<%=iguser.media.data[2].media_url%>" alt="instagram image">
       </div>
-    </div>
 
-    <div class="item">
-      <div class="content img-container">
-        <img class="img-fluid" src="<%=iguser.media.data[6].media_url%>" alt="instagram image">
-      </div>
-    </div>
-
-    <div class="item">
-      <div class="content img-container">
-        <img class="img-fluid" src="<%=iguser.media.data[4].media_url%>" alt="instagram image">
-      </div>
-    </div>
-
-    <div class="item">
-      <div class="content img-container">
-        <img class="img-fluid" src="<%=iguser.media.data[5].media_url%>" alt="instagram image">
-      </div>
-    </div>
-    
+    <% } %>
   </div>
 
 </section>

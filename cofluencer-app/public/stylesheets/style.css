@@ -245,7 +245,6 @@ label::after {
 .img-container {
   position: relative;
   display: inline-block;
-  -webkit-filter: brightness(100%);
   transition: all 1s ease;
 }
 
