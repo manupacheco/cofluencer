@@ -35,7 +35,7 @@
 
 <!--Section: Masonry-Cards-->
 
-<section class="text-center py-4 container masonry">
+<section class="text-center py-4 container">
   <!--Section heading-->
   <div class="section-title">
     <div class="social-network-column">
@@ -50,7 +50,7 @@
     </div>
   </div>
 
-  <div class="card-columns">
+  <!-- <div class="card-columns">
 
     <% for(var i = 0; i <= 5; i++) { %>
     
@@ -71,7 +71,60 @@
       </div>
       <% } %>
   
+  </div> -->
+
+  <div class="grid">
+    
+    <div class="item">
+      <div class="content img-container overlay rounded z-depth-2">
+        <img class="img-fluid" src="<%=iguser.media.data[0].media_url%>" alt="instagram image">
+        <a href="#">
+          <div class="after">
+            <div class="positioner">
+              <span class="icon">
+                <i class="fa fa-heart"><span class="icon-data"> <%=iguser.media.data[0].like_count%></span></i>
+              </span>
+              <span class="icon">
+                <i class="fa fa-comment"><span class="icon-data"> <%=iguser.media.data[0].comments_count%></span></i>
+              </span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="content img-container">
+        <img class="img-fluid" src="<%=iguser.media.data[1].media_url%>" alt="instagram image">
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="content img-container">
+        <img class="img-fluid" src="<%=iguser.media.data[2].media_url%>" alt="instagram image">
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="content img-container">
+        <img class="img-fluid" src="<%=iguser.media.data[6].media_url%>" alt="instagram image">
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="content img-container">
+        <img class="img-fluid" src="<%=iguser.media.data[4].media_url%>" alt="instagram image">
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="content img-container">
+        <img class="img-fluid" src="<%=iguser.media.data[5].media_url%>" alt="instagram image">
+      </div>
+    </div>
+    
   </div>
+
 </section>
 
 <!--Section: Masonry-Cards-->
