@@ -25,7 +25,7 @@
 
         <p><%= infoUser.address.city %></p>
         <p><%= infoUser.bio %></p>
-        <a href="#"><button class="btn btn-unique">Contactar</button></a>
+        <a id="send-msg" class="btn btn-unique btn-rounded btn-md" data-toggle="modal" data-target="#modalDefaultContactForm">Contact</a>
       </div>
     </div>
   </div>
@@ -52,7 +52,7 @@
 
   <div class="card-columns">
 
-    <% for(var i = 0; i <= 5; i++) { %>
+    <% for(var i = 0; i <= 8; i++) { %>
     
       <div class="card overlay rounded z-depth-2 mb-2 img-container">
         <img src="<%=iguser.media.data[i].media_url%>" class="img-fluid card-img-top" alt="instagram image">
@@ -88,7 +88,7 @@
 
 <!--Section: Masonry-Cards-->
 
-
+<%- include ../../modal-msg.ejs %>
 <!--Profile Image-->
 <%- contentFor('img-avatar') %>
 <img src="<%=infoUser.profileImage %>" alt="avatar-<%=infoUser.username%>" class="img-avatar">
