@@ -77,10 +77,12 @@ router.get('/:username/edit', isLoggedIn('/login'), (req, res, next) => {
 router.post('/:username', isLoggedIn('/login'), (req, res, next) => {
   /* eslint-disable */
   const userId = req.user._id;
-  const userRol = req.user.collection.collectionName
+  const userRol = req.user.collection.collectionName;
   /* eslint-enable */
   if (userRol === 'influencers') {
+    console.log(req.body);
     const updateInfluencer = {
+      username: req.body.cofluname,
       name: req.body.name,
       lastname: req.body.lastname,
       email: req.body.email,
@@ -90,7 +92,7 @@ router.post('/:username', isLoggedIn('/login'), (req, res, next) => {
       },
       bio: req.body.bio,
       instagram: {
-        username: req.body.ig_user,
+        username: req.body.instagram,
       },
     };
     Influencer.findByIdAndUpdate(userId, updateInfluencer, (err, influencer) => {

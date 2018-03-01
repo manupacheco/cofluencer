@@ -14,24 +14,31 @@
 
           <div class="form-row">
             <div class="col-3">
-                <input type="text" class="form-control" name="name" placeholder="Name" value="<%= infoUser.name %>">
-            </div>
-            <div class="col-3">
-              <input type="text" class="form-control" name="lastname" placeholder="Lastname" value="<%= infoUser.lastname %>">
+              <input type="text" class="form-control" name="cofluname" placeholder="Username" value="<%=infoUser.username%>" >
             </div>
 
-            <div class="col-6 text-right">
-              <p class="edit-author"><a class="edit-link" href="/<%= infoUser.username %>/edit">Edit profile</a></p>
+            <div class="col-3">
+              <input type="email" class="form-control" name="email" placeholder="email" value="<%=infoUser.email%>">
             </div>
             
           </div>
 
           <div class="form-row">
             <div class="col-3">
-              <input type="text" class="form-control" name="facebook" placeholder="Facebook" value="<%= infoUser.socialLinks[0] %>">
+                <input type="text" class="form-control" name="name" placeholder="Name" value="<%= infoUser.name %>">
             </div>
             <div class="col-3">
-              <input type="text" class="form-control" name="instagram" placeholder="Instagram" value="<%= infoUser.socialLinks[1] %>">
+              <input type="text" class="form-control" name="lastname" placeholder="Lastname" value="<%= infoUser.lastname %>">
+            </div>
+            
+          </div>
+
+          <div class="form-row">
+            <div class="col-3">
+              <input type="text" class="form-control" name="phone" placeholder="Facebook" value="<%= infoUser.socialLinks[0] %>">
+            </div>
+            <div class="col-3">
+              <input type="text" class="form-control" name="instagram" placeholder="Instagram" value="<%= infoUser.instagram.username %>">
             </div>
             <div class="col-3">
               <input type="text" class="form-control" name="twitter" placeholder="Twitter" value="<%= infoUser.socialLinks[2] %>">
@@ -45,93 +52,23 @@
             <div class="col-3">
               <input type="text" class="form-control" name="city" placeholder="City" value="<%= infoUser.address.city %>">
             </div>
+            <div class="col-3">
+              <input type="tel" class="form-control" name="phone" placeholder="+34 111 111 111" value="<%= infoUser.phone %>">
+            </div>
           </div>
 
           <div class="form-row">
             <div class="col-8">
-              <textarea class="form-control" name="bio" id="exampleFormControlTextarea3" rows="7" value="<%= infoUser.bio %>" placeholder="<%= infoUser.bio %>"></textarea>
+              <input id="textarea" type="text" class="form-control" name="bio" placeholder="Bio" value="<%= infoUser.bio %>">
             </div>
           </div>
           
+          <button type="submit" class="btn btn-primary btn-md">Update Profile</button>
         </form>
 
-        <p><%= infoUser.bio %></p>
-        <div>
-          <a href="/<%= infoUser.username %>/campaigns">
-            <button type="button" class="btn btn-author"><i class="fa fa-bullhorn icon-campaign pr-2"></i>Search Campaigns</button>
-          </a>
-          <a href="/<%= infoUser.username %>/campaigns">
-            <button type="button" class="btn btn-author"><i class="fa fa-mobile icon-mycampaign pr-2"></i>My campaigns</button>
-          </a>
-        </div>
+        
       </div>
     </div>
   </div>
   
-</div>
-
-
-
-
-
-
-<div class="container">
-<!-- Extended default form grname -->
-<h1>Edit Profile <%= infoUser.username %></h1>
-<form action="/<%= infoUser.username %>" method="POST">
-  <!-- Grname row -->
-  <div class="form-row">
-    <!-- Default input -->
-    <div class="form-group col-md-6">
-      <label for="name">Name</label>
-      <input type="text" class="form-control" name="name" placeholder="Name" value="<%= infoUser.name %>">
-    </div>
-    <!-- Default input -->
-    <div class="form-group col-md-6">
-      <label for="lastname">Lastname</label>
-      <input type="text" class="form-control" name="lastname" placeholder="Lastname" value="<%= infoUser.lastname %>">
-    </div>
-  </div>
-  <!-- Grname row -->
-    <!-- Grname row -->
-  <div class="form-row">
-    <!-- Default input -->
-    <div class="form-group col-md-6">
-      <label for="phone">Phone</label>
-      <input type="number" class="form-control" name="phone" placeholder="Phone" value="<%= infoUser.phone %>">
-    </div>
-    <!-- Default input -->
-    <div class="form-group col-md-6">
-      <label for="email">Email</label>
-      <input type="text" class="form-control" name="email" placeholder="Email" value="<%= infoUser.email %>">
-    </div>
-  </div>
-  <!-- Grname row -->
-  <!-- Grname row -->
-  <div class="form-row">
-    <!-- Default input -->
-    <div class="form-group col-md-6">
-      <label for="city">City</label>
-      <input type="text" class="form-control" name="city" placeholder="City" value="<%= infoUser.address.city %>">
-    </div>
-    <!-- Default input -->
-    <div class="form-group col-md-6">
-      <label for="inputZip">Zip</label>
-      <input type="text" class="form-control" name="inputZip" placeholder="11206-1117">
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="bio">Biography</label>
-    <input type="text" class="form-control" name="bio" placeholder="Bio" value="<%= infoUser.bio %>">
-  </div>
-
-    <div class="form-group">
-      <h2>SOCIAL INFO</h2>
-      <label for="ig_user">Instagram user</label>
-      <input type="text" name="ig_user" name="ig_user" value="<%= infoUser.instagram.username %>">
-    </div>
-  <!-- Grname row -->
-  <button type="submit" class="btn btn-primary btn-md">Update Profile</button>
-</form>
-<!-- Extended default form grname -->
 </div>
