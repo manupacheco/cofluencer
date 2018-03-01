@@ -10,9 +10,20 @@
       </div>
       <!-- Author Data -->
       <div class="col-12 col-md-10">
-        <h5 class="font-weight-bold dark-grey-text mb-3">
-          <strong><%= infoUser.name %> <%= infoUser.lastname %></strong>
-        </h5>
+
+        <div class="row">
+          <div class="col-8">
+            <h5 class="font-weight-bold dark-grey-text mb-3">
+              <strong><%= infoUser.name %> <%= infoUser.lastname %></strong>
+            </h5>
+          </div>
+
+          <div class="col-4 text-right">
+            <p class="edit-author"><a class="edit-link" href="/<%= infoUser.username %>/edit">Edit profile</a></p>
+          </div>
+          
+        </div>
+        
 
         <div class="personal-sm pb-3">
           <a class="pr-2 email-ic">
@@ -25,7 +36,14 @@
 
         <p><%= infoUser.address.city %></p>
         <p><%= infoUser.bio %></p>
-        <a href="#"><button class="btn btn-unique">Contactar</button></a>
+        <div>
+          <a href="/<%= infoUser.username %>/campaigns">
+            <button type="button" class="btn btn-author"><i class="fa fa-bullhorn icon-campaign pr-2"></i>Search Campaigns</button>
+          </a>
+          <a href="/<%= infoUser.username %>/campaigns">
+            <button type="button" class="btn btn-author"><i class="fa fa-mobile icon-mycampaign pr-2"></i>My campaigns</button>
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -51,7 +69,7 @@
   </div>
 
   <div class="grid">
-    <% for(var i = 0; i <= 5; i++) { %>
+    <% for(var i = 0; i <= 8; i++) { %>
 
       <div class="item">
 
@@ -65,10 +83,10 @@
               <div class="positioner">
 
                 <span class="icon">
-                  <i class="fa fa-heart"><span class="icon-data"> <%=iguser.media.data[0].like_count%></span></i>
+                  <i class="fa fa-heart"><span class="icon-data"> <%=iguser.media.data[i].like_count%></span></i>
                 </span>
                 <span class="icon">
-                  <i class="fa fa-comment"><span class="icon-data"> <%=iguser.media.data[0].comments_count%></span></i>
+                  <i class="fa fa-comment"><span class="icon-data"> <%=iguser.media.data[i].comments_count%></span></i>
                 </span>
 
               </div>
