@@ -44,6 +44,7 @@
             <button type="button" class="btn btn-author"><i class="fa fa-mobile icon-mycampaign pr-2"></i>My campaigns</button>
           </a>
         </div>
+        <a id="send-msg" class="btn btn-unique btn-rounded btn-md" data-toggle="modal" data-target="#modalDefaultContactForm">Contact</a>
       </div>
     </div>
   </div>
@@ -111,20 +112,6 @@
       <img class="brand-logo" src="img/yt_logo_rgb_light.png" alt="youtube-logo">
     </div>
     <div class="social-network-column">
-      <!-- <ul class="social-data">
-        <li class="social-data-item">
-          <span class="span">@</span>
-          <%=iguser.username%>
-        </li>
-        <li class="social-data-item">
-          <span class="span">
-            <%=iguser.media_count%>
-          </span> posts</li>
-        <li class="social-data-item">
-          <span class="span">
-            <%=iguser.followers_count%>
-          </span> followers</li>
-      </ul> -->
     </div>
 
   </div>
@@ -145,20 +132,6 @@
       <img class="brand-logo" src="img/twitter-logo.png" alt="twitter-logo">
     </div>
     <div class="social-network-column">
-      <!-- <ul class="social-data">
-        <li class="social-data-item">
-          <span class="span">@</span>
-          <%=iguser.username%>
-        </li>
-        <li class="social-data-item">
-          <span class="span">
-            <%=iguser.media_count%>
-          </span> posts</li>
-        <li class="social-data-item">
-          <span class="span">
-            <%=iguser.followers_count%>
-          </span> followers</li>
-      </ul> -->
     </div>
 
   </div>
@@ -170,3 +143,4 @@
   </div>
 
 </section>  
+<%- include ../../modal-msg.ejs %>
