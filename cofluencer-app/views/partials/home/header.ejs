@@ -1,10 +1,10 @@
 <!--Main Navigation-->
-<header id="header">
+<header>
 
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="nav-home">
     <div class="container d-flex">
       <a class="navbar-brand" id="logo" href="/">
-        Cofluencer
+        <img src="img/cofluencer-logo.png" alt="cofluencer-logo">
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
         aria-expanded="false" aria-label="Toggle navigation">
@@ -28,24 +28,12 @@
             <a class="nav-link" id="nav-link" href="" data-toggle="modal" data-target="#modalSignupForm">
               <button type="button" id="signup" class="btn btn-outline-primary btn-rounded waves-effect">Signup</button>
             </a>
-            <!-- <a class="nav-link" id="nav-link" href="" data-toggle="modal" data-target="#modalSignupForm">Signup</a> -->
           </li>
         </ul>
       </div>
     </div>
   </nav>
-
-  <div class="view hm-indigo-slight">
-    <div class="full-bg-img flex-center">
-      <div class="container">
-        <div class="white-text text-center wow fadeInUp">
-          <h2>Influencia Colaborativa</h2>
-          <h5>Crea y encuentra campañas que se adapten a tus necesidades</h5>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <%- include modal-form.ejs %>
+
 
 </header>

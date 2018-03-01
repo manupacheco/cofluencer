@@ -1,12 +1,26 @@
-/* Style for the header template by mdbootstrap */
-body{
+/* Style for the navbar */
+
+#header {
+  height: 150px;
+}
+  
+body {
   background-color: #fafafa;
 }
 
-.view {
-  background: url("https://mdbootstrap.com/img/Photos/Others/img%20(42).jpg") no-repeat center center;
-  background-size: cover;
-  background-position: bottom;
+#logo {
+  font-family: 'Lobster', cursive;
+  font-size: 1.5em;
+  align-self: auto;
+  color: #032426;
+}
+
+#logo:hover {
+  color: #032426;
+}
+
+#logo img {
+  width: 150px;
 }
 
 li {
@@ -17,30 +31,74 @@ li {
   background-color: #fff;
 }
 
+.navbar::after {
+  content: '';
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  height: 3px;
+  background: linear-gradient(270deg, #880e4f, #0b8793);
+}
+
 .navbar-dark .navbar-brand {
   color: #000;
 }
 
-#fino {
-  background: linear-gradient(270deg, #880e4f, #0b8793);
-  opacity: 0.6;
-  height: 3px;
-  width: 100%;
-  position: fixed;
-  top: 59px;
-  z-index: 1050;
+#menu {
+  align-items: center;
 }
 
-#header {
-  height: 150px;
+#nav-link {
+  color: #000;
 }
 
-#logo {
-  font-family: 'Lobster', cursive;
-  font-size: 1.5em;
-  align-self: auto;
+.nav-item {
+  padding: 0 0.6rem 0 0.6rem;
 }
-/*  Footer */
+
+.icon-campaign {
+  font-size: 1.6em;
+  color: #032426;
+}
+
+.icon-mycampaign {
+  font-size: 1.9em;
+  margin-right: 10px;
+  color: #032426;
+}
+
+#signup {
+  border-radius: 30px;
+  padding: 0.5em 2em;
+  text-transform: capitalize;
+}
+
+@media (min-width: 768px) {
+  .view {
+    overflow: visible;
+    margin-top: -56px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .navbar {
+    background-color: rgb(244, 241, 0);
+  }
+}
+
+/* --------------------------- Header index ----------------------- */
+
+/* .custom-gradient .full-bg-img {
+  background: -moz-linear-gradient(45deg, rgba(136, 14, 79, 0.7), rgba(11, 135, 147, 0.7) 100%);
+  background: -webkit-linear-gradient(45deg, rgba(136, 14, 79, 0.7), rgba(11, 135, 147, 0.7) 100%);
+  background: -webkit-gradient(linear, 45deg, from(rgba(136, 14, 79, 0.7)), to(rgba(11, 135, 147, 0.7)));
+  background: -o-linear-gradient(45deg, rgba(136, 14, 79, 0.7), rgba(11, 135, 147, 0.7) 100%);
+  background: linear-gradient(to 45deg, rgba(136, 14, 79, 0.7), rgba(11, 135, 147, 0.7) 100%);
+} */
+
+/* --------------------------- Footer ----------------------- */
+
 .footer-copyright {
   color: #999;
   font-size: 0.9em;
@@ -60,51 +118,10 @@ li {
   padding: 20px 0;
 }
 
-.nav-up {
-  top: -60px;
-}
-
-#menu {
-  align-items: center;
-}
-
-#nav-link {
-  color: #000;
-}
-
-#logo {
-  width: 30%;
-}
-
-.nav-item {
-  padding: 0 0.6rem 0 0.6rem; 
-}
-
-#signup {
-  border-radius: 30px;
-  padding: 0.5em 2em;
-  text-transform: capitalize;
-}
-
-.top-nav-collapse {
-  background-color: #4285F4;
-}
-
-@media (min-width: 768px) {
-  .view {
-    overflow: visible;
-    margin-top: -56px;
-  }
-}
-
-@media only screen and (max-width: 768px) {
-  .navbar {
-    background-color: #4285F4;
-  }
-}
 /* __--__--__--__--__--__--__--__--__--__--__--__--__ */
 
 /* Style for the login/signup modal */
+
 .modal {
   background-color: aliceblue;
 }
@@ -138,15 +155,197 @@ label::after {
   top: 20px;
   font-size: 3em;
 }
+
 /* __--__--__--__--__--__--__--__--__--__--__--__--__ */
 
-/* Style for the login/signup modal */
+/* PROFILE INFLUENCER */
+
+#header {
+  height: 80px;
+}
+
+/* Style for the AVATAR and its dropdown */
+
+.user-area {
+  width: 45px;
+  height: 45px;
+  position: relative;
+  cursor: pointer;
+}
+
+.user-area .user-avatar {
+  width: 95%;
+  height: 95%;
+  border-radius: 30px;
+  /* border: 2px solid #fff; */
+  box-shadow: 0px 0px 15px -5px #000;
+}
+
+.user-area .user-avatar:hover {
+  box-shadow: 0px 0px 10px -5px #000;
+  width: 93%;
+  height: 93%;
+}
+
+.user-area .user-avatar .img-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+}
+
+.dropdown-menu {
+  padding-bottom: 0;
+  z-index: 1060;
+}
+
+.navbar .dropdown-menu a {
+  font-size: 0.8rem;
+}
+
+.navbar .dropdown-menu a:hover {
+  color: #000 !important;
+}
+
+/* __--__--__--__--__--__--__--__--__--__--__--__--__ */
+
+/* Style for the Author Box section */
+
+.btn-author {
+  color: #032426 !important;
+  font-size: 0.8em;
+  background: transparent;
+  margin-left: 0;
+  border: 1px solid transparent;
+  border-image: linear-gradient(270deg, #880e4f, #0b8793) 1;
+}
+
+.edit-author .edit-link {
+  color: rgb(200, 200, 200);
+}
 
 
+/* __--__--__--__--__--__--__--__--__--__--__--__--__ */
 
+/* Style for the Instagram section */
 
+.brand-logo {
+  width: 200px;
+}
+
+.followers-icon {
+  font-size: 2rem;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.section-title .social-network-column {
+  margin-right: 2em;
+}
+
+.section-title .social-network-column>* {
+  display: inline;
+}
+
+.section-title .h1 {
+  padding-bottom: 0;
+}
+
+.social-data .social-data-item {
+  display: inline;
+  margin-left: 20px;
+}
+
+.social-data-item .span {
+  font-weight: 600;
+}
+
+.img-container {
+  position: relative;
+  display: inline-block;
+  transition: all 1s ease;
+}
+
+.img-container .after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  color: #fff;
+  background: rgba(0, 0, 0, 0);
+  transition: all 1s ease;
+}
+
+.img-container:hover .after {
+  display: block;
+  background: rgba(0, 0, 0, 0.6);
+  transition: all 1 ease;
+}
+
+.positioner {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon {
+  font-size: 16px;
+  margin: 0 10px;
+}
+
+.icon .icon-data {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 600;
+}
+
+.grid {
+  display: grid;
+  grid-gap: 15px;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-auto-rows: 5px;
+}
+
+/* Empty Social Account */
+
+.empty-social-account {
+  padding: 100px 0;
+  background-color:rgb(240, 240, 240);
+}
+
+.empty-social-account .btn {
+  margin-bottom: 20px;
+}
+
+.btn-gplus, .btn-tw {
+  font-size: 0.8em;
+  padding: 10px 25px;
+  border-radius: 0;
+}
+
+.btn-gplus {
+  background-color: #db3236;
+}
+
+.btn-tw {
+  background-color: #1dcaff;
+}
+
+<<<<<<< HEAD
 /* __--__--__--__--__--__--__--__--__--__--__--__--__ */
 
 .disabled {
   display: none;
 }
+=======
+>>>>>>> dev-alex

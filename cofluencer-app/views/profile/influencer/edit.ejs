@@ -1,4 +1,81 @@
 <div class="container">
+
+  <div class="p-5 text-center text-md-left author-box">
+    <!-- Name -->
+    <div class="row">
+      <!-- Avatar -->
+      <div class="col-12 col-md-2 mb-md-0 mb-4">
+        <img src="<%= infoUser.profileImage %>" class="img-fluid rounded-circle z-depth-2 avatar">
+      </div>
+      <!-- Author Data -->
+      <div class="col-12 col-md-10">
+
+        <form action="/<%= infoUser.username %>" method="POST">
+
+          <div class="form-row">
+            <div class="col-3">
+                <input type="text" class="form-control" name="name" placeholder="Name" value="<%= infoUser.name %>">
+            </div>
+            <div class="col-3">
+              <input type="text" class="form-control" name="lastname" placeholder="Lastname" value="<%= infoUser.lastname %>">
+            </div>
+
+            <div class="col-6 text-right">
+              <p class="edit-author"><a class="edit-link" href="/<%= infoUser.username %>/edit">Edit profile</a></p>
+            </div>
+            
+          </div>
+
+          <div class="form-row">
+            <div class="col-3">
+              <input type="text" class="form-control" name="facebook" placeholder="Facebook" value="<%= infoUser.socialLinks[0] %>">
+            </div>
+            <div class="col-3">
+              <input type="text" class="form-control" name="instagram" placeholder="Instagram" value="<%= infoUser.socialLinks[1] %>">
+            </div>
+            <div class="col-3">
+              <input type="text" class="form-control" name="twitter" placeholder="Twitter" value="<%= infoUser.socialLinks[2] %>">
+            </div>
+            <div class="col-3">
+              <input type="text" class="form-control" name="youtube" placeholder="Youtube" value="<%= infoUser.socialLinks[3] %>">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="col-3">
+              <input type="text" class="form-control" name="city" placeholder="City" value="<%= infoUser.address.city %>">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="col-8">
+              <textarea class="form-control" name="bio" id="exampleFormControlTextarea3" rows="7" value="<%= infoUser.bio %>" placeholder="<%= infoUser.bio %>"></textarea>
+            </div>
+          </div>
+          
+        </form>
+
+        <p><%= infoUser.bio %></p>
+        <div>
+          <a href="/<%= infoUser.username %>/campaigns">
+            <button type="button" class="btn btn-author"><i class="fa fa-bullhorn icon-campaign pr-2"></i>Search Campaigns</button>
+          </a>
+          <a href="/<%= infoUser.username %>/campaigns">
+            <button type="button" class="btn btn-author"><i class="fa fa-mobile icon-mycampaign pr-2"></i>My campaigns</button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+
+
+
+
+
+<div class="container">
 <!-- Extended default form grname -->
 <h1>Edit Profile <%= infoUser.username %></h1>
 <form action="/<%= infoUser.username %>" method="POST">
