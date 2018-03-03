@@ -103,6 +103,12 @@ li {
 
 /* --------------------------- Footer ----------------------- */
 
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
 .footer-copyright {
   color: #999;
   font-size: 0.9em;
