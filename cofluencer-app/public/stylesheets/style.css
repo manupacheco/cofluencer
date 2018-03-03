@@ -371,10 +371,10 @@ label::after {
 }
 
 .email-link {
-  color: inherit;
+  color: #4f4f4f;
 }
 
 .email-link:hover {
   text-decoration: none;
-  color: #4f4f4f;
+  color: #000;
 }

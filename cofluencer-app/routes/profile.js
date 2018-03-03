@@ -69,12 +69,12 @@ router.get('/:username/edit', isLoggedIn('/login'), (req, res, next) => {
   if (userRol === 'influencers') {
     Influencer.findById(userId, (err, infoUser) => {
       if (err) { next(err); }
-      res.render('profile/influencer/edit', { infoUser, layout: 'layouts/profile' });
+      res.render('profile/influencer/edit', { infoUser, userRol, layout: 'layouts/profile' });
     });
   } else if (userRol === 'companies') {
     Company.findById(userId, (err, infoUser) => {
       if (err) { next(err); }
-      res.render('profile/company/edit', { infoUser, layout: 'layouts/profile' });
+      res.render('profile/company/edit', { infoUser, userRol, layout: 'layouts/profile' });
     });
   }
 });

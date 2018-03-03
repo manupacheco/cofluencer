@@ -17,20 +17,21 @@
               <strong><%= infoUser.name %> <%= infoUser.lastname %></strong>
             </h5>
           </div>
-
-          <div class="col-4 text-right">
-            <p class="edit-author"><a class="edit-link" href="/<%= infoUser.username %>/edit">Edit profile</a></p>
-          </div>
-          
         </div>
         
 
         <div class="personal-sm pb-3">
-          <a class="pr-2 email-ic">
+          <a class="pr-2 email-ic email-link" href="https://www.facebook.com/<%=infoUser.socialLinks.facebook%>" target="_blank">
             <i class="fa fa-facebook mr-2"> </i>
           </a>
-          <a class="pr-2 ig-ic">
+          <a class="pr-2 ig-ic email-link" href="https://www.instagram.com/<%=iguser.username%>" target="_blank">
             <i class="fa fa-instagram mr-2"></i>
+          </a>
+          <a class="pr-2 ig-ic email-link" href="https://www.twitter.com/<%=infoUser.socialLinks.twitter%>" target="_blank">
+            <i class="fa fa-twitter mr-2"></i>
+          </a>
+          <a class="pr-2 ig-ic email-link" href="https://www.youtube.com/channel/<%=infoUser.socialLinks.youtube%>" target="_blank">
+            <i class="fa fa-youtube mr-2"></i>
           </a>
         </div>
 
@@ -42,6 +43,9 @@
           </a>
           <a href="/<%= infoUser.username %>/campaigns">
             <button type="button" class="btn btn-author"><i class="fa fa-mobile icon-mycampaign pr-2"></i>My campaigns</button>
+          </a>
+          <a href="/<%= infoUser.username %>/edit">
+            <button type="button" class="btn btn-author"><i class="fa fa-edit icon-mycampaign pr-2"></i>Edit profile</button>
           </a>
         </div>
       </div>
@@ -61,7 +65,9 @@
     </div>
     <div class="social-network-column">
       <ul class="social-data">
-        <li class="social-data-item"><span class="span">@</span><%=iguser.username%></li>
+        <li class="social-data-item">
+          <a href="https://www.instagram.com/<%=iguser.username%>" target="_blank" class="email-link"><span class="span">@</span><%=iguser.username%></a>
+        </li>
         <li class="social-data-item"><span class="span"><%=iguser.media_count%></span> posts</li>
         <li class="social-data-item"><span class="span"><%=iguser.followers_count%></span> followers</li>
       </ul>
@@ -76,7 +82,7 @@
         <div class="content img-container overlay rounded z-depth-2">
 
           <img class="img-fluid" src="<%=iguser.media.data[i].media_url%>" alt="instagram-image-<%=i%>">
-          <a href="#">
+          <a href="https://www.instagram.com/<%=iguser.username%>" target="_blank">
             
             <div class="after">
 

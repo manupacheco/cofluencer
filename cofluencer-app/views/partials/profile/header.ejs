@@ -11,10 +11,20 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto d-flex" id="menu">
           <li class="nav-item">
-            <a class="nav-link" id="nav-link" href="/<%= infoUser.username %>/campaigns"><i class="fa fa-bullhorn icon-campaign"></i></a>
+            <a class="nav-link" id="nav-link" href="/<%= infoUser.username %>/campaigns">
+              <i class="fa fa-bullhorn icon-campaign"></i>
+            </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" id="nav-link" href="/<%= infoUser.username %>/campaigns/me"><i class="fa fa-mobile icon-mycampaign"></i></a>
+              <% if (userRol === 'companies') { %>
+                <a class="nav-link" id="nav-link" href="/<%= infoUser.username %>/campaigns/new">
+                  <i class="fa fa-plus icon-mycampaign"></i>
+                </a>
+              <% } else { %>
+                <a class="nav-link" id="nav-link" href="/<%= infoUser.username %>/campaigns/me">
+                  <i class="fa fa-mobile icon-mycampaign"></i>
+                </a>
+              <% } %>
           </li>
           <li class="nav-item">
             <div class="dropdown user-area">

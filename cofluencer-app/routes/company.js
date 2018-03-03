@@ -25,7 +25,7 @@ router.get('/:company', isLoggedIn('/'), (req, res, next) => {
   } else if (userRol === 'companies') {
     Company.findById(userId, (err, infoUser) => {
       if (err) { next(err); }
-      res.render('profile/company/main', { infoUser, userRol, layout: 'layouts/profile' });
+      res.redirect(`/${req.user.username}`);
     });
   }
 });

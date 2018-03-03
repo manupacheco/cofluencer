@@ -25,7 +25,7 @@ router.get('/:influencer', isLoggedIn('/'), (req, res, next) => {
   } else if (userRol === 'influencers') {
     Influencer.findById(userId, (err, infoUser) => {
       if (err) { next(err); }
-      res.render('profile/influencer/main', { infoUser, userRol, layout: 'layouts/profile' });
+      res.redirect(`/${req.user.username}`);
     });
   }
 });
