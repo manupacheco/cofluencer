@@ -6,7 +6,7 @@
     <div class="row">
       <!-- Avatar -->
       <div class="col-12 col-md-2 mb-md-0 mb-4">
-        <img src="<%= infoUser.profileImage %>" class="img-fluid rounded-circle z-depth-2 avatar">
+        <img src="<%= influencer.profileImage %>" class="img-fluid rounded-circle z-depth-2 avatar">
       </div>
       <!-- Author Data -->
       <div class="col-12 col-md-10">
@@ -14,12 +14,8 @@
         <div class="row">
           <div class="col-8">
             <h5 class="font-weight-bold dark-grey-text mb-3">
-              <strong><%= infoUser.name %> <%= infoUser.lastname %></strong>
+              <strong><%= influencer.name %> <%= influencer.lastname %></strong>
             </h5>
-          </div>
-
-          <div class="col-4 text-right">
-            <p class="edit-author"><a class="edit-link" href="/<%= infoUser.username %>/edit">Edit profile</a></p>
           </div>
           
         </div>
@@ -34,17 +30,13 @@
           </a>
         </div>
 
-        <p><%= infoUser.address.city %></p>
-        <p><%= infoUser.bio %></p>
+        <p><%= influencer.address.city %></p>
+        <p><%= influencer.bio %></p>
         <div>
-          <a href="/<%= infoUser.username %>/campaigns">
-            <button type="button" class="btn btn-author"><i class="fa fa-bullhorn icon-campaign pr-2"></i>Search Campaigns</button>
-          </a>
-          <a href="/<%= infoUser.username %>/campaigns">
-            <button type="button" class="btn btn-author"><i class="fa fa-mobile icon-mycampaign pr-2"></i>My campaigns</button>
+          <a id="send-msg" class="btn btn-author" data-toggle="modal" data-target="#modalDefaultContactForm">
+            <i class="fa fa-send icon-campaign pr-2"></i>Contact
           </a>
         </div>
-        <a id="send-msg" class="btn btn-unique btn-rounded btn-md" data-toggle="modal" data-target="#modalDefaultContactForm">Contact</a>
       </div>
     </div>
   </div>
@@ -58,13 +50,13 @@
   <!--Section heading-->
   <div class="section-title">
     <div class="social-network-column">
-      <img class="brand-logo" src="img/instagram-logo.png" alt="instagram-logo">
+      <img class="brand-logo" src="/img/instagram-logo.png" alt="instagram-logo">
     </div>
     <div class="social-network-column">
       <ul class="social-data">
-        <li class="social-data-item"><span class="span">@</span><%=iguser.username%></li>
-        <li class="social-data-item"><span class="span"><%=iguser.media_count%></span> posts</li>
-        <li class="social-data-item"><span class="span"><%=iguser.followers_count%></span> followers</li>
+        <li class="social-data-item"><span class="span">@</span><%=influencer.socialLinks.instagram%></li>
+        <li class="social-data-item"><span class="span"><%=influencer.media_count%></span> posts</li>
+        <li class="social-data-item"><span class="span"><%=influencer.followers_count%></span> followers</li>
       </ul>
     </div>
   </div>
@@ -76,7 +68,7 @@
 
         <div class="content img-container overlay rounded z-depth-2">
 
-          <img class="img-fluid" src="<%=iguser.media.data[i].media_url%>" alt="instagram-image-<%=i%>">
+          <img class="img-fluid" src="<%=influencer.instagram.media.data[i].media_url%>" alt="instagram-image-<%=i%>">
           <a href="#">
             
             <div class="after">
@@ -84,10 +76,10 @@
               <div class="positioner">
 
                 <span class="icon">
-                  <i class="fa fa-heart"><span class="icon-data"> <%=iguser.media.data[i].like_count%></span></i>
+                  <i class="fa fa-heart"><span class="icon-data"> <%=influencer.instagram.media.data[i].like_count%></span></i>
                 </span>
                 <span class="icon">
-                  <i class="fa fa-comment"><span class="icon-data"> <%=iguser.media.data[i].comments_count%></span></i>
+                  <i class="fa fa-comment"><span class="icon-data"> <%=influencer.instagram.media.data[i].comments_count%></span></i>
                 </span>
 
               </div>
@@ -109,7 +101,7 @@
   <!--Section heading-->
   <div class="section-title">
     <div class="social-network-column">
-      <img class="brand-logo" src="img/yt_logo_rgb_light.png" alt="youtube-logo">
+      <img class="brand-logo" src="/img/yt_logo_rgb_light.png" alt="youtube-logo">
     </div>
     <div class="social-network-column">
     </div>
@@ -129,7 +121,7 @@
   <!--Section heading-->
   <div class="section-title">
     <div class="social-network-column">
-      <img class="brand-logo" src="img/twitter-logo.png" alt="twitter-logo">
+      <img class="brand-logo" src="/img/twitter-logo.png" alt="twitter-logo">
     </div>
     <div class="social-network-column">
     </div>

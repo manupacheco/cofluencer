@@ -7,7 +7,7 @@
   <!--Section description-->
   <p class="text-center mb-5 pb-5">Text here?¿?</p>
 
-    <ul>
+  <ul>
     <% campaigns.forEach((campaign, index) => { %>
       <li>        
         <!--Grid row-->
@@ -32,6 +32,9 @@
             <h3 class="mb-3 font-weight-bold dark-grey-text">
               <strong><%= campaign.title %></strong>
             </h3>
+            <a href="/<%=infoUser.username%>/influencer/<%=campaign.influencer_id[0].username%>" class="font-weight-bold dark-grey-text">
+              <%= campaign.influencer_id[0].username%>
+            </a>
             <p class="grey-text"><%= campaign.description %></p>
             <p><%= campaign.state %></p>
             <p>by
@@ -64,9 +67,9 @@
         </div>
         <!--Grid row-->
         <hr class="mb-5">
-  </li>
-  <% }) %>
-</ul>
+      </li>
+    <% }) %>
+  </ul>
   </section>
   <!--Section: Blog v.3-->
 </div>

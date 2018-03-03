@@ -17,6 +17,7 @@ router.get('/', isLoggedIn('/'), (req, res, next) => {
   if (userRol === 'companies') {
     Campaign.find({ company_id: userId })
       .populate('company_id')
+      .populate('influencer_id')
       .sort({ updated_at: -1 })
       .exec((err, campaigns) => {
         res.render('campaigns/list', { campaigns, infoUser, moment, userRol, layout: 'layouts/profile' });
