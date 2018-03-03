@@ -40,7 +40,7 @@
                 <%= campaign.state %>
               </p>
               <p>by
-                <a class="font-weight-bold dark-grey-text">Jessica Clark</a>, 26/08/2018</p>
+                <a class="font-weight-bold dark-grey-text"><%= campaign.company_id.username %></a>, 26/08/2018</p>
               <!-- button function -->
               <% let influencers = campaign.influencer_id 
                let status

@@ -4,8 +4,8 @@ const Schema = mongoose.Schema;
 /* eslint-enable */
 
 const campaignSchema = new Schema({
-  company_id: Schema.Types.ObjectId,
-  influencer_id: [Schema.Types.ObjectId],
+  company_id: { type: Schema.Types.ObjectId, ref: 'Company' },
+  influencer_id: [{ type: Schema.Types.ObjectId, ref: 'Influencer' }],
   title: String,
   description: String,
   expirationDate: Date,
