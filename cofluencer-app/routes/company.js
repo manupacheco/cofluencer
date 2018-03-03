@@ -19,13 +19,13 @@ router.get('/:company', isLoggedIn('/'), (req, res, next) => {
       if (err) { next(err); }
       Company.findOne({ username: companyName })
         .exec((error, company) => {
-          res.render('profile/company/show', { infoUser, company, layout: 'layouts/profile' });
+          res.render('profile/company/show', { infoUser, company, userRol, layout: 'layouts/profile' });
         });
     });
   } else if (userRol === 'companies') {
     Company.findById(userId, (err, infoUser) => {
       if (err) { next(err); }
-      res.render('profile/company/main', { infoUser, layout: 'layouts/profile' });
+      res.render('profile/company/main', { infoUser, userRol, layout: 'layouts/profile' });
     });
   }
 });
