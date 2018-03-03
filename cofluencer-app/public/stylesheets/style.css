@@ -355,3 +355,8 @@ label::after {
   overflow-wrap: break-word;
   text-overflow: clip;
 }
+
+.edit .form-control[name="cofluname"] {
+  background: url(/img/icons/user.png) no-repeat scroll 10px 15px/20px 20px;
+  padding-left: 50px;
+}

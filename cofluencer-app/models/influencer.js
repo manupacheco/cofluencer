@@ -21,7 +21,12 @@ const influencerSchema = new Schema({
   bio: String,
   influenceArea: String,
   profileImage: String,
-  socialLinks: [{}],
+  socialLinks: {
+    facebook: String,
+    instagram: String,
+    twitter: String,
+    youtube: String,
+  },
   tags: [],
   campaignsFavs: [Schema.Types.ObjectId],
   instagram: {

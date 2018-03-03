@@ -10,24 +10,24 @@
       <!-- Author Data -->
       <div class="col-12 col-md-10">
 
-        <form action="/<%= infoUser.username %>" method="POST">
+        <form class="edit" action="/<%= infoUser.username %>" method="POST">
 
           <div class="form-row">
             <div class="col-3">
               <input type="text" class="form-control" name="cofluname" placeholder="Username" value="<%=infoUser.username%>" >
             </div>
 
-            <div class="col-3">
+            <div class="col-3 offset-1">
               <input type="email" class="form-control" name="email" placeholder="email" value="<%=infoUser.email%>">
             </div>
-            
+
           </div>
 
           <div class="form-row">
             <div class="col-3">
                 <input type="text" class="form-control" name="name" placeholder="Name" value="<%= infoUser.name %>">
             </div>
-            <div class="col-3">
+            <div class="col-3 offset-1">
               <input type="text" class="form-control" name="lastname" placeholder="Lastname" value="<%= infoUser.lastname %>">
             </div>
             
@@ -35,30 +35,30 @@
 
           <div class="form-row">
             <div class="col-3">
-              <input type="text" class="form-control" name="phone" placeholder="Facebook" value="<%= infoUser.socialLinks[0] %>">
-            </div>
-            <div class="col-3">
-              <input type="text" class="form-control" name="instagram" placeholder="Instagram" value="<%= infoUser.instagram.username %>">
-            </div>
-            <div class="col-3">
-              <input type="text" class="form-control" name="twitter" placeholder="Twitter" value="<%= infoUser.socialLinks[2] %>">
-            </div>
-            <div class="col-3">
-              <input type="text" class="form-control" name="youtube" placeholder="Youtube" value="<%= infoUser.socialLinks[3] %>">
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="col-3">
               <input type="text" class="form-control" name="city" placeholder="City" value="<%= infoUser.address.city %>">
             </div>
-            <div class="col-3">
+            <div class="col-3 offset-1">
               <input type="tel" class="form-control" name="phone" placeholder="+34 111 111 111" value="<%= infoUser.phone %>">
             </div>
           </div>
 
           <div class="form-row">
-            <div class="col-8">
+            <div class="col-2">
+              <input type="text" class="form-control" name="facebook" placeholder="Facebook" value="<%= infoUser.socialLinks.facebook %>">
+            </div>
+            <div class="col-2 offset-1">
+              <input type="text" class="form-control" name="instagram" placeholder="Instagram" value="<%= infoUser.instagram.username %>">
+            </div>
+            <div class="col-2 offset-1">
+              <input type="text" class="form-control" name="twitter" placeholder="Twitter" value="<%= infoUser.socialLinks.twitter %>">
+            </div>
+            <div class="col-2 offset-1">
+              <input type="text" class="form-control" name="youtube" placeholder="Youtube" value="<%= infoUser.socialLinks.youtube %>">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="col-12">
               <input id="textarea" type="text" class="form-control" name="bio" placeholder="Bio" value="<%= infoUser.bio %>">
             </div>
           </div>

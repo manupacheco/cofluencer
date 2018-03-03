@@ -10,8 +10,14 @@ function resizeGridItem(item) {
 function resizeAllGridItems() {
   var allItems = document.getElementsByClassName("item");
   for (x = 0; x < allItems.length; x++) {
+    imagesLoaded (allItems[x], resizeInstance);
     resizeGridItem(allItems[x]);
   }
+}
+
+function resizeInstance(instance){
+  var item = instance.elements[0];
+  resizeGridItem(item);
 }
 
 window.onload = resizeAllGridItems();

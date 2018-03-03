@@ -80,7 +80,7 @@ router.post('/:username', isLoggedIn('/login'), (req, res, next) => {
   const userRol = req.user.collection.collectionName;
   /* eslint-enable */
   if (userRol === 'influencers') {
-    console.log(req.body);
+    console.log('BODY: ', req.body);
     const updateInfluencer = {
       username: req.body.cofluname,
       name: req.body.name,
@@ -90,6 +90,12 @@ router.post('/:username', isLoggedIn('/login'), (req, res, next) => {
       address: {
         city: req.body.city,
       },
+      socialLinks: {
+        facebook: req.body.facebook,
+        instagram: req.body.instagram,
+        twitter: req.body.twitter,
+        youtube: req.body.youtube,
+      },
       bio: req.body.bio,
       instagram: {
         username: req.body.instagram,
@@ -97,7 +103,7 @@ router.post('/:username', isLoggedIn('/login'), (req, res, next) => {
     };
     Influencer.findByIdAndUpdate(userId, updateInfluencer, (err, influencer) => {
       if (err) { next(err); }
-      console.log('info: ', updateInfluencer, 'body: ', req.body);
+      console.log('INFO: ', updateInfluencer, 'body: ', req.body);
       res.redirect(`/${req.user.username}`);
     });
   } else if (userRol === 'companies') {
