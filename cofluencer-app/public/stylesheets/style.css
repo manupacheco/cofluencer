@@ -68,6 +68,10 @@ li {
   color: #032426;
 }
 
+.fa-heart {
+  font-size: 1.8em;
+}
+
 #signup {
   border-radius: 30px;
   padding: 0.5em 2em;
