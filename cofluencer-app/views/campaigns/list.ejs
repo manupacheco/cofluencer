@@ -8,7 +8,7 @@
   <p class="text-center mb-5 pb-5">Text here?¿?</p>
 
     <ul>
-    <% campaigns.forEach((campaign) => { %>
+    <% campaigns.forEach((campaign, index) => { %>
       <li>        
         <!--Grid row-->
         <div class="row">
@@ -39,21 +39,26 @@
               <%=moment(campaign.created_at).format('l')%>
             </p>
             <!-- button function -->
-              <% let influencers = campaign.influencer_id 
-               let status
-               let buttonText %>
-            <% if (influencers == null) {
-              buttonText = 'Check in!';
-              status = 'follow';
-            } else if (influencers.indexOf(infoUser._id) === -1 ) {
-                status = 'follow';
-                buttonText = 'Check in!';
-              } else {
-                status = 'unfollow';
-                buttonText = 'Check out!';
-              }%>
-            <a href="/<%= infoUser.username %>/campaigns/<%= campaign.title %>">Show campaign</a>
-            <a class="btn btn-primary btn-md" id="<%= status %>" value="<%= campaign._id %>" user="<%= infoUser.username %>"><%= buttonText %></a>
+            <% if (userRol === 'companies') { %>
+              <a class="btn btn-primary btn-md">
+                Edit campaign
+              </a>
+            <% } else if (userRol === 'influencers') { 
+             if (campaign.influencer_id == null) { %>
+              <a class="btn btn-primary btn-md" id="follow" value="<%= campaign._id %>" user="<%= infoUser.username %>">
+              Check in!
+              </a>
+            <% } else if (campaign.influencer_id.indexOf(infoUser._id) === -1 ) { %>
+              <a class="btn btn-primary btn-md" id="follow" value="<%= campaign._id %>" user="<%= infoUser.username %>">
+              Check in!
+              </a>
+              <% } else { %>
+            <a class="btn btn-primary btn-md" id="unfollow" value="<%= campaign._id %>" user="<%= infoUser.username %>">
+              Check out!
+            </a>
+              <% } %>
+            <% } %>
+            <a class="btn btn-primary btn-md" href="/<%= infoUser.username %>/campaigns/<%= campaign.title %>">Show campaign</a>
           </div>
           <!--Grid column-->
         </div>

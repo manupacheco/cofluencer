@@ -1,38 +1,62 @@
 <div class="container">
-
-  
-  <h1>Company -- Profile</h1>
-  
-  <a href="/logout">logout</a>
   <a href="/<%= infoUser.username %>/campaigns">campaigns</a>
   <a href="/<%= infoUser.username %>/campaigns/new">new campaign</a>
-  
-  <h2>Search user</h2>
-  <form method="POST">
-    IG User:
-    <input type="text" id="name" name="name"></input>
-    <button type="submit" class="btn btn-indigo">
-      <i class="fa fa-bolt" aria-hidden="true"></i>Search IG user</button>
-    </form>
-    
-    <% if( typeof(iguser) != 'undefined') { %>
-      <h1>IG user:
-        <%= iguser.username %>
-      </h1>
-      <h2>followers:
-        <%= iguser.followers_count%>
-      </h2>
-      <% iguser.media.data.forEach((image)=>{ %>
-        <div style="float: left">
-          <img src='<%=image.media_url%>' style="width: 300px; height: 300px">
-          <br> 💚
-          <%= image.like_count%>
-          <br>
+
+  <div class="p-5 text-center text-md-left author-box">
+    <!-- Name -->
+    <div class="row">
+      <!-- Avatar -->
+      <div class="col-12 col-md-2 mb-md-0 mb-4">
+        <img src="<%= infoUser.profileImage %>" class="img-fluid rounded-circle z-depth-2 avatar">
+      </div>
+      <!-- Author Data -->
+      <div class="col-12 col-md-10">
+
+        <div class="row">
+          <div class="col-8">
+            <h5 class="font-weight-bold dark-grey-text mb-3">
+              <strong>
+                <%= infoUser.username %>
+              </strong>
+            </h5>
+          </div>
+
+          <div class="col-4 text-right">
+            <p class="edit-author">
+              <a class="edit-link" href="/<%= infoUser.username %>/edit">Edit profile</a>
+            </p>
+          </div>
+
         </div>
-        <% }); %>
-        <% } %>
-        
-        <%- contentFor('img-avatar') %>
-        <img src="" alt="avatar-<%=infoUser.username%>" class="img-avatar">
+
+
+        <div class="personal-sm pb-3">
+          <a class="pr-2 email-ic">
+            <i class="fa fa-facebook mr-2"> </i>
+          </a>
+          <a class="pr-2 ig-ic">
+            <i class="fa fa-instagram mr-2"></i>
+          </a>
+        </div>
+
+        <p>
+          <%= infoUser.address.city %>
+        </p>
+        <p>
+          <%= infoUser.bio %>
+        </p>
+        <div>
+          <a href="/<%= infoUser.username %>/campaigns">
+            <button type="button" class="btn btn-author">
+              <i class="fa fa-mobile icon-mycampaign pr-2"></i>My campaigns</button>
+          </a>
+          <a id="send-msg" class="btn btn-author" data-toggle="modal" data-target="#modalDefaultContactForm"><i class="fa fa-send icon-campaign pr-2"></i>Contact</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%- include ../../modal-msg.ejs %>
+  <%- contentFor('img-avatar') %>
+  <img src="" alt="avatar-<%=infoUser.username%>" class="img-avatar">
 </div>
         
