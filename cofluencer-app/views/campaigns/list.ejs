@@ -35,7 +35,7 @@
             <p class="grey-text"><%= campaign.description %></p>
             <p><%= campaign.state %></p>
             <p>by
-              <a class="font-weight-bold dark-grey-text">Jessica Clark</a>, <%=campaign.created_at%></p>
+              <a class="font-weight-bold dark-grey-text"><%=campaign.company_id.username%></a>, <%=campaign.created_at%></p>
             <!-- button function -->
               <% let influencers = campaign.influencer_id 
                let status

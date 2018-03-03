@@ -22,6 +22,7 @@ router.get('/', isLoggedIn('/login'), (req, res, next) => {
       });
   } else if (userRol === 'influencers') {
     Campaign.find({})
+      .populate('company_id')
       .sort({ updated_at: -1 })
       .exec((err, campaigns) => {
         res.render('campaigns/list', { campaigns, infoUser, layout: 'layouts/profile' });
