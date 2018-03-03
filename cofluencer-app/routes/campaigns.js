@@ -17,6 +17,7 @@ router.get('/', isLoggedIn('/login'), (req, res, next) => {
     Campaign.find({ company_id: userId })
       .sort({ updated_at: -1 })
       .exec((err, campaigns) => {
+        console.log('CAMPAIGNS:', campaigns);
         res.render('campaigns/list', { campaigns, infoUser, layout: 'layouts/profile' });
       });
   } else if (userRol === 'influencers') {
@@ -63,7 +64,6 @@ router.get('/me', isLoggedIn('/login'), (req, res, next) => {
   const userRol = req.user.collection.collectionName;
   /* eslint-enable */
   if (userRol === 'influencers') {
-    console.log('hasta aqui');
     Campaign.find({ influencer_id: userId })
       .sort({ updated_at: -1 })
       .exec((err, campaigns) => {

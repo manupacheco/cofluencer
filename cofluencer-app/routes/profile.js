@@ -80,7 +80,6 @@ router.post('/:username', isLoggedIn('/login'), (req, res, next) => {
   const userRol = req.user.collection.collectionName;
   /* eslint-enable */
   if (userRol === 'influencers') {
-    console.log('BODY: ', req.body);
     const updateInfluencer = {
       username: req.body.cofluname,
       name: req.body.name,
@@ -103,7 +102,6 @@ router.post('/:username', isLoggedIn('/login'), (req, res, next) => {
     };
     Influencer.findByIdAndUpdate(userId, updateInfluencer, (err, influencer) => {
       if (err) { next(err); }
-      console.log('INFO: ', updateInfluencer, 'body: ', req.body);
       res.redirect(`/${req.user.username}`);
     });
   } else if (userRol === 'companies') {

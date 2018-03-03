@@ -5,8 +5,7 @@
   <!--Section heading-->
   <h2 class="h1 text-center mb-5">Available Campaigns</h2>
   <!--Section description-->
-  <p class="text-center mb-5 pb-5">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-    cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  <p class="text-center mb-5 pb-5">Text here?¿?</p>
 
     <ul>
     <% campaigns.forEach((campaign) => { %>
@@ -18,9 +17,11 @@
           <div class="col-lg-5 col-xl-4 mb-4">
             <!--Featured image-->
             <div class="overlay rounded z-depth-1-half">
-              <img src="https://mdbootstrap.com/img/Photos/Others/images/49.jpg" class="img-fluid" alt="First sample image">
-              <a>
-                <div class="mask rgba-white-slight"></div>
+              <a href="/<%= infoUser.username %>/campaigns/<%= campaign.title %>">
+                <img src="http://lorempixel.com/781/521/fashion" class="img-fluid" alt="First sample image">
+                <div class="mask rgba-white-slight">
+
+                </div>
               </a>
             </div>
           </div>
@@ -34,7 +35,7 @@
             <p class="grey-text"><%= campaign.description %></p>
             <p><%= campaign.state %></p>
             <p>by
-              <a class="font-weight-bold dark-grey-text">Jessica Clark</a>, 26/08/2018</p>
+              <a class="font-weight-bold dark-grey-text">Jessica Clark</a>, <%=campaign.created_at%></p>
             <!-- button function -->
               <% let influencers = campaign.influencer_id 
                let status
