@@ -41,6 +41,7 @@ router.get('/validate', isLoggedIn('/'), (req, res, next) => {
     if (req.user.instagram.username == null) {
       res.render('auth/login_instagram');
     } else {
+      req.flash('info', 'Flash is back!');
       res.redirect(`/${req.user.username}`);
     }
   } else if (userRol === 'companies') {

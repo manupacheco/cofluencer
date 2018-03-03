@@ -26,7 +26,7 @@ router.get('/:username', isLoggedIn('/login'), (req, res, next) => {
     const igUserName = req.user.instagram.username;
     callInstagram(igUserName, (err, iguser) => {
       if (err) {
-        res.render('profile/influencer/main', { layout: 'layouts/profile' }); // flash notification
+        res.render('profile/influencer/main', { layout: 'layouts/profile', messages: req.flash('info') }); // flash notification
       } else {
         Influencer.findByIdAndUpdate(userId, { instagram: iguser }, (errUpdate) => {
           if (errUpdate) { return next(errUpdate); }
@@ -35,7 +35,7 @@ router.get('/:username', isLoggedIn('/login'), (req, res, next) => {
         const igUserId = iguser.id;
         updateProfilePic(igUserId, (errPic, picUrl) => {
           if (err) {
-            res.render('profile/influencer/main', { layout: 'layouts/profile' }); // flash notification
+            res.render('profile/influencer/main', { layout: 'layouts/profile', messages: req.flash('info')}); // flash notification
           } else if (picUrl == null) {
             Influencer.findByIdAndUpdate(userId, { profileImage: 'https://image.flaticon.com/icons/svg/149/149071.svg' }, (errUpdate) => {
               if (errUpdate) { return next(errUpdate); }
@@ -47,7 +47,7 @@ router.get('/:username', isLoggedIn('/login'), (req, res, next) => {
               return next;
             });
           }
-          res.render('profile/influencer/main', { iguser, infoUser, layout: 'layouts/profile' });
+          res.render('profile/influencer/main', { iguser, infoUser, layout: 'layouts/profile', messages: req.flash('info') });
         });
       }
     });
