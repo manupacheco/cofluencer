@@ -69,7 +69,7 @@ router.get('/:username/edit', isLoggedIn('/login'), (req, res, next) => {
   } else if (userRol === 'companies') {
     Company.findById(userId, (err, infoUser) => {
       if (err) { next(err); }
-      res.render('profile/company/main', { infoUser, layout: 'layouts/profile' });
+      res.render('profile/company/edit', { infoUser, layout: 'layouts/profile' });
     });
   }
 });
@@ -102,16 +102,17 @@ router.post('/:username', isLoggedIn('/login'), (req, res, next) => {
     };
     Influencer.findByIdAndUpdate(userId, updateInfluencer, (err, influencer) => {
       if (err) { next(err); }
-      res.redirect(`/${req.user.username}`);
+      res.redirect(`/${updateInfluencer.username}`);
     });
   } else if (userRol === 'companies') {
-    const igUserName = req.body.name;
-    callInstagram(igUserName, (err, iguser) => {
-      if (err) {
-        res.render('profile/company/main', { layout: 'layouts/profile' }); // flash notification
-      } else {
-        res.render('profile/company/main', { iguser, layout: 'layouts/profile' });
-      }
+    const updateCompany = {
+      username: req.body.cofluname,
+      email: req.body.email,
+      bio: req.body.bio,
+    };
+    Company.findByIdAndUpdate(userId, updateCompany, (err, company) => {
+      if (err) { next(err); }
+      res.redirect(`/${updateCompany.username}`);
     });
   }
 });
