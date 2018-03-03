@@ -1,0 +1,146 @@
+<!-- Author box -->
+<div class="container">
+
+  <div class="p-5 text-center text-md-left author-box">
+    <!-- Name -->
+    <div class="row">
+      <!-- Avatar -->
+      <div class="col-12 col-md-2 mb-md-0 mb-4">
+        <img src="<%= infoUser.profileImage %>" class="img-fluid rounded-circle z-depth-2 avatar">
+      </div>
+      <!-- Author Data -->
+      <div class="col-12 col-md-10">
+
+        <div class="row">
+          <div class="col-8">
+            <h5 class="font-weight-bold dark-grey-text mb-3">
+              <strong><%= infoUser.name %> <%= infoUser.lastname %></strong>
+            </h5>
+          </div>
+
+          <div class="col-4 text-right">
+            <p class="edit-author"><a class="edit-link" href="/<%= infoUser.username %>/edit">Edit profile</a></p>
+          </div>
+          
+        </div>
+        
+
+        <div class="personal-sm pb-3">
+          <a class="pr-2 email-ic">
+            <i class="fa fa-facebook mr-2"> </i>
+          </a>
+          <a class="pr-2 ig-ic">
+            <i class="fa fa-instagram mr-2"></i>
+          </a>
+        </div>
+
+        <p><%= infoUser.address.city %></p>
+        <p><%= infoUser.bio %></p>
+        <div>
+          <a href="/<%= infoUser.username %>/campaigns">
+            <button type="button" class="btn btn-author"><i class="fa fa-bullhorn icon-campaign pr-2"></i>Search Campaigns</button>
+          </a>
+          <a href="/<%= infoUser.username %>/campaigns">
+            <button type="button" class="btn btn-author"><i class="fa fa-mobile icon-mycampaign pr-2"></i>My campaigns</button>
+          </a>
+        </div>
+        <a id="send-msg" class="btn btn-unique btn-rounded btn-md" data-toggle="modal" data-target="#modalDefaultContactForm">Contact</a>
+      </div>
+    </div>
+  </div>
+  
+</div>
+<!-- Author box -->
+
+<!--Section: Masonry-Cards Made with Grid CSS-->
+
+<section class="text-center py-4 container">
+  <!--Section heading-->
+  <div class="section-title">
+    <div class="social-network-column">
+      <img class="brand-logo" src="img/instagram-logo.png" alt="instagram-logo">
+    </div>
+    <div class="social-network-column">
+      <ul class="social-data">
+        <li class="social-data-item"><span class="span">@</span><%=iguser.username%></li>
+        <li class="social-data-item"><span class="span"><%=iguser.media_count%></span> posts</li>
+        <li class="social-data-item"><span class="span"><%=iguser.followers_count%></span> followers</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="grid">
+    <% for(var i = 0; i <= 8; i++) { %>
+
+      <div class="item">
+
+        <div class="content img-container overlay rounded z-depth-2">
+
+          <img class="img-fluid" src="<%=iguser.media.data[i].media_url%>" alt="instagram-image-<%=i%>">
+          <a href="#">
+            
+            <div class="after">
+
+              <div class="positioner">
+
+                <span class="icon">
+                  <i class="fa fa-heart"><span class="icon-data"> <%=iguser.media.data[i].like_count%></span></i>
+                </span>
+                <span class="icon">
+                  <i class="fa fa-comment"><span class="icon-data"> <%=iguser.media.data[i].comments_count%></span></i>
+                </span>
+
+              </div>
+
+            </div>
+
+          </a>
+        </div>
+
+      </div>
+
+    <% } %>
+  </div>
+
+</section>
+
+<!-- Youtube Section -->
+<section class="text-center py-4 container">
+  <!--Section heading-->
+  <div class="section-title">
+    <div class="social-network-column">
+      <img class="brand-logo" src="img/yt_logo_rgb_light.png" alt="youtube-logo">
+    </div>
+    <div class="social-network-column">
+    </div>
+
+  </div>
+
+  <div class="empty-social-account rounded">
+    <button type="button" class="btn btn-gplus"><i class="fa fa-google-plus pr-1"></i> Google +</button>
+    <p><strong>You haven't added your social account</strong></p>
+    <p class="grey-text">To see and show your stats and social content, connect your Youtube account with Cofluencer.</p>
+  </div>
+
+</section>  
+
+<!-- Twitter Section -->
+<section class="text-center py-4 container">
+  <!--Section heading-->
+  <div class="section-title">
+    <div class="social-network-column">
+      <img class="brand-logo" src="img/twitter-logo.png" alt="twitter-logo">
+    </div>
+    <div class="social-network-column">
+    </div>
+
+  </div>
+
+  <div class="empty-social-account rounded">
+    <button type="button" class="btn btn-tw"><i class="fa fa-twitter pr-1"></i> Twitter</button>
+    <p><strong>You haven't added your social account</strong></p>
+    <p class="grey-text">To see and show your stats and social content, connect your Twitter account with Cofluencer.</p>
+  </div>
+
+</section>  
+<%- include ../../modal-msg.ejs %>

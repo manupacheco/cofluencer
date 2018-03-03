@@ -360,3 +360,21 @@ label::after {
   background: url(/img/icons/user.png) no-repeat scroll 10px 15px/20px 20px;
   padding-left: 50px;
 }
+
+/* Style for public company profile */
+
+.company-email {
+  font-weight: 200;
+  border-left: 1px solid #000;
+  padding-left: 10px;
+  margin-left: 8px;
+}
+
+.email-link {
+  color: inherit;
+}
+
+.email-link:hover {
+  text-decoration: none;
+  color: #4f4f4f;
+}

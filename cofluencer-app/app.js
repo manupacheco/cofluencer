@@ -25,6 +25,7 @@ const auth = require('./routes/auth');
 const index = require('./routes/index');
 const profile = require('./routes/profile');
 const campaigns = require('./routes/campaigns');
+const company = require('./routes/company');
 
 const app = express();
 
@@ -71,6 +72,7 @@ app.use('/', auth);
 app.use('/', index);
 app.use('/', profile);
 app.use('/:username/campaigns', campaigns);
+app.use('/:username/company', company);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

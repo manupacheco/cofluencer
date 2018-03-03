@@ -29,13 +29,13 @@ router.get('/login', (req, res) => {
 
 router.post('/login', passport.authenticate('local', {
   successRedirect: '/validate',
-  failureRedirect: '/login',
+  failureRedirect: '/',
   failureFlash: true,
   passReqToCallback: true,
 }));
 
 // add username path url
-router.get('/validate', isLoggedIn('/login'), (req, res, next) => {
+router.get('/validate', isLoggedIn('/'), (req, res, next) => {
   const userRol = req.user.collection.collectionName;
   if (userRol === 'influencers') {
     if (req.user.instagram.username == null) {
@@ -48,7 +48,7 @@ router.get('/validate', isLoggedIn('/login'), (req, res, next) => {
   }
 });
 
-router.post('/search_instagram/:username', isLoggedIn('/login'), (req, res, next) => {
+router.post('/search_instagram/:username', isLoggedIn('/'), (req, res, next) => {
   const igUser = req.params.username;
   callInstagram(igUser, (err, result) => {
     if (err) {
@@ -59,7 +59,7 @@ router.post('/search_instagram/:username', isLoggedIn('/login'), (req, res, next
   });
 });
 
-router.post('/add_instagram/:username', isLoggedIn('/login'), (req, res, next) => {
+router.post('/add_instagram/:username', isLoggedIn('/'), (req, res, next) => {
   const igUser = req.params.username;
   /* eslint-disable */
   const userId = req.user._id;

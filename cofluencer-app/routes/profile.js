@@ -36,6 +36,11 @@ router.get('/:username', isLoggedIn('/login'), (req, res, next) => {
         updateProfilePic(igUserId, (errPic, picUrl) => {
           if (err) {
             res.render('profile/influencer/main', { layout: 'layouts/profile' }); // flash notification
+          } else if (picUrl == null) {
+            Influencer.findByIdAndUpdate(userId, { profileImage: 'https://image.flaticon.com/icons/svg/149/149071.svg' }, (errUpdate) => {
+              if (errUpdate) { return next(errUpdate); }
+              return next;
+            });
           } else {
             Influencer.findByIdAndUpdate(userId, { profileImage: picUrl }, (errUpdate) => {
               if (errUpdate) { return next(errUpdate); }
@@ -102,7 +107,33 @@ router.post('/:username', isLoggedIn('/login'), (req, res, next) => {
     };
     Influencer.findByIdAndUpdate(userId, updateInfluencer, (err, influencer) => {
       if (err) { next(err); }
-      res.redirect(`/${req.user.username}`);
+      callInstagram(req.body.instagram, (error, iguser) => {
+        if (error) {
+          res.render('profile/influencer/main', { layout: 'layouts/profile' }); // flash notification
+        } else {
+          Influencer.findByIdAndUpdate(userId, { instagram: iguser }, (errUpdate) => {
+            if (errUpdate) { return next(errUpdate); }
+            return next;
+          });
+          const igUserId = iguser.id;
+          updateProfilePic(igUserId, (errPic, picUrl) => {
+            if (err) {
+              res.render('profile/influencer/main', { layout: 'layouts/profile' }); // flash notification
+            } else if (picUrl == null) {
+              Influencer.findByIdAndUpdate(userId, { profileImage: 'https://image.flaticon.com/icons/svg/149/149071.svg' }, (errUpdate) => {
+                if (errUpdate) { return next(errUpdate); }
+                return next;
+              });
+            } else {
+              Influencer.findByIdAndUpdate(userId, { profileImage: picUrl }, (errUpdate) => {
+                if (errUpdate) { return next(errUpdate); }
+                return next;
+              });
+            }
+            res.redirect(`/${req.body.username}`);
+          });
+        }
+      });
     });
   } else if (userRol === 'companies') {
     const igUserName = req.body.name;

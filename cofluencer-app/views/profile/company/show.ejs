@@ -1,0 +1,45 @@
+<!-- Author box -->
+<div class="container">
+
+  <div class="p-5 text-center text-md-left author-box">
+    <!-- Name -->
+    <div class="row">
+      <!-- Avatar -->
+      <div class="col-12 col-md-2 mb-md-0 mb-4">
+        <img src="<%= infoUser.profileImage %>" class="img-fluid rounded-circle z-depth-2 avatar">
+      </div>
+      <!-- Author Data -->
+      <div class="col-12 col-md-10">
+
+        <div class="row">
+
+          <div class="col-8">
+            <h5 class="font-weight-bold dark-grey-text mb-3">
+              <strong><%= company.username %> </strong>
+              <a class="email-link" href="mailto:<%=company.email%>?subject=Cofluencer Contact">
+                <span class="company-email"><%= company.email %></span>
+              </a>
+            </h5>
+          </div>
+          
+        </div>
+
+        <div class="personal-sm pb-3">
+          <a class="pr-2 email-ic">
+            <i class="fa fa-facebook mr-2"> </i>
+          </a>
+          <a class="pr-2 ig-ic">
+            <i class="fa fa-instagram mr-2"></i>
+          </a>
+        </div>
+
+        <p><%= company.address.city %></p>
+        <p><%= company.bio %></p>
+        
+        <a id="send-msg" class="btn btn-unique btn-rounded btn-md" data-toggle="modal" data-target="#modalDefaultContactForm">Contact</a>
+      </div>
+    </div>
+  </div>
+  
+</div>
+<!-- Author box -->

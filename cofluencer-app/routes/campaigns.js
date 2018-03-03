@@ -6,8 +6,9 @@ const isLoggedIn = require('../helpers/middlewares').isLoggedIn;
 const Company = require('../models/company');
 const Influencer = require('../models/influencer');
 const Campaign = require('../models/campaign');
+const moment = require('moment');
 
-router.get('/', isLoggedIn('/login'), (req, res, next) => {
+router.get('/', isLoggedIn('/'), (req, res, next) => {
   const infoUser = req.user;
   /* eslint-disable */
   const userId = req.user._id;
@@ -15,32 +16,32 @@ router.get('/', isLoggedIn('/login'), (req, res, next) => {
   /* eslint-enable */
   if (userRol === 'companies') {
     Campaign.find({ company_id: userId })
+      .populate('company_id')
       .sort({ updated_at: -1 })
       .exec((err, campaigns) => {
-        console.log('CAMPAIGNS:', campaigns);
-        res.render('campaigns/list', { campaigns, infoUser, layout: 'layouts/profile' });
+        res.render('campaigns/list', { campaigns, infoUser, moment, layout: 'layouts/profile' });
       });
   } else if (userRol === 'influencers') {
     Campaign.find({})
       .populate('company_id')
       .sort({ updated_at: -1 })
       .exec((err, campaigns) => {
-        res.render('campaigns/list', { campaigns, infoUser, layout: 'layouts/profile' });
+        res.render('campaigns/list', { campaigns, infoUser, moment, layout: 'layouts/profile' });
       });
   }
 });
 
-router.get('/new', isLoggedIn('/login'), (req, res, next) => {
+router.get('/new', isLoggedIn('/'), (req, res, next) => {
   const userRol = req.user.collection.collectionName;
   const infoUser = req.user;
   if (userRol === 'companies') {
-    res.render('campaigns/new', { infoUser, layout: 'layouts/profile' });
+    res.render('campaigns/new', { infoUser, moment, layout: 'layouts/profile' });
   } else {
     res.redirect(`/${req.user.username}/campaigns`);
   }
 });
 
-router.post('/', isLoggedIn('/login'), (req, res, next) => {
+router.post('/', isLoggedIn('/'), (req, res, next) => {
   const campaign = {
     /* eslint-disable */
     company_id: req.user._id,
@@ -58,7 +59,7 @@ router.post('/', isLoggedIn('/login'), (req, res, next) => {
   });
 });
 
-router.get('/me', isLoggedIn('/login'), (req, res, next) => {
+router.get('/me', isLoggedIn('/'), (req, res, next) => {
   /* eslint-disable */
   const infoUser = req.user;
   const userId = req.user._id;
@@ -68,13 +69,15 @@ router.get('/me', isLoggedIn('/login'), (req, res, next) => {
     Campaign.find({ influencer_id: userId })
       .sort({ updated_at: -1 })
       .exec((err, campaigns) => {
+        /* eslint-disable */
         if (err) { console.log('err--> ', err); }
-        res.render('campaigns/me', { infoUser, campaigns, layout: 'layouts/profile' });
+        /* eslint-enable */
+        res.render('campaigns/me', { infoUser, campaigns, moment, layout: 'layouts/profile' });
       });
   }
 });
 
-router.get('/:title', isLoggedIn('/login'), (req, res, next) => {
+router.get('/:title', isLoggedIn('/'), (req, res, next) => {
   /* eslint-disable */
   const infoUser = req.user;
   const userId = req.user._id;
@@ -83,18 +86,18 @@ router.get('/:title', isLoggedIn('/login'), (req, res, next) => {
   if (userRol === 'companies') {
     Campaign.find({ company_id: userId })
       .exec((err, campaigns) => {
-        res.render('campaigns/show', { campaigns, infoUser, layout: 'layouts/profile' });
+        res.render('campaigns/show', { campaigns, infoUser, moment, layout: 'layouts/profile' });
       });
   } else if (userRol === 'influencers') {
     Campaign.find({})
       .exec((err, campaigns) => {
-        res.render('campaigns/show', { campaigns, infoUser, layout: 'layouts/profile' });
+        res.render('campaigns/show', { campaigns, infoUser, moment, layout: 'layouts/profile' });
       });
   }
 });
 
 
-router.post('/:_id/follow', isLoggedIn('/login'), (req, res, next) => {
+router.post('/:_id/follow', isLoggedIn('/'), (req, res, next) => {
   /* eslint-disable */
   const userId = req.user._id;
   const userRol = req.user.collection.collectionName;
@@ -110,7 +113,7 @@ router.post('/:_id/follow', isLoggedIn('/login'), (req, res, next) => {
   }
 });
 
-router.post('/:_id/unfollow', isLoggedIn('/login'), (req, res, next) => {
+router.post('/:_id/unfollow', isLoggedIn('/'), (req, res, next) => {
   /* eslint-disable */
   const userId = req.user._id;
   const userRol = req.user.collection.collectionName;
@@ -125,5 +128,6 @@ router.post('/:_id/unfollow', isLoggedIn('/login'), (req, res, next) => {
     res.redirect(`/${req.user.username}/campaigns`);
   }
 });
+
 
 module.exports = router;
