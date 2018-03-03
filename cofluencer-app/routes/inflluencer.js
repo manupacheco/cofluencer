@@ -19,7 +19,6 @@ router.get('/:influencer', isLoggedIn('/'), (req, res, next) => {
       if (err) { next(err); }
       Influencer.findOne({ username: influencerName })
         .exec((error, influencer) => {
-          console.log('INFLUENCER: ', influencer);
           res.render('profile/influencer/show', { infoUser, influencer, userRol, layout: 'layouts/profile' });
         });
     });
