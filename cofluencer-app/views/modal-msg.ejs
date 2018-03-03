@@ -18,12 +18,15 @@
 
         <!-- Default input name -->
         <label for="NameModalEx">Your name</label>
+        <% if (userRol === 'companies') { %>
+        <input type="text" id="NameModalEx" class="form-control form-control-sm" value="<%= infoUser.username %>">
+        <% } else if (userRol === 'influencers') { %>
         <input type="text" id="NameModalEx" class="form-control form-control-sm" value="<%= infoUser.name + ' ' + infoUser.lastname %>">
-
+        <% } %>
         <br>
 
         <!-- Default input email -->
-        <label for="EmailModalEx">Your email</label>
+        <label for="EmailModalEx">Email to</label>
         <input type="text" id="EmailModalEx" class="form-control form-control-sm" value="<%= infoUser.email %>">
 
         <br>
@@ -39,7 +42,7 @@
         <textarea type="text" id="MessageModalEx" class="md-textarea form-control"></textarea>
 
         <div class="text-center mt-4 mb-2">
-          <button class="btn btn-info">Send
+          <button id="send-contact-mail" class="btn btn-info">Send
             <i class="fa fa-send ml-2"></i>
           </button>
         </div>

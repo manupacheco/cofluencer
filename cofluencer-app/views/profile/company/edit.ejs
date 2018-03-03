@@ -1,25 +1,40 @@
-<h1>edit profile <%= infoUser.username %></h1>
+<div class="container">
 
-<a href="/logout">logout</a>
-<a href="/<%= infoUser.username %>">profile</a>
+  <div class="p-5 text-center text-md-left author-box">
+    <!-- Name -->
+    <div class="row">
+      <!-- Avatar -->
+      <div class="col-12 col-md-2 mb-md-0 mb-4">
+        <img src="<%= infoUser.profileImage %>" class="img-fluid rounded-circle z-depth-2 avatar">
+      </div>
+      <!-- Author Data -->
+      <div class="col-12 col-md-10">
 
-<form action="/<%= infoUser.username %>" method="POST">
-  <label for="name">Name</label>
-  <input type="text" id="name" name="name" value="<%= infoUser.name %>">
-  
-  <label for="lastname">Last Name</label>
-  <input type="text" id="lastname" name="lastname" value="<%= infoUser.lastname %>">
+        <form class="edit" action="/<%= infoUser.username %>" method="POST">
 
-  <label for="email">Email</label>
-  <input type="text" name="email" id="email" value="<%= infoUser.email %>">
+          <div class="form-row">
+            <div class="col-3">
+              <input type="text" class="form-control" name="cofluname" placeholder="Username" value="<%=infoUser.username%>">
+            </div>
 
-  Address
-  <label for="city">City</label>
-  <input type="text" name="city" id="city" value="<%= infoUser.address.city %>">
+            <div class="col-3 offset-1">
+              <input type="email" class="form-control" name="email" placeholder="email" value="<%=infoUser.email%>">
+            </div>
 
-  <label for="bio">Bio</label>
-  <textarea type="text" name="bio" id="bio"><%= infoUser.bio %></textarea>
+          </div>
 
-  <button type="submit">Update Profile</button>
+          <div class="form-row">
+            <div class="col-12">
+              <input id="textarea" type="text" class="form-control" name="bio" placeholder="Bio" value="<%= infoUser.bio %>">
+            </div>
+          </div>
 
-</form>
+          <button type="submit" class="btn btn-primary btn-md">Update Profile</button>
+        </form>
+
+
+      </div>
+    </div>
+  </div>
+
+</div>

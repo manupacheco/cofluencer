@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 
 const campaignSchema = new Schema({
   company_id: { type: Schema.Types.ObjectId, ref: 'Company' },
-  influencer_id: [Schema.Types.ObjectId],
+  influencer_id: [{ type: Schema.Types.ObjectId, ref: 'Influencer' }],
   title: String,
   description: String,
   expirationDate: Date,

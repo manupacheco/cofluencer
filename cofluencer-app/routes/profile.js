@@ -26,7 +26,7 @@ router.get('/:username', isLoggedIn('/login'), (req, res, next) => {
     const igUserName = req.user.instagram.username;
     callInstagram(igUserName, (err, iguser) => {
       if (err) {
-        res.render('profile/influencer/main', { layout: 'layouts/profile' }); // flash notification
+        res.render('profile/influencer/main', { userRol, layout: 'layouts/profile' }); // flash notification
       } else {
         Influencer.findByIdAndUpdate(userId, { instagram: iguser }, (errUpdate) => {
           if (errUpdate) { return next(errUpdate); }
@@ -47,7 +47,7 @@ router.get('/:username', isLoggedIn('/login'), (req, res, next) => {
               return next;
             });
           }
-          res.render('profile/influencer/main', { iguser, infoUser, layout: 'layouts/profile' });
+          res.render('profile/influencer/main', { userRol, iguser, infoUser, layout: 'layouts/profile' });
         });
       }
     });
@@ -55,7 +55,7 @@ router.get('/:username', isLoggedIn('/login'), (req, res, next) => {
     Company.findById(userId, (err, company) => {
       if (err) { return next(err); }
       infoUser = company;
-      res.render('profile/company/main', { infoUser, layout: 'layouts/profile' });
+      res.render('profile/company/main', { userRol, infoUser, layout: 'layouts/profile' });
       return next;
     });
   }
@@ -74,7 +74,7 @@ router.get('/:username/edit', isLoggedIn('/login'), (req, res, next) => {
   } else if (userRol === 'companies') {
     Company.findById(userId, (err, infoUser) => {
       if (err) { next(err); }
-      res.render('profile/company/main', { infoUser, layout: 'layouts/profile' });
+      res.render('profile/company/edit', { infoUser, layout: 'layouts/profile' });
     });
   }
 });
@@ -136,13 +136,14 @@ router.post('/:username', isLoggedIn('/login'), (req, res, next) => {
       });
     });
   } else if (userRol === 'companies') {
-    const igUserName = req.body.name;
-    callInstagram(igUserName, (err, iguser) => {
-      if (err) {
-        res.render('profile/company/main', { layout: 'layouts/profile' }); // flash notification
-      } else {
-        res.render('profile/company/main', { iguser, layout: 'layouts/profile' });
-      }
+    const updateCompany = {
+      username: req.body.cofluname,
+      email: req.body.email,
+      bio: req.body.bio,
+    };
+    Company.findByIdAndUpdate(userId, updateCompany, (err, company) => {
+      if (err) { next(err); }
+      res.redirect(`/${updateCompany.username}`);
     });
   }
 });
