@@ -157,5 +157,26 @@ $(document).ready(() => {
         console.log('error:', error);
       }
     });
-  })
+  });
+
+  $('#send-contact-mail').on('click', function () {
+    const mailOptions = {
+      from: 'cofluencer@gmail.com',
+      to: $('#EmailModalEx').val(),
+      subject: $('#SubjectModalEx').val(),
+      text: $('#MessageModalEx').val(),
+    };
+    $.ajax({
+      url: 'http://localhost:3000/email',
+      method: 'POST',
+      data: mailOptions,
+      success: function () {
+        console.log('enviado');
+      }, 
+      error: function (error) {
+        // flash notification usuario no disponible
+        console.log('error:', error);
+      }
+    });
+  });
 });

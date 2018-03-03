@@ -26,7 +26,7 @@ router.get('/:username', isLoggedIn('/login'), (req, res, next) => {
     const igUserName = req.user.instagram.username;
     callInstagram(igUserName, (err, iguser) => {
       if (err) {
-        res.render('profile/influencer/main', { layout: 'layouts/profile' }); // flash notification
+        res.render('profile/influencer/main', { userRol, layout: 'layouts/profile' }); // flash notification
       } else {
         Influencer.findByIdAndUpdate(userId, { instagram: iguser }, (errUpdate) => {
           if (errUpdate) { return next(errUpdate); }
@@ -35,14 +35,14 @@ router.get('/:username', isLoggedIn('/login'), (req, res, next) => {
         const igUserId = iguser.id;
         updateProfilePic(igUserId, (errPic, picUrl) => {
           if (err) {
-            res.render('profile/influencer/main', { layout: 'layouts/profile' }); // flash notification
+            res.render('profile/influencer/main', { userRol, layout: 'layouts/profile' }); // flash notification
           } else {
             Influencer.findByIdAndUpdate(userId, { profileImage: picUrl }, (errUpdate) => {
               if (errUpdate) { return next(errUpdate); }
               return next;
             });
           }
-          res.render('profile/influencer/main', { iguser, infoUser, layout: 'layouts/profile' });
+          res.render('profile/influencer/main', { userRol, iguser, infoUser, layout: 'layouts/profile' });
         });
       }
     });
@@ -50,7 +50,7 @@ router.get('/:username', isLoggedIn('/login'), (req, res, next) => {
     Company.findById(userId, (err, company) => {
       if (err) { return next(err); }
       infoUser = company;
-      res.render('profile/company/main', { infoUser, layout: 'layouts/profile' });
+      res.render('profile/company/main', { userRol, infoUser, layout: 'layouts/profile' });
       return next;
     });
   }

@@ -19,14 +19,14 @@ router.get('/', isLoggedIn('/login'), (req, res, next) => {
       .sort({ updated_at: -1 })
       .exec((err, campaigns) => {
         console.log('CAMPAIGNS:', campaigns);
-        res.render('campaigns/list', { campaigns, infoUser, layout: 'layouts/profile' });
+        res.render('campaigns/list', { campaigns, infoUser, userRol, layout: 'layouts/profile' });
       });
   } else if (userRol === 'influencers') {
     Campaign.find({})
       .populate('company_id')
       .sort({ updated_at: -1 })
       .exec((err, campaigns) => {
-        res.render('campaigns/list', { campaigns, infoUser, layout: 'layouts/profile' });
+        res.render('campaigns/list', { campaigns, infoUser, userRol, layout: 'layouts/profile' });
       });
   }
 });
