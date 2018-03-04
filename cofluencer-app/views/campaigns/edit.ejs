@@ -1,13 +1,10 @@
 <div class="container">
   <!--Section: Blog v.2-->
   <section class="text-center py-4">
-  
     <!--Section heading-->
     <h1 class="h1 font-weight-bold text-center mb-5 pt-4"></h1>
-  
     <!--Grid row-->
     <div class="row">
-  
       <!--Grid column-->
       <div class="col-lg-4 col-md-4 col-sm-12">
         <!--Featured image-->
@@ -17,17 +14,13 @@
             <div class="mask rgba-white-slight"></div>
           </a>
         </div>
-
       </div>
-
       <div class="col-lg-8 col-md-8 col-sm-12 text-left">
-
         <form class="edit" action="/<%= infoUser.username %>/campaigns/<%=campaign.title%>/edit" method="POST">
-
           <div class="form-row">
             <div class="form-group col-4">
               <select class="form-control" name="category" id="categoryOption">
-                <option value="">select one category</option>
+                <option value="">Select one category</option>
                 <option value="">Adventure</option>
                 <option value="">Fashion</option>
                 <option value="">Food</option>
@@ -35,38 +28,27 @@
                 <option value="">Healthy</option>
               </select>
             </div>
-
             <div class="col-4 offset-md-1">
               <input name="date" type="date" value="" placeholder="Event Date">
             </div> 
           </div>
-
           <div class="form-row">
             <div class="col-9">
               <input type="text" id="title" class="form-control" name="title" placeholder="Campaign title" value="<%=campaign.title%>">
             </div>
           </div>
-
-          
-
           <div class="form-row form-group">
             <div class="form-group col-9">
               <textarea name="description" class="form-control" id="description" rows="10" value="<%=campaign.description%>" placeholder="<%=campaign.description%>"></textarea>
             </div>
           </div>
-
-          <button type="submit" class="btn btn-primary btn-md">Update Campaign</button>
-          
-          <a href="/<%= infoUser.username %>/campaigns/<%=campaign.title%>/delete">
+          <button type="submit" class="btn btn-author">Update Campaign</button>
+          <a class="btn btn-author" href="/<%= infoUser.username %>/campaigns/<%=campaign.title%>/delete">
             Delete campaign
           </a>
-          
+          <a href="/<%= infoUser.username %>/campaigns" class="btn btn-author">Cancel</a>
         </form>
-
-
-
       </div>
-  
     </div>
   </section>
 </div>

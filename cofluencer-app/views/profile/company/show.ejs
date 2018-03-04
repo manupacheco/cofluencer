@@ -36,10 +36,14 @@
         <p><%= company.address.city %></p>
         <p><%= company.bio %></p>
         
-        <a id="send-msg" class="btn btn-unique btn-rounded btn-md" data-toggle="modal" data-target="#modalDefaultContactForm">Contact</a>
+          <a id="send-msg" class="btn btn-author" data-toggle="modal" data-target="#modalDefaultContactForm">
+            <i class="fa fa-send icon-campaign pr-2"></i>Contact
+          </a>
       </div>
     </div>
   </div>
   
+  
 </div>
 <!-- Author box -->
+<%- include ../../modal-msg.ejs %>

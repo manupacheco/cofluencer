@@ -1,44 +1,102 @@
 <div class="container">
-  <!--Section: Blog v.2-->
-  <section class="text-center py-4">
-  
-    <!--Section heading-->
-    <h1 class="h1 font-weight-bold text-center mb-5 pt-4"></h1>
-  
-    <!--Grid row-->
-    <div class="row">
-  
-      <!--Grid column-->
-      <div class="col-lg-12 col-md-12 mb-4">
-        <!--Featured image-->
-        <div class="view overlay rounded z-depth-2 mb-2">
-          <img src="https://mdbootstrap.com/img/Photos/Others/images/81.jpg" class="img-fluid" alt="First sample image">
-          <a>
-            <div class="mask rgba-white-slight"></div>
-          </a>
+<li><div class="row">
+  <!--Grid column-->
+  <div class="col-lg-5 col-xl-4 mb-4">
+    <!--Featured image-->
+    <div class="overlay rounded z-depth-1-half">
+      <a href="/<%= infoUser.username %>/campaigns/<%= campaign.title %>">
+        <img src="https://mdbootstrap.com/img/Photos/Others/images/12.jpg" class="img-fluid" alt="First sample image">
+        <div class="mask rgba-white-slight">
+
         </div>
-  
-        <!--Excerpt-->
-        <a href="" class="pink-text">
-          <h6 class="mb-3 mt-4">
-            <i class="fa fa-map "></i>
-            <strong> Adventure</strong>
-          </h6>
-        </a>
-        <h4 class="mb-3 font-weight-bold dark-grey-text">
-          <strong>This is title of the news</strong>
-        </h4>
-        <p>by
-          <a class="font-weight-bold dark-grey-text">user here</a>, 15/07/2018</p>
-        <p class="grey-text">Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere
-          possimus voluptas.</p>
-        <a id="send-msg" class="btn btn-blue btn-rounded btn-md" data-toggle="modal" data-target="#modalDefaultContactForm">Contact</a>
-      </div>
-      <!--Grid column-->  
+      </a>
     </div>
-    <!--Grid row-->
-  
-  </section>
-  <!--Section: Blog v.2-->
-  <%- include ../modal-msg.ejs %>
+  </div>
+  <!--Grid column-->
+  <!--Grid column-->
+  <div class="col-lg-7 col-xl-7 ml-xl-4 mb-4">
+    <h3 class="mb-3 font-weight-bold dark-grey-text">
+      <strong>
+        <%= campaign.title %>
+      </strong>
+    </h3>
+    <p class="grey-text">
+      <%= campaign.description %>
+    </p>
+    <!-- <p><%= campaign.state %></p> -->
+    <p>by
+      <a href="/<%=infoUser.username%>/company/<%=campaign.company_id.username%>" class="font-weight-bold dark-grey-text">
+        <%=campaign.company_id.username%>
+      </a>,
+      <%=moment(campaign.updated_at).format('l')%>
+    </p>
+    <!-- button function -->
+    <% if (userRol === 'companies') { %>
+      <a href="/<%= infoUser.username %>/campaigns/<%=campaign.title%>/edit" class="btn btn-author">
+        Edit campaign
+      </a>
+      <% } else if (userRol === 'influencers') { 
+        if (campaign.influencer_id == null) { %>
+        <a class="btn btn-author" id="follow" value="<%= campaign._id %>" user="<%= infoUser.username %>">
+          Check in!
+        </a>
+        <% } else if (campaign.influencer_id.indexOf(infoUser._id) === -1 ) { %>
+          <a class="btn btn-author" id="follow" value="<%= campaign._id %>" user="<%= infoUser.username %>">
+            Check in!
+          </a>
+          <% } else { %>
+            <a class="btn btn-author" id="unfollow" value="<%= campaign._id %>" user="<%= infoUser.username %>">
+              Check out!
+            </a>
+            <% } %>
+          <a id="send-msg" class="btn btn-author" data-toggle="modal" data-target="#modalDefaultContactForm">Contact</a>
+          <% } %>
+  </div>
+  <!--Grid column-->
 </div>
+<!--Grid row-->
+<hr class="mb-5">
+<% if (userRol === 'companies') { %>
+<section class="team-section pb-4">
+  <!--Section heading-->
+  <% if (campaign.influencer_id.length === 0) { %>
+  <h2 class="h1 text-center py-5">There are not interested Influencers!</h2>
+  <% } else { %>
+  <h2 class="h1 text-center py-5">Interested Influencers in your campaign!</h2>
+  <% } %>
+  <!--Section description-->
+  <p class="grey-text pb-5 text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet numquam iure provident voluptate esse quasi,
+    veritatis totam voluptas nostrum quisquam eum porro a pariatur accusamus veniam.</p>
+  <!--Grid row-->
+  
+  <div class="row mb-lg-4 text-center text-md-left">
+    <!--Grid column-->
+    <div class="col-lg-12 col-md-12 mb-4">
+    <% campaign.influencer_id.forEach((influencer, index) => { %>
+      <div class="col-md-3 float-left">
+        <div class="avatar mx-auto">
+          <img src="<%= influencer.profileImage %>" class="rounded img-fluid z-depth-1">
+        </div>
+      </div>
+      
+      <div class="col-md-8 float-right">
+        <h4>
+          <strong><%= influencer.name %> <%= influencer.lastname%></strong>
+          <a class="pr-2 ig-ic email-link" href="https://www.instagram.com/<%=influencer.instagram.username%>" target="_blank">
+            <i class="fa fa-instagram mr-2"></i>
+          </a>
+        </h4>
+        <h6 class="font-weight-bold grey-text mb-4"><%= influencer.username %></h6>
+        <p class="grey-text"><%= influencer.bio %></p>
+        <a class="btn btn-author" href="/<%=infoUser.username%>/influencer/<%=influencer.username%>">view profile</a>
+        
+      </div>
+    </div>
+    <!--Grid column-->
+  </div>
+  <% }); %>
+  <!--Grid row-->
+</section>
+<% } %>
+</li></div>
+<%- include ../modal-msg.ejs %>

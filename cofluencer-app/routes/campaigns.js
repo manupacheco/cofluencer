@@ -83,19 +83,21 @@ router.get('/:title', isLoggedIn('/'), (req, res, next) => {
   /* eslint-disable */
   const infoUser = req.user;
   const userId = req.user._id;
+  const campaignTitle = req.params.title;
   const userRol = req.user.collection.collectionName;
   /* eslint-enable */
   if (userRol === 'companies') {
-    Campaign.find({ company_id: userId })
+    Campaign.findOne({ title: campaignTitle })
       .populate('company_id')
-      .exec((err, campaigns) => {
-        res.render('campaigns/show', { campaigns, infoUser, moment, userRol, layout: 'layouts/profile' });
+      .populate('influencer_id')
+      .exec((err, campaign) => {
+        res.render('campaigns/show', { campaign, infoUser, moment, userRol, layout: 'layouts/profile' });
       });
   } else if (userRol === 'influencers') {
-    Campaign.find({})
+    Campaign.findOne({ title: campaignTitle })
       .populate('company_id')
-      .exec((err, campaigns) => {
-        res.render('campaigns/show', { campaigns, infoUser, moment, userRol, layout: 'layouts/profile' });
+      .exec((err, campaign) => {
+        res.render('campaigns/show', { campaign, infoUser, moment, userRol, layout: 'layouts/profile' });
       });
   }
 });

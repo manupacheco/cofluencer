@@ -1,18 +1,51 @@
-<h1>Create Campaign</h1>
-
-<a href="/logout">logout</a>
-<a href="/<%= infoUser.username %>">profile</a>
-<a href="/<%= infoUser.username %>/campaigns">campaigns</a>
-
-<form action="/<%= infoUser.username %>/campaigns" method="POST">
-  <label for="title">Title</label>
-  <input type="text" id="title" name="title">
-
-    <label for="state">State</label>
-    <input type="text" id="state" name="state">
-
-  <label for="description">Description</label>
-  <textarea type="text" name="description" id="description"></textarea>
-
-  <button type="submit">Create Campaign</button>
-</form>
+<div class="container">
+    <!--Section: Blog v.2-->
+    <section class="text-center py-4">
+      <!--Section heading-->
+      <h1 class="font-weight-bold dark-grey-text mb-3">Create Campaign</h1>
+      <!--Grid row-->
+    <div class="row">
+      <!--Grid column-->
+      <div class="col-lg-4 col-md-4 col-sm-12">
+        <!--Featured image-->
+        <div class="view overlay rounded z-depth-2 mb-2 img-edit-campaign">
+          <img src="https://mdbootstrap.com/img/Photos/Others/images/84.jpg" class="img-fluid" alt="First sample image">
+          <a>
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-8 col-md-8 col-sm-12 text-left">
+        <form class="edit" action="/<%= infoUser.username %>/campaigns" method="POST">
+          <div class="form-row">
+            <div class="form-group col-4">
+              <select class="form-control" name="category" id="categoryOption">
+                <option value="">Select one category</option>
+                <option value="">Adventure</option>
+                <option value="">Fashion</option>
+                <option value="">Food</option>
+                <option value="">Gamer</option>
+                <option value="">Healthy</option>
+              </select>
+            </div>
+            <div class="col-4 offset-md-1">
+              <input name="date" type="date" value="" placeholder="Event Date">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-9">
+              <input type="text" id="title" class="form-control" name="title" placeholder="Campaign title">
+            </div>
+          </div>
+          <div class="form-row form-group">
+            <div class="form-group col-9">
+              <textarea name="description" class="form-control" id="description" rows="10" placeholder="Add description"></textarea>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-author">Create Campaign</button>
+          <a href="/<%= infoUser.username %>" class="btn btn-author">Cancel</a>
+        </form>
+      </div>
+    </div>
+  </section>
+</div>
