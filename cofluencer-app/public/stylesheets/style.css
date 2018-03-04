@@ -526,7 +526,7 @@ label::after {
   margin: 20px 0;
 }
 
-.validate-user-section {
+.body-bg {
   background-image: url('/img/header-bg.png');
   background-position: center;
   background-size: cover;

@@ -43,7 +43,88 @@
     </div>
   </div>
   
+  <section class="py-4">
   
+    <!--Section heading-->
+    <% if (userRol === 'companies') { %>
+      <h2 class="font-weight-bold dark-grey-text mb-3">MY CAMPAIGNS</h2>
+      <% } else if (userRol === 'influencers') { %>
+        <h2 class="font-weight-bold dark-grey-text mb-3"><%= company.username %> Campaigns</h2>
+        <% } %>
+          <!--Section description-->
+          <p class="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc suscipit venenatis tellus a rutrum. Donec blandit finibus
+            quam, in porta lacus aliquet a. Integer mattis ligula et lectus interdum porta. Sed consectetur dapibus euismod.
+            Morbi in ornare magna. Morbi pellentesque neque sed neque tempus, in interdum tellus vulputate. Donec ultricies
+            augue in maximus vulputate. Sed sollicitudin tortor lacus, et consequat ligula tempus sit amet. Ut in convallis
+            justo, ut tempor ipsum. Pellentesque sit amet semper urna. Mauris in est orci. Vivamus nec est tellus.</p>
+          <br>
+          <ul>
+            <% campaigns.forEach((campaign, index) => { %>
+              <li>
+                <!--Grid row-->
+                <div class="row">
+  
+                  <!--Grid column-->
+                  <div class="col-lg-5 col-xl-4 mb-4">
+                    <!--Featured image-->
+                    <div class="overlay rounded z-depth-1-half">
+                      <a href="/<%= infoUser.username %>/campaigns/<%= campaign.title %>">
+                        <img src="https://mdbootstrap.com/img/Photos/Others/images/48.jpg" class="img-fluid" alt="First sample image">
+                        <div class="mask rgba-white-slight">
+  
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                  <!--Grid column-->
+  
+                  <!--Grid column-->
+                  <div class="col-lg-7 col-xl-7 ml-xl-4 mb-4">
+                    <h3 class="mb-3 font-weight-bold dark-grey-text">
+                      <strong>
+                        <%= campaign.title %>
+                      </strong>
+                    </h3>
+                    <p class="grey-text">
+                      <%= campaign.description %>
+                    </p>
+                    <!-- <p><%= campaign.state %></p> -->
+                    <p>by
+                      <a href="/<%=infoUser.username%>/company/<%=campaign.company_id.username%>" class="font-weight-bold dark-grey-text">
+                        <%=campaign.company_id.username%>
+                      </a>,
+                      <%=moment(campaign.updated_at).format('l')%>
+                    </p>
+                    <!-- button function -->
+                    <% if (userRol === 'companies') { %>
+                      <a href="/<%= infoUser.username %>/campaigns/<%=campaign.title%>/edit" class="btn btn-author">
+                        Edit campaign
+                      </a>
+                      <% } else if (userRol === 'influencers') { 
+               if (campaign.influencer_id == null) { %>
+                        <a class="btn btn-author" id="follow" value="<%= campaign._id %>" user="<%= infoUser.username %>">
+                          Check in!
+                        </a>
+                        <% } else if (campaign.influencer_id.indexOf(infoUser._id) === -1 ) { %>
+                          <a class="btn btn-author" id="follow" value="<%= campaign._id %>" user="<%= infoUser.username %>">
+                            Check in!
+                          </a>
+                          <% } else { %>
+                            <a class="btn btn-author" id="unfollow" value="<%= campaign._id %>" user="<%= infoUser.username %>">
+                              Check out!
+                            </a>
+                            <% } %>
+                              <% } %>
+                                <a class="btn btn-author" href="/<%= infoUser.username %>/campaigns/<%= campaign.title %>">Show campaign</a>
+                  </div>
+                  <!--Grid column-->
+                </div>
+                <!--Grid row-->
+                <hr class="mb-5">
+              </li>
+              <% }) %>
+          </ul>
+  </section>
 </div>
 <!-- Author box -->
 <%- include ../../modal-msg.ejs %>
