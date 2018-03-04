@@ -17,6 +17,7 @@ router.get('/', isLoggedIn('/'), (req, res, next) => {
   if (userRol === 'companies') {
     Campaign.find({ company_id: userId })
       .populate('company_id')
+      .populate('influencer_id')
       .sort({ updated_at: -1 })
       .exec((err, campaigns) => {
         res.render('campaigns/list', { campaigns, infoUser, moment, userRol, layout: 'layouts/profile' });
@@ -35,7 +36,7 @@ router.get('/new', isLoggedIn('/'), (req, res, next) => {
   const userRol = req.user.collection.collectionName;
   const infoUser = req.user;
   if (userRol === 'companies') {
-    res.render('campaigns/new', { infoUser, moment, layout: 'layouts/profile' });
+    res.render('campaigns/new', { infoUser, userRol, moment, layout: 'layouts/profile' });
   } else {
     res.redirect(`/${req.user.username}/campaigns`);
   }

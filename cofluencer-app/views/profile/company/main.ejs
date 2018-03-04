@@ -1,13 +1,11 @@
 <div class="container">
-  <a href="/<%= infoUser.username %>/campaigns">campaigns</a>
-  <a href="/<%= infoUser.username %>/campaigns/new">new campaign</a>
 
   <div class="p-5 text-center text-md-left author-box">
     <!-- Name -->
     <div class="row">
       <!-- Avatar -->
       <div class="col-12 col-md-2 mb-md-0 mb-4">
-        <img src="<%= infoUser.profileImage %>" class="img-fluid rounded-circle z-depth-2 avatar">
+        <img src="/img/company-profile.png" class="img-fluid rounded-circle z-depth-2 avatar">
       </div>
       <!-- Author Data -->
       <div class="col-12 col-md-10">
@@ -19,12 +17,6 @@
                 <%= infoUser.username %>
               </strong>
             </h5>
-          </div>
-
-          <div class="col-4 text-right">
-            <p class="edit-author">
-              <a class="edit-link" href="/<%= infoUser.username %>/edit">Edit profile</a>
-            </p>
           </div>
 
         </div>
@@ -48,15 +40,22 @@
         <div>
           <a href="/<%= infoUser.username %>/campaigns">
             <button type="button" class="btn btn-author">
-              <i class="fa fa-mobile icon-mycampaign pr-2"></i>My campaigns</button>
+              <i class="fa fa-bullhorn icon-campaign pr-2"></i>My campaigns
+            </button>
           </a>
-          <a id="send-msg" class="btn btn-author" data-toggle="modal" data-target="#modalDefaultContactForm"><i class="fa fa-send icon-campaign pr-2"></i>Contact</a>
+          <a href="/<%= infoUser.username %>/campaigns/new">
+            <button type="button" class="btn btn-author">
+              <i class="fa fa-plus icon-campaign pr-2"></i>Create campaign
+            </button>
+          </a>
+          <a href="/<%= infoUser.username %>/edit">
+            <button type="button" class="btn btn-author">
+              <i class="fa fa-edit icon-campaign pr-2"></i>Edit Profile
+            </button>
+          </a>
         </div>
       </div>
     </div>
   </div>
-  <%- include ../../modal-msg.ejs %>
-  <%- contentFor('img-avatar') %>
-  <img src="" alt="avatar-<%=infoUser.username%>" class="img-avatar">
 </div>
         
