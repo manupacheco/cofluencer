@@ -208,6 +208,7 @@ li {
 
 footer {
   width: 100%;
+  
 }
 
 .footer-copyright {
@@ -515,7 +516,6 @@ label::after {
 .section-validate {
   display: flex;
   flex-direction: column;
-  height: 600px;
 }
 
 .validate-user-section {
@@ -526,7 +526,7 @@ label::after {
   margin: 20px 0;
 }
 
-.validate-user-section {
+.body-bg {
   background-image: url('/img/header-bg.png');
   background-position: center;
   background-size: cover;
@@ -549,3 +549,13 @@ label::after {
   rgba(136, 14, 79, 1),
   rgba(11, 135, 147, 1));
 }
+
+.grid .fa-heart {
+  font-size: 1em;
+}
+
+#user-info {
+  margin-bottom: 100px;
+}
+
+/* Style for modal contact */
