@@ -133,5 +133,55 @@ router.post('/:_id/unfollow', isLoggedIn('/'), (req, res, next) => {
   }
 });
 
+router.get('/:campaignTitle/edit', isLoggedIn('/login'), (req, res, next) => {
+  /* eslint-disable */
+  const infoUser = req.user;
+  const userId = req.user._id;
+  const userRol = req.user.collection.collectionName;
+  const campaignTitle = req.params.campaignTitle;
+  /* eslint-enable */
+  if (userRol === 'companies') {
+    Campaign.findOne({ title: campaignTitle })
+      .exec((err, campaign) => {
+        res.render('campaigns/edit', { campaign, infoUser, moment, userRol, layout: 'layouts/profile' });
+      });
+  }
+});
+
+router.post('/:campaignTitle/edit', isLoggedIn('/'), (req, res, next) => {
+  /* eslint-disable */
+  const infoUser = req.user;
+  const userId = req.user._id;
+  const userRol = req.user.collection.collectionName;
+  const campaignTitle = req.params.campaignTitle;
+  /* eslint-enable */
+  if (userRol === 'companies') {
+    const updateCampaign = {
+      title: req.body.title,
+      description: req.body.description,
+    };
+    Campaign.findOne({ title: campaignTitle })
+      .exec((err, campaign) => {
+        Campaign.findByIdAndUpdate(campaign, updateCampaign, (error, campaignUpdated) => {
+          if (err) {
+            next(err);
+          } else {
+            res.redirect(`/${infoUser.username}/campaigns`);
+          }
+        });
+      });
+  }
+});
+
+router.get('/:campaignTitle/delete', isLoggedIn('/'), (req, res, next) => {
+  /* eslint-disable */
+  const infoUser = req.user;
+  const campaignTitle = req.params.campaignTitle;
+  /* eslint-enable */
+  Campaign.findOneAndRemove({ title: campaignTitle }, (err, result) => {
+    if (err) { next(err); }
+    res.redirect(`/${infoUser.username}/campaigns`);
+  });
+});
 
 module.exports = router;

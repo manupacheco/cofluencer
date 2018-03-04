@@ -41,7 +41,7 @@
               </p>
               <p>by
                 <a href="/<%=infoUser.username%>/company/<%=campaign.company_id.username%>" class="font-weight-bold dark-grey-text"><%=campaign.company_id.username%></a>,
-                <%=moment(campaign.created_at).format('l')%>
+                <%=moment(campaign.updated_at).format('l')%>
               </p>
               <!-- button function -->
               <% let influencers = campaign.influencer_id 

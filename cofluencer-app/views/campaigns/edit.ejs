@@ -1,0 +1,72 @@
+<div class="container">
+  <!--Section: Blog v.2-->
+  <section class="text-center py-4">
+  
+    <!--Section heading-->
+    <h1 class="h1 font-weight-bold text-center mb-5 pt-4"></h1>
+  
+    <!--Grid row-->
+    <div class="row">
+  
+      <!--Grid column-->
+      <div class="col-lg-4 col-md-4 col-sm-12">
+        <!--Featured image-->
+        <div class="view overlay rounded z-depth-2 mb-2 img-edit-campaign">
+          <img src="https://mdbootstrap.com/img/Photos/Others/images/81.jpg" class="img-fluid" alt="First sample image">
+          <a>
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+
+      </div>
+
+      <div class="col-lg-8 col-md-8 col-sm-12 text-left">
+
+        <form class="edit" action="/<%= infoUser.username %>/campaigns/<%=campaign.title%>/edit" method="POST">
+
+          <div class="form-row">
+            <div class="form-group col-4">
+              <select class="form-control" name="category" id="categoryOption">
+                <option value="">select one category</option>
+                <option value="">Adventure</option>
+                <option value="">Fashion</option>
+                <option value="">Food</option>
+                <option value="">Gamer</option>
+                <option value="">Healthy</option>
+              </select>
+            </div>
+
+            <div class="col-4 offset-md-1">
+              <input name="date" type="date" value="" placeholder="Event Date">
+            </div> 
+          </div>
+
+          <div class="form-row">
+            <div class="col-9">
+              <input type="text" id="title" class="form-control" name="title" placeholder="Campaign title" value="<%=campaign.title%>">
+            </div>
+          </div>
+
+          
+
+          <div class="form-row form-group">
+            <div class="form-group col-9">
+              <textarea name="description" class="form-control" id="description" rows="10" value="<%=campaign.description%>" placeholder="<%=campaign.description%>"></textarea>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-md">Update Campaign</button>
+          
+          <a href="/<%= infoUser.username %>/campaigns/<%=campaign.title%>/delete">
+            Delete campaign
+          </a>
+          
+        </form>
+
+
+
+      </div>
+  
+    </div>
+  </section>
+</div>

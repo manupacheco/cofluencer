@@ -495,3 +495,9 @@ label::after {
 #how-it-works {
   height: 600px;
 }
+
+/* Style for edit campaign */
+
+.img-edit-campaign {
+  margin-top: 0;
+}

@@ -3,7 +3,11 @@
 <section class="py-4">
 
   <!--Section heading-->
-  <h2 class="h1 text-center mb-5">Available Campaigns</h2>
+  <% if (userRol === 'companies') { %>
+    <h2 class="h1 text-center mb-5">My Campaigns</h2>
+  <% } else if (userRol === 'influencers') { %>
+    <h2 class="h1 text-center mb-5">Available Campaigns</h2>
+  <% } %>
   <!--Section description-->
   <p class="text-center mb-5 pb-5">Text here?¿?</p>
 
@@ -36,11 +40,11 @@
             <p><%= campaign.state %></p>
             <p>by
               <a href="/<%=infoUser.username%>/company/<%=campaign.company_id.username%>" class="font-weight-bold dark-grey-text"><%=campaign.company_id.username%></a>,
-              <%=moment(campaign.created_at).format('l')%>
+              <%=moment(campaign.updated_at).format('l')%>
             </p>
             <!-- button function -->
             <% if (userRol === 'companies') { %>
-              <a class="btn btn-primary btn-md">
+              <a href="/<%= infoUser.username %>/campaigns/<%=campaign.title%>/edit" class="btn btn-primary btn-md">
                 Edit campaign
               </a>
             <% } else if (userRol === 'influencers') { 
