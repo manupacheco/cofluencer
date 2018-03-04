@@ -39,7 +39,7 @@ router.get('/validate', isLoggedIn('/'), (req, res, next) => {
   const userRol = req.user.collection.collectionName;
   if (userRol === 'influencers') {
     if (req.user.instagram.username == null) {
-      res.render('auth/login_instagram');
+      res.render('auth/login_instagram', { layout: 'layouts/clean' });
     } else {
       res.redirect(`/${req.user.username}`);
     }
