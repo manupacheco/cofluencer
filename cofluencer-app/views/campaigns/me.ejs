@@ -2,12 +2,13 @@
   <!--Section: Blog v.3-->
   <section class="py-4">
 
-    <!--Section heading-->
-    <h2 class="h1 text-center mb-5">My Campaigns</h2>
-    <!--Section description-->
-    <p class="text-center mb-5 pb-5">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-      occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
+  <!--Section heading-->
+  <h2 class="font-weight-bold dark-grey-text mb-3">MY CAMPAIGNS</h2>
+  <!--Section description-->
+  <p class="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc suscipit venenatis tellus a rutrum. Donec blandit finibus quam,
+    in porta lacus aliquet a. Integer mattis ligula et lectus interdum porta. Sed consectetur dapibus euismod. Morbi in ornare
+    magna. Morbi pellentesque neque sed neque tempus, in interdum tellus vulputate.</p>
+  <br>
     <ul>
       <% campaigns.forEach((campaign) => { %>
         <li>
@@ -37,30 +38,33 @@
                 <%= campaign.description %>
               </p>
               <p>
-                <%= campaign.state %>
+                <!-- <%= campaign.state %> -->
               </p>
               <p>by
                 <a href="/<%=infoUser.username%>/company/<%=campaign.company_id.username%>" class="font-weight-bold dark-grey-text"><%=campaign.company_id.username%></a>,
                 <%=moment(campaign.updated_at).format('l')%>
               </p>
-              <!-- button function -->
-              <% let influencers = campaign.influencer_id 
-               let status
-               let buttonText %>
-                <% if (influencers == null) {
-              buttonText = 'Check in!';
-              status = 'follow';
-            } else if (influencers.indexOf(infoUser._id) === -1 ) {
-                status = 'follow';
-                buttonText = 'Check in!';
-              } else {
-                status = 'unfollow';
-                buttonText = 'Check out!';
-              }%>
-                  <a href="/<%= infoUser.username %>/campaigns/<%= campaign.title %>">Show campaign</a>
-                  <a class="btn btn-primary btn-md" id="<%= status %>" value="<%= campaign._id %>" user="<%= infoUser.username %>">
-                    <%= buttonText %>
-                  </a>
+            <!-- button function -->
+            <% if (userRol === 'companies') { %>
+              <a class="btn btn-author">
+                Edit campaign
+              </a>
+            <% } else if (userRol === 'influencers') { 
+             if (campaign.influencer_id == null) { %>
+              <a class="btn btn-author" id="follow" value="<%= campaign._id %>" user="<%= infoUser.username %>">
+              Check in!
+              </a>
+            <% } else if (campaign.influencer_id.indexOf(infoUser._id) === -1 ) { %>
+              <a class="btn btn-author" id="follow" value="<%= campaign._id %>" user="<%= infoUser.username %>">
+              Check in!
+              </a>
+              <% } else { %>
+            <a class="btn btn-author" id="unfollow" value="<%= campaign._id %>" user="<%= infoUser.username %>">
+              Check out!
+            </a>
+              <% } %>
+            <% } %>
+            <a class="btn btn-author" href="/<%= infoUser.username %>/campaigns/<%= campaign.title %>">Show campaign</a>
             </div>
             <!--Grid column-->
           </div>
