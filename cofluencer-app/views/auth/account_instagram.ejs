@@ -1,43 +1,53 @@
-<p>You are sure this is your account??</p>
-<button id="add-instagram-account" user="">Save Instagram Account</button>
-<div class="grid">
-  <% if( typeof(iguser) != 'undefined') { %>
-    <% for(var i = 0; i <= 8; i++) { %>
+<div class="container">
 
-      <div class="item">
+  <p>You are sure this is your account??</p>
 
-        <div class="content img-container overlay rounded z-depth-2">
+  <button id="add-instagram-account" user="">Save Instagram Account</button>
 
-          <img class="img-fluid" src="<%=iguser.media.data[i].media_url%>" alt="instagram-image-<%=i%>">
-          <a href="#">
+  <div class="grid">
+    
+    <% if( typeof(iguser) != 'undefined') { %>
+      
+      <% for(var i = 0; i <= 8; i++) { %>
 
-            <div class="after">
+        <div class="item">
 
-              <div class="positioner">
+          <div class="content img-container overlay rounded z-depth-2">
 
-                <span class="icon">
-                  <i class="fa fa-heart">
-                    <span class="icon-data">
-                      <%=iguser.media.data[i].like_count%>
-                    </span>
-                  </i>
-                </span>
-                <span class="icon">
-                  <i class="fa fa-comment">
-                    <span class="icon-data">
-                      <%=iguser.media.data[i].comments_count%>
-                    </span>
-                  </i>
-                </span>
+            <img class="img-fluid" src="<%=iguser.media.data[i].media_url%>" alt="instagram-image-<%=i%>">
+
+            <a href="#">
+
+              <div class="after">
+
+                <div class="positioner">
+
+                  <span class="icon">
+                    <i class="fa fa-heart">
+                      <span class="icon-data">
+                        <%=iguser.media.data[i].like_count%>
+                      </span>
+                    </i>
+                  </span>
+
+                  <span class="icon">
+                    <i class="fa fa-comment">
+                      <span class="icon-data">
+                        <%=iguser.media.data[i].comments_count%>
+                      </span>
+                    </i>
+                  </span>
+
+                </div>
 
               </div>
 
-            </div>
+            </a>
 
-          </a>
+          </div>
+
         </div>
 
-      </div>
-
       <% } %>
-        <% } %>
+    <% } %>
+</div>

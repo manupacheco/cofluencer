@@ -501,3 +501,51 @@ label::after {
 .img-edit-campaign {
   margin-top: 0;
 }
+
+/* Style for instagram validate user */
+
+.logo-dark {
+  font-family: 'Lobster',
+  cursive;
+  font-size: 1.5em;
+  align-self: auto;
+  color: #032426;
+}
+
+.section-validate {
+  display: flex;
+  flex-direction: column;
+  height: 600px;
+}
+
+.validate-user-section {
+  padding-top: 50px;
+}
+
+.section-validate .row, .section-validate .form-row {
+  margin: 20px 0;
+}
+
+.validate-user-section {
+  background-image: url('/img/header-bg.png');
+  background-position: center;
+  background-size: cover;
+}
+
+.btn-colorful {
+  color: rgba(240, 240, 240, 0.8) !important;
+  font-size: 14px;
+  text-transform: capitalize;
+  padding: 10px 25px;
+  border-radius: 4px;
+  border: none;
+  background: linear-gradient(270deg,
+  rgba(136, 14, 79, 0.8),
+  rgba(11, 135, 147, 0.8));
+}
+
+.btn-colorful:hover {
+  background: linear-gradient(270deg,
+  rgba(136, 14, 79, 1),
+  rgba(11, 135, 147, 1));
+}
