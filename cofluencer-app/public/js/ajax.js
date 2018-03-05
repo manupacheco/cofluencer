@@ -47,7 +47,7 @@ $(document).ready(() => {
         console.log(instagram_user);
         const iguser = instagram_user;
         $('#user-info').html(`
-          <div class="section-title">
+          <div class="section-title row justify-content-center">
             <div class="social-network-column">
               <ul class="social-data">
                 <li class="social-data-item"><span class="span">@</span>${iguser.username}</li>

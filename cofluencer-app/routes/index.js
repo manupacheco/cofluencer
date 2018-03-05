@@ -3,7 +3,6 @@ const router = express.Router();
 const nodemailer = require('nodemailer');
 /* eslint-disable */
 const isLoggedIn = require('../helpers/middlewares').isLoggedIn;
-const EmailCtrl = require('../helpers/mail-controller').sendEmail;
 /* eslint-enable */
 
 /* GET home page. */

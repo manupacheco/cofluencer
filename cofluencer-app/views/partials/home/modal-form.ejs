@@ -6,69 +6,69 @@
   </button>
 
   <div class="d-flex">
-    <!-- Modal Company -->
-    <div class="modal-dialog col-md-6 ml-auto" role="document">
-      <div class="modal-content" id="companyModal">
-        <div class="modal-header d-flex flex-column">
-          
-          <h4 class="w-100 text-center p-2">COMPANY</h4>
-          <p class="text-center p-2">Use your credentials to log in and enter to your personals dashboard.</p>
-          
-        </div>
-
-        <form action="/login" method="post">
-        
-          <div class="modal-body mx-3">
-            
-            <div class="md-form">
-              <i class="fa fa-user prefix grey-text"></i>
-              <input type="text" name="username" id="defaultForm-name" class="form-control validate">
-              <label data-error="wrong" data-success="right" for="defaultForm-name">Your username</label>
-            </div>
-          
-            <div class="md-form">
-              <i class="fa fa-lock prefix grey-text"></i>
-              <input type="password" name="password" id="defaultForm-pass" class="form-control validate">
-              <label data-error="wrong" data-success="right" for="defaultForm-pass">Your password</label>
-            </div>
-
-          </div>
-
-          <div class="modal-footer d-flex justify-content-center">
-            <button class="btn btn-author">Login</button>
-          </div>
-
-        </form>
-
-      </div>
-
-    </div>
-
-    <!-- Modal Influencer -->
-    <div class="modal-dialog col-md-6 ml-auto" role="document">
-      <div class="modal-content" id="companyModal">
-        
-        <div class="modal-header d-flex flex-column">
+    <div class="modal-dialog col-md-6 ml-auto cascading-modal mt-2 company-login" role="document">
     
-          <h4 class="w-100 text-center p-2">INFLUENCER</h4>
-          <p class="text-center p-2">Enter to your dashboard through your facebook and instagram credentials.</p>
-          
-        </div>
+      <!--Content-->
+      <div class="modal-content modal-contact-box">
     
-        <div class="modal-body mx-3">
-  
+        <!--Header-->
+        <div class="modal-header info-color white-text">
+          <h4 class="title lobster">
+            <i class="fa fa-briefcase"></i> Company</h4>
         </div>
-  
-        <div class="modal-footer d-flex justify-content-center">
-          <form method="get" action="/auth/facebook">
-            <button type="submit" class="btn btn-author">Sign Up facebook & Instagram</button>
+        <!--Body-->
+        <div class="modal-body">
+          <form action="/login" method="post">
+
+            <label for="NameModalEx">Username</label>
+            <input type="text" name="username" id="NameModalEx" class="form-control form-control-sm" placeholder="cofluencer">
+
+            <label for="PasswordModalEx">Password</label>
+            <input type="password" name="password" id="EmailModalEx" class="form-control form-control-sm" placeholder="---">
+          
+            <div class="text-center mt-4 mb-2">
+              <button id="login" class="btn btn-colorful">
+                <i class="fas fa-sign-in-alt pr-2"></i>
+                Login
+              </button>
+            </div>
+
           </form>
         </div>
-
       </div>
-    
+      <!--/.Content-->
     </div>
+      <!--/Modal: Contact form-->
+
+    <div class="modal-dialog col-md-6 ml-auto cascading-modal mt-2 influencer-login" role="document">
     
+      <!--Content-->
+      <div class="modal-content modal-contact-box">
+    
+        <!--Header-->
+        <div class="modal-header info-color white-text">
+          <h4 class="title lobster">
+            <i class="fa fa-pencil"></i> Influencer</h4>
+        </div>
+        <!--Body-->
+        <div class="modal-body">
+          <form action="/auth/facebook" method="get">
+
+            <div class="text-center mt-4 mb-2">
+                <p>If you have a instagram bussiness account, you can be a Cofluencer.</p>
+              <button id="login-social" class="btn btn-colorful">
+                <i class="fa fa-send pr-2"></i>
+                Login with facebook & instagram
+              </button>
+            </div>
+    
+          </form>
+        </div>
+      </div>
+      <!--/.Content-->
+    </div>
+    <!--/Modal: Contact form-->
+
   </div>
 
 </div>
@@ -82,75 +82,74 @@
   </button>
 
   <div class="d-flex">
-    <!-- Modal Company -->
-    <div class="modal-dialog col-md-6 ml-auto" role="document">
-      <div class="modal-content" id="companyModal">
-        <div class="modal-header d-flex flex-column">
-
-          <h4 class="w-100 text-center p-2">COMPANY</h4>
-          <p class="text-center p-2">Use your credentials to log in and enter to your personals dashboard.</p>
-
+    <div class="modal-dialog col-md-6 ml-auto cascading-modal mt-2 company-login" role="document">
+  
+      <!--Content-->
+      <div class="modal-content modal-contact-box">
+  
+        <!--Header-->
+        <div class="modal-header info-color white-text">
+          <h4 class="title lobster">
+          <i class="fa fa-pencil"></i> Company</h4>
         </div>
-
-        <form action="/signup" method="post">
-
-          <div class="modal-body mx-3">
-
-            <div class="md-form">
-              <i class="fa fa-user prefix grey-text"></i>
-              <input type="text" name="username" id="defaultForm-name" class="form-control validate">
-              <label data-error="wrong" data-success="right" for="defaultForm-name">Your username</label>
+        <!--Body-->
+        <div class="modal-body">
+          <form action="/signup" method="post">
+            
+            <div class="text-center mt-4 mb-2">
+              <p class="align-center">Become a member of Cofluencer, and start increasing your visualization.</p>
             </div>
 
-            <div class="md-form">
-              <i class="fa fa-envelope prefix grey-text"></i>
-              <input type="email" name="email" id="defaultForm-email" class="form-control validate">
-              <label data-error="wrong" data-success="right" for="defaultForm-email">Your email</label>
+            <label for="NameModalEx">Username</label>
+            <input type="text" name="username" id="NameModalEx" class="form-control form-control-sm validate">
+  
+            <label for="EmailModalEx">Email</label>
+            <input type="email" name="email" id="EmailModalEx" class="form-control form-control-sm validate">
+
+            <label for="PasswordModalEx">Password</label>
+            <input type="password" name="password" id="PasswordModalEx" class="form-control form-control-sm validate">
+
+            <div class="text-center mt-4 mb-2">
+              <button id="login" class="btn btn-colorful">
+                <i class="fa fa-send pr-2"></i>
+                Signup
+              </button>
             </div>
-
-            <div class="md-form">
-              <i class="fa fa-lock prefix grey-text"></i>
-              <input type="password" name="password" id="defaultForm-pass" class="form-control validate">
-              <label data-error="wrong" data-success="right" for="defaultForm-pass">Your password</label>
-            </div>
-
-          </div>
-
-          <div class="modal-footer d-flex justify-content-center">
-            <button class="btn btn-author">Login</button>
-          </div>
-
-        </form>
-
-      </div>
-
-    </div>
-
-    <!-- Modal Influencer -->
-    <div class="modal-dialog col-md-6 ml-auto" role="document">
-      <div class="modal-content" id="companyModal">
-
-        <div class="modal-header d-flex flex-column">
-
-          <h4 class="w-100 text-center p-2">INFLUENCER</h4>
-          <p class="text-center p-2">Enter to your dashboard through your facebook and instagram credentials.</p>
-
-        </div>
-
-        <div class="modal-body mx-3">
-
-        </div>
-
-        <div class="modal-footer d-flex justify-content-center">
-          <form method="get" action="/auth/facebook">
-            <button type="submit" class="btn btn-author">Sign Up with facebook & Instagram</button>
+  
           </form>
         </div>
-
       </div>
-
+      <!--/.Content-->
     </div>
-
+  
+    <div class="modal-dialog col-md-6 ml-auto cascading-modal mt-2 influencer-login" role="document">
+  
+      <!--Content-->
+      <div class="modal-content modal-contact-box">
+  
+        <!--Header-->
+        <div class="modal-header info-color white-text">
+          <h4 class="title lobster">
+            <i class="fa fa-pencil"></i> Influencer</h4>
+        </div>
+        <!--Body-->
+        <div class="modal-body">
+          <form action="/auth/facebook" method="get">
+  
+            <div class="text-center mt-4 mb-2">
+              <p>If you have a instagram bussiness account, you can be a Cofluencer.</p>
+              <button id="login-social" class="btn btn-colorful">
+                <i class="fa fa-send pr-2"></i>
+                Login with facebook & instagram
+              </button>
+            </div>
+  
+          </form>
+        </div>
+      </div>
+      <!--/.Content-->
+    </div>
+  
   </div>
 
 </div>

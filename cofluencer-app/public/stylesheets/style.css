@@ -208,6 +208,7 @@ li {
 
 footer {
   width: 100%;
+  
 }
 
 .footer-copyright {
@@ -235,6 +236,11 @@ footer {
 
 .modal {
   background-color: aliceblue;
+}
+
+.modal-2 {
+  display: flex;
+  justify-content: space-around;
 }
 
 .modal-content {
@@ -265,6 +271,19 @@ label::after {
   right: 50px;
   top: 20px;
   font-size: 3em;
+}
+
+#login {
+  color: #fff !important;
+  width: 30%;
+}
+
+#login-social {
+  width: 80%;
+}
+
+#modalSignupForm {
+  padding-top: 20px !important;
 }
 
 /* __--__--__--__--__--__--__--__--__--__--__--__--__ */
@@ -515,7 +534,6 @@ label::after {
 .section-validate {
   display: flex;
   flex-direction: column;
-  height: 600px;
 }
 
 .validate-user-section {
@@ -548,4 +566,59 @@ label::after {
   background: linear-gradient(270deg,
   rgba(136, 14, 79, 1),
   rgba(11, 135, 147, 1));
+}
+
+.grid .fa-heart {
+  font-size: 1em;
+}
+
+#user-info {
+  margin-bottom: 100px;
+}
+
+/* Style for modal contact */
+
+.modal-contact {
+  padding: 0;
+}
+
+.mt-2 {
+  margin-top: 20px !important;
+}
+
+.modal-contact-box {
+  background: #fff;
+  position: absolute;
+  top: 50px;
+}
+
+.cascading-modal {
+  padding-top: 0;
+}
+
+.modal-header {
+  background: linear-gradient(270deg,
+  rgba(136, 14, 79, 1),
+  rgba(11, 135, 147, 1));
+}
+
+.lobster {
+  font-family: 'Lobster';
+}
+
+/* Style for flash notifications */
+
+.flash-notification {
+  position: absolute;
+  top: 0;
+  left: 20%;
+  background-color: #0b8793;
+  width: 320px;
+  border: none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.alert-success {
+  color: #fff;
 }
