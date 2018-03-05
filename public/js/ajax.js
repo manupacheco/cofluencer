@@ -1,7 +1,8 @@
 /* eslint-disable */
 $(document).ready(() => {
-
   require('dotenv').config();
+
+  console.log(process.env.DOMAIN);
 
   $('li').on('click', '#follow', function () {
     let idCampaign = $(this).attr('value');
@@ -41,7 +42,7 @@ $(document).ready(() => {
   $('#form-search-iguser').on('submit', function (event) {
     event.preventDefault();
     let iguser = $('#instagram-user').val();
-    console.log(iguser);
+    console.log(env);
     $.ajax({
       url: `${process.env.DOMAIN}/search_instagram/${iguser}`,
       method: 'POST',

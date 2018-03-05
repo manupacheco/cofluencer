@@ -16,6 +16,7 @@ const http = require('http');
 
 require('dotenv').config();
 
+console.log(process.env.DOMAIN);
 mongoose.connect(process.env.MONGODB_URI, {
   useMongoClient: true,
 });
