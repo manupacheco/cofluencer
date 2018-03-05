@@ -16,6 +16,14 @@ body {
 }
 
 #logo:hover {
+  text-shadow: 2px 2px 1px #000;
+}
+
+#logo-profile {
+  font-family: 'Lobster',
+  cursive;
+  font-size: 1.5em;
+  align-self: auto;
   color: #032426;
 }
 
@@ -274,7 +282,7 @@ label::after {
 }
 
 #login {
-  color: #fff !important;
+  color: #032426 !important;
   width: 30%;
 }
 
@@ -345,12 +353,27 @@ label::after {
   font-size: 0.8em;
   background: transparent;
   margin-left: 0;
-  border: 1px solid transparent;
-  border-image: linear-gradient(270deg, #880e4f, #0b8793) 1;
+  border: 1px solid;
+  border-top-color: #880e4f;
+  border-left-color: #880e4f;
+  border-right-color: #0b8793;
+  border-bottom-color: #0b8793;
 }
 
 .edit-author .edit-link {
   color: rgb(200, 200, 200);
+}
+
+.btn-author:hover {
+  background: linear-gradient(270deg,
+  rgba(136, 14, 79, 1),
+  rgba(11, 135, 147, 1));
+  color: #fff !important;
+  border: 1px solid transparent;
+}
+
+.btn-author i {
+  color: inherit !important;
 }
 
 
@@ -576,6 +599,10 @@ label::after {
   margin-bottom: 100px;
 }
 
+.mb-10 {
+  margin-bottom: 100px;
+}
+
 /* Style for modal contact */
 
 .modal-contact {
@@ -604,6 +631,21 @@ label::after {
 
 .lobster {
   font-family: 'Lobster';
+}
+
+.modal-dialog .btn .fa {
+  color: inherit !important;
+}
+
+#send-contact-mail {
+  width: 30%;
+}
+
+#send-contact-mail:hover {
+  background: linear-gradient(270deg,
+  rgba(136, 14, 79, 1),
+  rgba(11, 135, 147, 1));
+  color: #fff !important;
 }
 
 /* Style for flash notifications */
