@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');
 const bcryptSalt = 10;
 const Company = require('../models/company');
+const flash = require('connect-flash');
 
 exports.signupController = (req, res, next) => {
   const { username, email, password } = req.body;
@@ -33,7 +34,8 @@ exports.signupController = (req, res, next) => {
 
           Company.create(infoUser)
             .then((result) => {
-              res.redirect('/validate');
+              req.flash('success', 'You are now a Cofluencer Company, you can login with your credentials!');
+              res.redirect('/');
             })
             .catch((err) => {
               const error = 'Something went wrong';

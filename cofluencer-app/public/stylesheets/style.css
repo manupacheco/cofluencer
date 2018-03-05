@@ -605,3 +605,20 @@ label::after {
 .lobster {
   font-family: 'Lobster';
 }
+
+/* Style for flash notifications */
+
+.flash-notification {
+  position: absolute;
+  top: 0;
+  left: 20%;
+  background-color: #0b8793;
+  width: 320px;
+  border: none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.alert-success {
+  color: #fff;
+}
