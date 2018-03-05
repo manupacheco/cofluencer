@@ -10,11 +10,13 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto d-flex" id="menu">
+          <% if (userRol === 'influencers') { %>
           <li class="nav-item">
-            <a class="nav-link" id="nav-link" href="/<%= infoUser.username %>/campaigns">
-              <i class="fa fa-bullhorn icon-campaign"></i>
-            </a>
-          </li>
+              <a class="nav-link" id="nav-link" href="/<%= infoUser.username %>/campaigns">
+                <i class="fa fa-bullhorn icon-campaign"></i>
+              </a>
+            </li>
+            <% } %>
           <li class="nav-item">
               <% if (userRol === 'companies') { %>
                 <a class="nav-link" id="nav-link" href="/<%= infoUser.username %>/campaigns/new">
