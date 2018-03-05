@@ -4,13 +4,13 @@ $(document).ready(() => {
 
   console.log(domain);
 
-  const domain = 'https://cofluencer.herokuapp.com';
+  const domain = 'http://cofluencer.herokuapp.com';
 
   $('li').on('click', '#follow', function () {
     let idCampaign = $(this).attr('value');
     let username = $(this).attr('user');
     $.ajax({
-      url: `${domain}/${username}/campaigns/${idCampaign}/follow`,
+      url: `http://cofluencer.herokuapp.com/${username}/campaigns/${idCampaign}/follow`,
       method: 'POST',
         success: function (res) {
           console.log(res);
@@ -27,7 +27,7 @@ $(document).ready(() => {
     let idCampaign = $(this).attr('value');
     let username = $(this).attr('user');
     $.ajax({
-      url: `${domain}/${username}/campaigns/${idCampaign}/unfollow`,
+      url: `http://cofluencer.herokuapp.com/${username}/campaigns/${idCampaign}/unfollow`,
       method: 'POST',
       success: function (res) {
         console.log(res);
@@ -46,7 +46,7 @@ $(document).ready(() => {
     let iguser = $('#instagram-user').val();
     console.log(env);
     $.ajax({
-      url: `${domain}/search_instagram/${iguser}`,
+      url: `http://cofluencer.herokuapp.com/search_instagram/${iguser}`,
       method: 'POST',
       success: function(instagram_user) {
         console.log(instagram_user);
@@ -151,11 +151,11 @@ $(document).ready(() => {
     let iguser = $('#instagram-user').val();
     console.log('hola', iguser);
     $.ajax({
-      url: `${domain}/add_instagram/${iguser}`,
+      url: `http://cofluencer.herokuapp.com/add_instagram/${iguser}`,
       method: 'POST',
       success: function (username) {
         console.log(iguser);
-        window.location = `${domain}/${username}`;
+        window.location = `http://cofluencer.herokuapp.com/${username}`;
       },
       error: function (error) {
         // flash notification usuario no disponible
@@ -172,7 +172,7 @@ $(document).ready(() => {
       text: $('#MessageModalEx').val(),
     };
     $.ajax({
-      url: `${domain}/email`,
+      url: `http://cofluencer.herokuapp.com/email`,
       method: 'POST',
       data: mailOptions,
       success: function () {
