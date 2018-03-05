@@ -1,11 +1,13 @@
 /* eslint-disable */
 $(document).ready(() => {
 
+  require('dotenv').config();
+
   $('li').on('click', '#follow', function () {
     let idCampaign = $(this).attr('value');
     let username = $(this).attr('user');
     $.ajax({
-      url: `http://localhost:3000/${username}/campaigns/${idCampaign}/follow`,
+      url: `${process.env.DOMAIN}/${username}/campaigns/${idCampaign}/follow`,
       method: 'POST',
         success: function (res) {
           console.log(res);
@@ -22,7 +24,7 @@ $(document).ready(() => {
     let idCampaign = $(this).attr('value');
     let username = $(this).attr('user');
     $.ajax({
-      url: `http://localhost:3000/${username}/campaigns/${idCampaign}/unfollow`,
+      url: `${process.env.DOMAIN}/${username}/campaigns/${idCampaign}/unfollow`,
       method: 'POST',
       success: function (res) {
         console.log(res);
@@ -41,7 +43,7 @@ $(document).ready(() => {
     let iguser = $('#instagram-user').val();
     console.log(iguser);
     $.ajax({
-      url: `http://localhost:3000/search_instagram/${iguser}`,
+      url: `${process.env.DOMAIN}/search_instagram/${iguser}`,
       method: 'POST',
       success: function(instagram_user) {
         console.log(instagram_user);
@@ -146,11 +148,11 @@ $(document).ready(() => {
     let iguser = $('#instagram-user').val();
     console.log('hola', iguser);
     $.ajax({
-      url: `http://localhost:3000/add_instagram/${iguser}`,
+      url: `${process.env.DOMAIN}/add_instagram/${iguser}`,
       method: 'POST',
       success: function (username) {
         console.log(iguser);
-        window.location = `http://localhost:3000/${username}`;
+        window.location = `${process.env.DOMAIN}/${username}`;
       },
       error: function (error) {
         // flash notification usuario no disponible
@@ -167,7 +169,7 @@ $(document).ready(() => {
       text: $('#MessageModalEx').val(),
     };
     $.ajax({
-      url: 'http://localhost:3000/email',
+      url: `${process.env.DOMAIN}/email`,
       method: 'POST',
       data: mailOptions,
       success: function () {
