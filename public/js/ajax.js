@@ -2,13 +2,15 @@
 $(document).ready(() => {
   require('dotenv').config();
 
-  console.log(process.env.DOMAIN);
+  console.log(domain);
+
+  const domain = 'http://cofluencer.herokuapp.com';
 
   $('li').on('click', '#follow', function () {
     let idCampaign = $(this).attr('value');
     let username = $(this).attr('user');
     $.ajax({
-      url: `${process.env.DOMAIN}/${username}/campaigns/${idCampaign}/follow`,
+      url: `${domain}/${username}/campaigns/${idCampaign}/follow`,
       method: 'POST',
         success: function (res) {
           console.log(res);
@@ -25,7 +27,7 @@ $(document).ready(() => {
     let idCampaign = $(this).attr('value');
     let username = $(this).attr('user');
     $.ajax({
-      url: `${process.env.DOMAIN}/${username}/campaigns/${idCampaign}/unfollow`,
+      url: `${domain}/${username}/campaigns/${idCampaign}/unfollow`,
       method: 'POST',
       success: function (res) {
         console.log(res);
@@ -44,7 +46,7 @@ $(document).ready(() => {
     let iguser = $('#instagram-user').val();
     console.log(env);
     $.ajax({
-      url: `${process.env.DOMAIN}/search_instagram/${iguser}`,
+      url: `${domain}/search_instagram/${iguser}`,
       method: 'POST',
       success: function(instagram_user) {
         console.log(instagram_user);
@@ -149,11 +151,11 @@ $(document).ready(() => {
     let iguser = $('#instagram-user').val();
     console.log('hola', iguser);
     $.ajax({
-      url: `${process.env.DOMAIN}/add_instagram/${iguser}`,
+      url: `${domain}/add_instagram/${iguser}`,
       method: 'POST',
       success: function (username) {
         console.log(iguser);
-        window.location = `${process.env.DOMAIN}/${username}`;
+        window.location = `${domain}/${username}`;
       },
       error: function (error) {
         // flash notification usuario no disponible
@@ -170,7 +172,7 @@ $(document).ready(() => {
       text: $('#MessageModalEx').val(),
     };
     $.ajax({
-      url: `${process.env.DOMAIN}/email`,
+      url: `${domain}/email`,
       method: 'POST',
       data: mailOptions,
       success: function () {
