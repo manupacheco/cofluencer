@@ -1,4 +1,5 @@
-<div class="modal fade modal-fullscreen modal-fluid banner modal-contact" id="modalDefaultContactForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade modal-fullscreen modal-fluid banner modal-contact" id="modalDefaultContactForm" tabindex="-1" role="dialog"
+  aria-labelledby="myModalLabel" aria-hidden="true">
   <!--Modal: Contact form-->
   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
     <span aria-hidden="true">&times;</span>
@@ -18,48 +19,63 @@
       <div class="modal-body">
 
         <!-- Default input name -->
-        <label for="NameModalEx">From <%= infoUser.username %></label>
+        <label for="NameModalEx">From
+          <%= infoUser.username %>
+        </label>
         <% if (userRol === 'companies') { %>
-        <input type="text" id="NameModalEx" class="form-control form-control-sm disabled" value="<%= infoUser.username %>">
-        <% } else if (userRol === 'influencers') { %>
-        <input type="text" id="NameModalEx" class="form-control form-control-sm disabled" value="<%= infoUser.name + ' ' + infoUser.lastname %>">
-        <% } %>
-        <br>
+          <input type="text" id="NameModalEx" class="form-control form-control-sm disabled" value="<%= infoUser.username %>">
+          <% } else if (userRol === 'influencers') { %>
+            <input type="text" id="NameModalEx" class="form-control form-control-sm disabled" value="<%= infoUser.name + ' ' + infoUser.lastname %>">
+            <% } %>
+              <br>
 
-        <!-- Default input email -->
-        <% if (userRol === 'companies') { %>
-        <label for="EmailModalEx">Email to <%= influencer.name + ' ' + influencer.lastname %></label>
-        <% } else if (userRol === 'influencers') { %>
-          <% if (contact === 'company'){ %>
-        <label for="EmailModalEx">Email to <%= company.username %> </label>
-        <% } else if (contact === 'campaign'){ %>
-        <label for="EmailModalEx">Email to <%= campaign.company_id.email %> </label>
-        <% } %>
-        <% } %>
-        <% if (contact === 'influencer'){ %>
-        <input type="text" id="EmailModalEx" class="form-control form-control-sm disabled" value="<%= influencer.email %>">
-        <% } else if (contact === 'company'){ %>
-        <input type="text" id="EmailModalEx" class="form-control form-control-sm disabled" value="<%= company.email %>">
-        <% } else if (contact === 'campaign'){ %>
-        <input type="text" id="EmailModalEx" class="form-control form-control-sm disabled" value="<%= campaign.company_id.email %>">
-        <% } %>
-        <br><br>
+              <!-- Default input email -->
+              <% if (userRol === 'companies') { %>
+                <% if (typeof influencer !== 'undefined') { %>
+                  <label for="EmailModalEx">Email to
+                    <%= influencer.name + ' ' + influencer.lastname %>
+                  </label>
+                <% } %>
+              <% } else if (userRol === 'influencers') { %>
+                <% if (contact === 'company'){ %>
+                  <% if (typeof company !== 'undefined') { %>
+                    <label for="EmailModalEx">Email to
+                      <%= company.username %>
+                    </label>
+                  <% } %>
+                <% } else if (contact === 'campaign'){ %>
+                  <% if (typeof campaign !== 'undefined') { %>
+                    <label for="EmailModalEx">Email to
+                      <%= campaign.company_id.email %>
+                    </label>
+                  <% } %>
+                <% } %>
+              <% } %>
+                                      <% if (contact === 'influencer'){ %>
+                                        <input type="text" id="EmailModalEx" class="form-control form-control-sm disabled" value="<%= influencer.email %>">
+                                        <% } else if (contact === 'company'){ %>
+                                          <input type="text" id="EmailModalEx" class="form-control form-control-sm disabled" value="<%= company.email %>">
+                                          <% } else if (contact === 'campaign'){ %>
+                                            <input type="text" id="EmailModalEx" class="form-control form-control-sm disabled" value="<%= campaign.company_id.email %>">
+                                            <% } %>
+                                              <br>
+                                              <br>
 
-        <!-- Default input subject -->
-        <label for="SubjectModalEx">Subject</label>
-        <input type="text" id="SubjectModalEx" class="form-control form-control-sm">
+                                              <!-- Default input subject -->
+                                              <label for="SubjectModalEx">Subject</label>
+                                              <input type="text" id="SubjectModalEx" class="form-control form-control-sm">
 
-        <br>
+                                              <br>
 
-        <!-- Default textarea message -->
-        <label for="MessageModalEx">Your message</label>
-        <textarea type="text" id="MessageModalEx" class="md-textarea form-control"></textarea>
+                                              <!-- Default textarea message -->
+                                              <label for="MessageModalEx">Your message</label>
+                                              <textarea type="text" id="MessageModalEx" class="md-textarea form-control"></textarea>
 
-        <div class="text-center mt-4 mb-2">
-          <button id="send-contact-mail" class="btn btn-author" data-dismiss="modal" aria-label="Close">Send
-            <i class="fa fa-send pr-1"></i>
-          </button>
-        </div>
+                                              <div class="text-center mt-4 mb-2">
+                                                <button id="send-contact-mail" class="btn btn-author" data-dismiss="modal" aria-label="Close">Send
+                                                  <i class="fa fa-send pr-1"></i>
+                                                </button>
+                                              </div>
 
       </div>
     </div>
