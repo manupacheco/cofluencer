@@ -5,7 +5,7 @@ $(document).ready(() => {
     let idCampaign = $(this).attr('value');
     let username = $(this).attr('user');
     $.ajax({
-      url: `http://localhost:3000/${username}/campaigns/${idCampaign}/follow`,
+      url: "http://localhost:3000/"+username+"/campaigns/"+idCampaign+"/follow",
       method: 'POST',
         success: function (res) {
           console.log(res);
@@ -22,7 +22,7 @@ $(document).ready(() => {
     let idCampaign = $(this).attr('value');
     let username = $(this).attr('user');
     $.ajax({
-      url: `http://localhost:3000/${username}/campaigns/${idCampaign}/unfollow`,
+      url: "http://localhost:3000/"+username+"/campaigns/"+idCampaign+"unfollow",
       method: 'POST',
       success: function (res) {
         console.log(res);
@@ -41,7 +41,7 @@ $(document).ready(() => {
     let iguser = $('#instagram-user').val();
     console.log(iguser);
     $.ajax({
-      url: `http://localhost:3000/search_instagram/${iguser}`,
+      url: "http://localhost:3000/search_instagram/"+iguser,
       method: 'POST',
       success: function(instagram_user) {
         console.log(instagram_user);
@@ -146,11 +146,11 @@ $(document).ready(() => {
     let iguser = $('#instagram-user').val();
     console.log('hola', iguser);
     $.ajax({
-      url: `http://localhost:3000/add_instagram/${iguser}`,
+      url: "http://localhost:3000/add_instagram/"+iguser,
       method: 'POST',
       success: function (username) {
         console.log(iguser);
-        window.location = `http://localhost:3000/${username}`;
+        window.location = "http://localhost:3000/"+username;
       },
       error: function (error) {
         // flash notification usuario no disponible
@@ -167,7 +167,7 @@ $(document).ready(() => {
       text: $('#MessageModalEx').val(),
     };
     $.ajax({
-      url: 'http://localhost:3000/email',
+      url: "http://localhost:3000/email",
       method: 'POST',
       data: mailOptions,
       success: function () {
