@@ -13,6 +13,7 @@ router.get('/:company', isLoggedIn('/'), (req, res, next) => {
   /* eslint-disable */
   const userId = req.user._id;
   const userRol = req.user.collection.collectionName;
+  const contact = 'company';
   /* eslint-enable */
   if (userRol === 'influencers') {
     Influencer.findById(userId, (err, infoUser) => {
@@ -24,7 +25,7 @@ router.get('/:company', isLoggedIn('/'), (req, res, next) => {
             .populate('influencer_id')
             .sort({ updated_at: -1 })
             .exec((err, campaigns) => {
-              res.render('profile/company/show', { infoUser, company, campaigns, userRol, moment, layout: 'layouts/profile' });
+              res.render('profile/company/show', { infoUser, company, campaigns, userRol, moment, contact, layout: 'layouts/profile' });
             });
         });
     });

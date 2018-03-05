@@ -85,19 +85,20 @@ router.get('/:title', isLoggedIn('/'), (req, res, next) => {
   const userId = req.user._id;
   const campaignTitle = req.params.title;
   const userRol = req.user.collection.collectionName;
+  const contact = 'campaign';
   /* eslint-enable */
   if (userRol === 'companies') {
     Campaign.findOne({ title: campaignTitle })
       .populate('company_id')
       .populate('influencer_id')
       .exec((err, campaign) => {
-        res.render('campaigns/show', { campaign, infoUser, moment, userRol, layout: 'layouts/profile' });
+        res.render('campaigns/show', { campaign, infoUser, moment, userRol, contact, layout: 'layouts/profile' });
       });
   } else if (userRol === 'influencers') {
     Campaign.findOne({ title: campaignTitle })
       .populate('company_id')
       .exec((err, campaign) => {
-        res.render('campaigns/show', { campaign, infoUser, moment, userRol, layout: 'layouts/profile' });
+        res.render('campaigns/show', { campaign, infoUser, moment, userRol, contact, layout: 'layouts/profile' });
       });
   }
 });

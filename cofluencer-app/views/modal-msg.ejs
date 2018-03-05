@@ -18,19 +18,32 @@
       <div class="modal-body">
 
         <!-- Default input name -->
-        <label for="NameModalEx">Your name</label>
+        <label for="NameModalEx">From <%= infoUser.username %></label>
         <% if (userRol === 'companies') { %>
-        <input type="text" id="NameModalEx" class="form-control form-control-sm" value="<%= infoUser.username %>">
+        <input type="text" id="NameModalEx" class="form-control form-control-sm disabled" value="<%= infoUser.username %>">
         <% } else if (userRol === 'influencers') { %>
-        <input type="text" id="NameModalEx" class="form-control form-control-sm" value="<%= infoUser.name + ' ' + infoUser.lastname %>">
+        <input type="text" id="NameModalEx" class="form-control form-control-sm disabled" value="<%= infoUser.name + ' ' + infoUser.lastname %>">
         <% } %>
         <br>
 
         <!-- Default input email -->
-        <label for="EmailModalEx">Email to</label>
-        <input type="text" id="EmailModalEx" class="form-control form-control-sm" value="<%= infoUser.email %>">
-
-        <br>
+        <% if (userRol === 'companies') { %>
+        <label for="EmailModalEx">Email to <%= influencer.name + ' ' + influencer.lastname %></label>
+        <% } else if (userRol === 'influencers') { %>
+          <% if (contact === 'company'){ %>
+        <label for="EmailModalEx">Email to <%= company.username %> </label>
+        <% } else if (contact === 'campaign'){ %>
+        <label for="EmailModalEx">Email to <%= campaign.company_id.email %> </label>
+        <% } %>
+        <% } %>
+        <% if (contact === 'influencer'){ %>
+        <input type="text" id="EmailModalEx" class="form-control form-control-sm disabled" value="<%= influencer.email %>">
+        <% } else if (contact === 'company'){ %>
+        <input type="text" id="EmailModalEx" class="form-control form-control-sm disabled" value="<%= company.email %>">
+        <% } else if (contact === 'campaign'){ %>
+        <input type="text" id="EmailModalEx" class="form-control form-control-sm disabled" value="<%= campaign.company_id.email %>">
+        <% } %>
+        <br><br>
 
         <!-- Default input subject -->
         <label for="SubjectModalEx">Subject</label>
@@ -43,7 +56,7 @@
         <textarea type="text" id="MessageModalEx" class="md-textarea form-control"></textarea>
 
         <div class="text-center mt-4 mb-2">
-          <button id="send-contact-mail" class="btn btn-author">Send
+          <button id="send-contact-mail" class="btn btn-author" data-dismiss="modal" aria-label="Close">Send
             <i class="fa fa-send pr-1"></i>
           </button>
         </div>
