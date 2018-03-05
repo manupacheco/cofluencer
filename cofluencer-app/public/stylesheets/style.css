@@ -664,3 +664,14 @@ label::after {
 .alert-success {
   color: #fff;
 }
+
+
+/* Style for titles and more */
+
+.my-campaigns {
+  padding-top: 0 !important;
+}
+
+.subtitle-width {
+  width: 300px;
+}
