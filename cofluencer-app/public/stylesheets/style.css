@@ -16,6 +16,14 @@ body {
 }
 
 #logo:hover {
+  text-shadow: 2px 2px 1px #000;
+}
+
+#logo-profile {
+  font-family: 'Lobster',
+  cursive;
+  font-size: 1.5em;
+  align-self: auto;
   color: #032426;
 }
 
