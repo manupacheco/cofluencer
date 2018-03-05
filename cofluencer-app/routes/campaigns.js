@@ -55,7 +55,7 @@ router.post('/', isLoggedIn('/'), (req, res, next) => {
     if (err) {
       next(err);
     } else {
-      res.redirect(`/${req.user.username}/campaigns`);
+      res.redirect(`/${req.user.username}`);
     }
   });
 });
@@ -85,19 +85,20 @@ router.get('/:title', isLoggedIn('/'), (req, res, next) => {
   const userId = req.user._id;
   const campaignTitle = req.params.title;
   const userRol = req.user.collection.collectionName;
+  const contact = 'campaign';
   /* eslint-enable */
   if (userRol === 'companies') {
     Campaign.findOne({ title: campaignTitle })
       .populate('company_id')
       .populate('influencer_id')
       .exec((err, campaign) => {
-        res.render('campaigns/show', { campaign, infoUser, moment, userRol, layout: 'layouts/profile' });
+        res.render('campaigns/show', { campaign, infoUser, moment, userRol, contact, layout: 'layouts/profile' });
       });
   } else if (userRol === 'influencers') {
     Campaign.findOne({ title: campaignTitle })
       .populate('company_id')
       .exec((err, campaign) => {
-        res.render('campaigns/show', { campaign, infoUser, moment, userRol, layout: 'layouts/profile' });
+        res.render('campaigns/show', { campaign, infoUser, moment, userRol, contact, layout: 'layouts/profile' });
       });
   }
 });
@@ -115,7 +116,7 @@ router.post('/:_id/follow', isLoggedIn('/'), (req, res, next) => {
         res.status(200).json(result);
       });
   } else if (userRol === 'companies') {
-    res.redirect(`/${req.user.username}/campaigns`);
+    res.redirect(`/${req.user.username}`);
   }
 });
 
@@ -131,7 +132,7 @@ router.post('/:_id/unfollow', isLoggedIn('/'), (req, res, next) => {
         res.status(200).json(result);
       });
   } else if (userRol === 'companies') {
-    res.redirect(`/${req.user.username}/campaigns`);
+    res.redirect(`/${req.user.username}`);
   }
 });
 
@@ -168,7 +169,7 @@ router.post('/:campaignTitle/edit', isLoggedIn('/'), (req, res, next) => {
           if (err) {
             next(err);
           } else {
-            res.redirect(`/${infoUser.username}/campaigns`);
+            res.redirect(`/${infoUser.username}`);
           }
         });
       });
@@ -178,12 +179,15 @@ router.post('/:campaignTitle/edit', isLoggedIn('/'), (req, res, next) => {
 router.get('/:campaignTitle/delete', isLoggedIn('/'), (req, res, next) => {
   /* eslint-disable */
   const infoUser = req.user;
+  const userRol = req.user.collection.collectionName;
   const campaignTitle = req.params.campaignTitle;
   /* eslint-enable */
-  Campaign.findOneAndRemove({ title: campaignTitle }, (err, result) => {
-    if (err) { next(err); }
-    res.redirect(`/${infoUser.username}/campaigns`);
-  });
+  if (userRol === 'companies') {
+    Campaign.findOneAndRemove({ title: campaignTitle }, (err, result) => {
+      if (err) { next(err); }
+      res.redirect(`/${infoUser.username}`);
+    });
+  }
 });
 
 module.exports = router;

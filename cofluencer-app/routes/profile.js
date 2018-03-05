@@ -9,6 +9,8 @@ const callInstagram = require('../helpers/middlewares').callInstagram;
 const { updateProfilePic } = require('../helpers/middlewares');
 const Company = require('../models/company');
 const Influencer = require('../models/influencer');
+const Campaign = require('../models/campaign');
+const moment = require('moment');
 
 /* GET users profile. */
 router.get('/:username', isLoggedIn('/login'), (req, res, next) => {
@@ -55,8 +57,13 @@ router.get('/:username', isLoggedIn('/login'), (req, res, next) => {
     Company.findById(userId, (err, company) => {
       if (err) { return next(err); }
       infoUser = company;
-      res.render('profile/company/main', { userRol, infoUser, layout: 'layouts/profile' });
-      return next;
+      Campaign.find({ company_id: company._id })
+        .populate('company_id')
+        .populate('influencer_id')
+        .sort({ updated_at: -1 })
+        .exec((err, campaigns) => {
+          res.render('profile/company/main', { userRol, infoUser, campaigns, moment, layout: 'layouts/profile' });
+        });
     });
   }
 });

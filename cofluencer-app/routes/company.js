@@ -13,13 +13,20 @@ router.get('/:company', isLoggedIn('/'), (req, res, next) => {
   /* eslint-disable */
   const userId = req.user._id;
   const userRol = req.user.collection.collectionName;
+  const contact = 'company';
   /* eslint-enable */
   if (userRol === 'influencers') {
     Influencer.findById(userId, (err, infoUser) => {
       if (err) { next(err); }
       Company.findOne({ username: companyName })
         .exec((error, company) => {
-          res.render('profile/company/show', { infoUser, company, userRol, layout: 'layouts/profile' });
+          Campaign.find({ company_id: company._id })
+            .populate('company_id')
+            .populate('influencer_id')
+            .sort({ updated_at: -1 })
+            .exec((err, campaigns) => {
+              res.render('profile/company/show', { infoUser, company, campaigns, userRol, moment, contact, layout: 'layouts/profile' });
+            });
         });
     });
   } else if (userRol === 'companies') {
