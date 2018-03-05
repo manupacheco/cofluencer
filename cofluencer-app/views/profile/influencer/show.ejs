@@ -23,10 +23,10 @@
 
         <div class="personal-sm pb-3">
           <a class="pr-2 email-ic">
-            <i class="fa fa-facebook mr-2"> </i>
+            <i class="fab fa-facebook mr-2"> </i>
           </a>
           <a class="pr-2 ig-ic">
-            <i class="fa fa-instagram mr-2"></i>
+            <i class="fab fa-instagram mr-2"></i>
           </a>
         </div>
 
@@ -34,7 +34,7 @@
         <p><%= influencer.bio %></p>
         <div>
           <a id="send-msg" class="btn btn-author" data-toggle="modal" data-target="#modalDefaultContactForm">
-            <i class="fa fa-send icon-campaign pr-2"></i>Contact
+            <i class="fa fa-paper-plane icon-campaign pr-2"></i>Contact
           </a>
         </div>
       </div>
@@ -96,43 +96,4 @@
 
 </section>
 
-<!-- Youtube Section -->
-<section class="text-center py-4 container">
-  <!--Section heading-->
-  <div class="section-title">
-    <div class="social-network-column">
-      <img class="brand-logo" src="/img/yt_logo_rgb_light.png" alt="youtube-logo">
-    </div>
-    <div class="social-network-column">
-    </div>
-
-  </div>
-
-  <div class="empty-social-account rounded">
-    <button type="button" class="btn btn-gplus"><i class="fa fa-google-plus pr-1"></i> Google +</button>
-    <p><strong>You haven't added your social account</strong></p>
-    <p class="grey-text">To see and show your stats and social content, connect your Youtube account with Cofluencer.</p>
-  </div>
-
-</section>  
-
-<!-- Twitter Section -->
-<section class="text-center py-4 container">
-  <!--Section heading-->
-  <div class="section-title">
-    <div class="social-network-column">
-      <img class="brand-logo" src="/img/twitter-logo.png" alt="twitter-logo">
-    </div>
-    <div class="social-network-column">
-    </div>
-
-  </div>
-
-  <div class="empty-social-account rounded">
-    <button type="button" class="btn btn-tw"><i class="fa fa-twitter pr-1"></i> Twitter</button>
-    <p><strong>You haven't added your social account</strong></p>
-    <p class="grey-text">To see and show your stats and social content, connect your Twitter account with Cofluencer.</p>
-  </div>
-
-</section>  
 <%- include ../../modal-msg.ejs %>

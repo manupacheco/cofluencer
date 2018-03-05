@@ -591,6 +591,10 @@ label::after {
   margin-bottom: 100px;
 }
 
+.mb-10 {
+  margin-bottom: 100px;
+}
+
 /* Style for modal contact */
 
 .modal-contact {

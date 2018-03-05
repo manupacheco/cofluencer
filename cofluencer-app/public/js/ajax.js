@@ -108,7 +108,7 @@ $(document).ready(() => {
                 </div>
               </div>
               <div class="item">
-              <div class="content img-container overlay rounded z-depth-2">
+              <div class="content img-container overlay rounded z-depth-2 mb-10">
                 <img class="img-fluid" src="${iguser.media.data[2].media_url}" alt="instagram-image-<%=i%>">
                   <a href="#">
                     <div class="after">
