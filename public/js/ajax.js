@@ -4,7 +4,7 @@ $(document).ready(() => {
 
   console.log(domain);
 
-  const domain = 'http://cofluencer.herokuapp.com';
+  const domain = 'https://cofluencer.herokuapp.com';
 
   $('li').on('click', '#follow', function () {
     let idCampaign = $(this).attr('value');
