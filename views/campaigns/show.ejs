@@ -54,11 +54,11 @@
   </div>
   <!--Grid column-->
 </div>
-<!--Grid row-->
+
 <hr class="mb-5">
 <% if (userRol === 'companies') { %>
 <section class="team-section pb-4">
-  <!--Section heading-->
+  
   <div class="row pb-5">
     <div class="col-6">
       <% if (campaign.influencer_id.length === 0) { %>
@@ -66,41 +66,66 @@
       <% } else { %>
       <h2 class="font-weight-bold dark-grey-text mb-3 subtitle-width">Interested Influencers in your campaign.</h2>
       <% } %>
-      <!--Section description-->
+      
       <p class="grey-text subtitle-p">Here you can check who are the influencers interested in this campaign and contact them.</p>
-      <!--Grid row-->
+      
     </div>
 
   </div>
   
-  <div class="row mb-lg-4 text-center text-md-left">
-    <!--Grid column-->
-    <div class="col-lg-12 col-md-12 mb-4">
+  
     <% campaign.influencer_id.forEach((influencer, index) => { %>
-      <div class="col-md-3 float-left">
-        <div class="avatar mx-auto">
-          <img src="<%= influencer.profileImage %>" class="rounded-circle img-fluid z-depth-1">
+    <div class="row">
+  
+        <!--Grid column-->
+        <div class="col-md-6 col-lg-4">
+  
+          <!--Card-->
+          <div class="card card-personal">
+  
+            <!--Card image-->
+            <img class="img-fluid" src="<%= influencer.profileImage %>" alt="Card image cap">
+            <!--Card image-->
+  
+            <!--Card content-->
+            <div class="card-body">
+              <!--Title-->
+              <a>
+                <h4 class="card-title title-one"><%= influencer.name %> <%= influencer.lastname%></h4>
+              </a>
+              <p class="card-meta"><%= influencer.username %></p>
+  
+              <!--Text-->
+              <p class="card-text"><%= influencer.bio %></p>
+              <hr>
+              <div class="text-center">
+                <a class="card-meta">
+                  <span>
+                    <span class="span"><%= influencer.instagram.media_count%></span> posts
+                  </span>
+                </a>
+                <a class="card-meta">
+                  <span>
+                    <span class="span"><%= influencer.instagram.followers_count%></span> followers
+                  </span>
+                </a>
+                <a class="btn btn-colorful" href="/<%=infoUser.username%>/influencer/<%=influencer.username%>">view profile</a>
+              </div>
+            </div>
+            <!--Card content-->
+  
+          </div>
+          <!--Card-->
+  
         </div>
+        <!--Grid column-->
+  
       </div>
-      
-      <div class="col-md-8 float-left">
-        <h4>
-          <strong><%= influencer.name %> <%= influencer.lastname%></strong>
-          <a class="pr-2 ig-ic email-link" href="https://www.instagram.com/<%=influencer.instagram.username%>" target="_blank">
-            <i class="fab fa-instagram mr-2"></i>
-          </a>
-        </h4>
-        <h6 class="font-weight-bold grey-text mb-4"><%= influencer.username %></h6>
-        <p class="grey-text"><%= influencer.bio %></p>
-        <a class="btn btn-author" href="/<%=infoUser.username%>/influencer/<%=influencer.username%>">view profile</a>
-        
-      </div>
+      <!--Grid row-->
     </div>
-    <!--Grid column-->
-  </div>
   <% }); %>
-  <!--Grid row-->
-</section>
+  
 <% } %>
+
 </li></div>
 <%- include ../modal-msg.ejs %>
