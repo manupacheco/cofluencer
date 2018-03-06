@@ -54,17 +54,23 @@
   </div>
 
   <section class="p-5 container my-campaigns">
-  
+    
+    <div class="row pb-5">
+      <div class="col-6">
     <!--Section heading-->
-    <% if (userRol === 'companies') { %>
-      <h2 class="font-weight-bold dark-grey-text mb-3 subtitle-width">These are your published campaigns.</h2>
-      <% } else if (userRol === 'influencers') { %>
-        <h2 class="font-weight-bold dark-grey-text mb-3">AVAILABLE CAMPAIGNS</h2>
+        <% if (userRol === 'companies') { %>
+        <h2 class="font-weight-bold dark-grey-text mb-3 subtitle-width">These are your published campaigns.</h2>
+        <% } else if (userRol === 'influencers') { %>
+        <h2 class="font-weight-bold dark-grey-text mb-3">Available campaigns.</h2>
         <% } %>
-          <!--Section description-->
-          <p class="">These are your published campaigns.</p>
-          <br>
-          <ul>
+        <p class="grey-text subtitle-p">Check them, edit them and contact with the influencers interested.</p>
+      </div>
+
+      
+      
+    </div>
+
+          <ul class="pl-0">
             <% campaigns.forEach((campaign, index) => { %>
               <li>
                 <!--Grid row-->

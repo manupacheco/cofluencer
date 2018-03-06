@@ -2,19 +2,22 @@
 <!--Section: Blog v.3-->
 <section class="py-4">
 
-  <!--Section heading-->
-  <% if (userRol === 'companies') { %>
-    <h2 class="font-weight-bold dark-grey-text mb-3">MY CAMPAIGNS</h2>
-  <% } else if (userRol === 'influencers') { %>
-    <h2 class="font-weight-bold dark-grey-text mb-3">AVAILABLE CAMPAIGNS</h2>
-  <% } %>
-  <!--Section description-->
-  <p class="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc suscipit venenatis tellus a rutrum. Donec blandit finibus quam,
-  in porta lacus aliquet a. Integer mattis ligula et lectus interdum porta. Sed consectetur dapibus euismod. Morbi in ornare
-  magna. Morbi pellentesque neque sed neque tempus, in interdum tellus vulputate. Donec ultricies augue in maximus vulputate.
-  Sed sollicitudin tortor lacus, et consequat ligula tempus sit amet. Ut in convallis justo, ut tempor ipsum. Pellentesque
-  sit amet semper urna. Mauris in est orci. Vivamus nec est tellus.</p>
-  <br>
+  <div class="container p-5">
+    <div class="row pb-5">
+      <div class="col-6">
+    
+        <!--Section heading-->
+        <% if (userRol === 'companies') { %>
+          <h2 class="font-weight-bold dark-grey-text mb-3">These are your published campaigns.</h2>
+        <% } else if (userRol === 'influencers') { %>
+          <h2 class="font-weight-bold dark-grey-text mb-3">Campaigns published by cofluencer companies.</h2>
+        <% } %>
+        <!--Section description-->
+        <p class="subtitle-p grey-text">Check the campaigns that match your interests and availability and contact the companies.</p>
+      </div>
+    </div>
+  </div>
+
   <ul>
     <% campaigns.forEach((campaign, index) => { %>
       <li>        
