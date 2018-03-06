@@ -1,56 +1,60 @@
 <div class="container">
-<li><div class="row mt-5">
-  <!--Grid column-->
-  <div class="col-lg-5 col-xl-4 mb-4">
-    <!--Featured image-->
-    <div class="overlay rounded z-depth-1-half">
-      <a href="/<%= infoUser.username %>/campaigns/<%= campaign.title %>">
-        <img src="https://mdbootstrap.com/img/Photos/Others/images/12.jpg" class="img-fluid" alt="First sample image">
-        <div class="mask rgba-white-slight">
+  <!--Section: Blog v.4-->
+<section class="pt-5 mt-4 pb-3">
 
-        </div>
-      </a>
-    </div>
-  </div>
-  <!--Grid column-->
-  <!--Grid column-->
-  <div class="col-lg-7 col-xl-7 ml-xl-4 mb-4">
-    <h3 class="mb-3 font-weight-bold dark-grey-text">
-      <strong>
-        <%= campaign.title %>
-      </strong>
-    </h3>
-    <p class="grey-text">
-      <%= campaign.description %>
-    </p>
-    <!-- <p><%= campaign.state %></p> -->
-    <p>by
-      <a href="/<%=infoUser.username%>/company/<%=campaign.company_id.username%>" class="font-weight-bold dark-grey-text">
-        <%=campaign.company_id.username%>
-      </a>,
-      <%=moment(campaign.updated_at).format('l')%>
-    </p>
-    <!-- button function -->
-    <% if (userRol === 'companies') { %>
-      <a href="/<%= infoUser.username %>/campaigns/<%=campaign.title%>/edit" class="btn btn-author">
-        Edit campaign
-      </a>
-      <% } else if (userRol === 'influencers') { 
-        if (campaign.influencer_id == null) { %>
-        <a class="btn btn-author" id="follow" value="<%= campaign._id %>" user="<%= infoUser.username %>">
-          Check in!
-        </a>
-        <% } else if (campaign.influencer_id.indexOf(infoUser._id) === -1 ) { %>
-          <a class="btn btn-author" id="follow" value="<%= campaign._id %>" user="<%= infoUser.username %>">
-            Check in!
-          </a>
-          <% } else { %>
-            <a class="btn btn-author" id="unfollow" value="<%= campaign._id %>" user="<%= infoUser.username %>">
-              Check out!
-            </a>
-            <% } %>
-          <a id="send-msg" class="btn btn-author" data-toggle="modal" data-target="#modalDefaultContactForm">Contact</a>
-          <% } %>
+    <!--Grid row-->
+    <div class="row justify-content-md-center">
+        <div class="col-md-12">
+            <!--Featured image-->
+            <div class="card-cascade wider reverse">
+                <div class="view overlay">
+                    <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(142).jpg" alt="Wide sample post image" class="img-fluid">
+                    <a>
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
+                </div>
+
+                <!--Post data-->
+                <div class="card-body text-center">
+                    <h2>
+                        <a class="font-weight-bold"><%= campaign.title %></a>
+                    </h2>
+                    <p>Published by
+                        <a><%=campaign.company_id.username%></a>, <%=moment(campaign.updated_at).format('l')%></p>
+                    <p><%=campaign.description %></p>
+
+                    <!--Social shares-->
+                    <div class="social-counters ">
+
+                        <!-- button function -->
+                        <% if (userRol === 'companies') { %>
+                          <a href="/<%= infoUser.username %>/campaigns/<%=campaign.title%>/edit" class="btn btn-author">
+                            Edit campaign
+                          </a>
+                          <% } else if (userRol === 'influencers') { 
+                                if (campaign.influencer_id == null) { %>
+                            <a class="btn btn-author" id="follow" value="<%= campaign._id %>" user="<%= infoUser.username %>">
+                              Check in!
+                            </a>
+                            <% } else if (campaign.influencer_id.indexOf(infoUser._id) === -1 ) { %>
+                              <a class="btn btn-author" id="follow" value="<%= campaign._id %>" user="<%= infoUser.username %>">
+                                Check in!
+                              </a>
+                              <% } else { %>
+                                <a class="btn btn-author" id="unfollow" value="<%= campaign._id %>" user="<%= infoUser.username %>">
+                                  Check out!
+                                </a>
+                                <% } %>
+                                  <a id="send-msg" class="btn btn-author" data-toggle="modal" data-target="#modalDefaultContactForm">Contact</a>
+                                  <% } %>
+                        
+
+                    </div>
+                    <!--Social shares-->
+
+                </div>
+                <!--Post data-->
+            </div>
   </div>
   <!--Grid column-->
 </div>
